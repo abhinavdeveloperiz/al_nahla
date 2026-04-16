@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Sue+Ellen+Francisco&display=swap");
+@import "tailwindcss";
+
+@layer base {
+  html,
+  body {
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 350;
+    font-style: normal;
+  }
+
+  .font-josefin {
+    font-family: "Josefin Sans", sans-serif;
+  }
+}
+
+
+
+
+
