@@ -347,7 +347,7 @@ export default function Home() {
         className="relative py-28 bg-fixed bg-center bg-cover "
         style={{
           backgroundImage:
-            "url('https://t4.ftcdn.net/jpg/03/77/96/35/360_F_377963527_mcjPoX6p11HGPv9XfcUL6nWnQJzYo8hQ.jpg')",
+            "url('https://c4.wallpaperflare.com/wallpaper/121/27/632/technology-internet-wallpaper-preview.jpg')",
         }}
       >
         {/* DARK OVERLAY */}
@@ -389,7 +389,6 @@ export default function Home() {
                   <div
                     key={i}
                     data-aos="fade-up"
-                    data-aos-delay={i * 70}
                     className="group flex items-start gap-4"
                   >
                     {/* Icon */}
@@ -422,10 +421,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6">
           {/* Heading */}
           <div className="text-center mb-16">
-            <h2
-              data-aos="fade-up"
-              className="text-3xl md:text-4xl font-bold text-slate-100 uppercase"
-            >
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-100 uppercase">
               Why Choose Al Nahla UAE
             </h2>
           </div>
@@ -444,7 +440,7 @@ export default function Home() {
             </div>
 
             {/* Item 2 */}
-            <div data-aos="zoom-in" data-aos-delay="100" className="group">
+            <div data-aos="zoom-in" className="group">
               <div className="flex justify-center mb-4">
                 <Building2
                   size={40}
@@ -457,7 +453,7 @@ export default function Home() {
             </div>
 
             {/* Item 3 */}
-            <div data-aos="zoom-in" data-aos-delay="200" className="group">
+            <div data-aos="zoom-in" className="group">
               <div className="flex justify-center mb-4">
                 <Network
                   size={40}
@@ -468,7 +464,7 @@ export default function Home() {
             </div>
 
             {/* Item 4 */}
-            <div data-aos="zoom-in" data-aos-delay="300" className="group">
+            <div data-aos="zoom-in" className="group">
               <div className="flex justify-center mb-4">
                 <TrendingUp
                   size={40}
@@ -490,7 +486,7 @@ export default function Home() {
             </div>
 
             {/* Item 6 */}
-            <div data-aos="zoom-in" data-aos-delay="100" className="group">
+            <div data-aos="zoom-in" className="group">
               <div className="flex justify-center mb-4">
                 <Server
                   size={40}
@@ -501,7 +497,7 @@ export default function Home() {
             </div>
 
             {/* Item 7 */}
-            <div data-aos="zoom-in" data-aos-delay="200" className="group">
+            <div data-aos="zoom-in" className="group">
               <div className="flex justify-center mb-4">
                 <Code2
                   size={40}
@@ -569,7 +565,6 @@ export default function Home() {
               <div
                 key={i}
                 data-aos="fade-up"
-                data-aos-delay={i * 100}
                 className="bg-white rounded-xl p-6 text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-slate-200 group"
               >
                 <industry.icon
@@ -591,10 +586,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6">
           {/* Heading */}
           <div className="text-center mb-16">
-            <h2
-              data-aos="fade-up"
-              className="text-3xl md:text-4xl font-bold text-slate-900 uppercase mb-4"
-            >
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 uppercase mb-4">
               What Our Clients Say
             </h2>
             <p

@@ -92,7 +92,7 @@ export default function About() {
         className="relative py-32 bg-fixed bg-center bg-cover"
         style={{
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1451187580459-43490279c0fa')",
+            "url('https://plus.unsplash.com/premium_photo-1681426687411-21986b0626a8?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8dGVjaHxlbnwwfHwwfHx8MA%3D%3D')",
         }}
       >
         {/* OVERLAY */}
@@ -214,7 +214,6 @@ export default function About() {
                   <p className="text-amber-600 font-medium mb-3">
                     {leader.role}
                   </p>
-                
                 </div>
               </div>
             ))}
