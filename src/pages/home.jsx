@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import AOS from "aos";
-import "aos/dist/aos.css";
 import {
   Zap,
   Shield,
@@ -145,7 +144,7 @@ export default function Home() {
     <div className=" overflow-hidden">
       {/* HERO */}
       <section
-        className="relative h-[80vh] md:h-[90vh] flex items-center text-white"
+        className="relative h-[70vh] md:h-[80vh] flex items-center text-white"
         data-aos="fade-in"
         style={{
           backgroundImage: `url("https://wallpaperaccess.com/full/7333590.gif")`,
@@ -199,7 +198,7 @@ export default function Home() {
       <div className="bg-slate-900 py-10">
         <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 text-center gap-6">
           {STATS.map((s, i) => (
-            <div key={i} data-aos="zoom-in">
+            <div key={i} >
               <h3 className="text-3xl text-amber-400 font-bold">{s.value}</h3>
               <p className="text-slate-400 text-sm">{s.label}</p>
             </div>
@@ -417,7 +416,7 @@ export default function Home() {
         </div>
       </section>
 
-            <section className="bg-slate-50 py-24 overflow-hidden">
+      <section className="bg-slate-50 py-24 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
           {/* TITLE */}
           <div className="text-center mb-14">
@@ -481,7 +480,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      
+
       {/* WHY CHOOSE US - ICON STYLE */}
       <section className="bg-slate-900 py-24">
         <div className="max-w-6xl mx-auto px-6">
