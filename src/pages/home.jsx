@@ -153,7 +153,7 @@ export default function Home() {
           backgroundAttachment: "fixed",
         }}
       >
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-black/0" />
 
         <div className="relative z-10 max-w-6xl mx-auto px-6 py-32">
           <h1
@@ -198,7 +198,7 @@ export default function Home() {
       <div className="bg-slate-900 py-10">
         <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 text-center gap-6">
           {STATS.map((s, i) => (
-            <div key={i} >
+            <div key={i}>
               <h3 className="text-3xl text-amber-400 font-bold">{s.value}</h3>
               <p className="text-slate-400 text-sm">{s.label}</p>
             </div>
