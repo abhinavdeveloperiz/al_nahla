@@ -96,7 +96,8 @@ export default function Home() {
     {
       title: "Staff Augmentation",
       desc: "On-demand engineers",
-      image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d",
+      image:
+        "https://www.datatobiz.com/wp-content/uploads/2024/04/staff-augmentation.png",
     },
     {
       title: "Annual Maintenance",
@@ -141,7 +142,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="font-sans overflow-hidden">
+    <div className=" overflow-hidden">
       {/* HERO */}
       <section
         className="relative h-[80vh] md:h-[90vh] flex items-center text-white"
@@ -521,60 +522,65 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTORS */}
-      <section className="bg-slate-50 py-24">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center mb-16">
+      <section className="bg-slate-50 py-24 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4">
+          {/* TITLE */}
+          <div className="text-center mb-14">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 uppercase mb-4">
               Industries We Serve
             </h2>
             <p className="text-slate-600 max-w-2xl mx-auto">
-              Delivering tailored IT solutions across diverse sectors with deep
-              industry expertise and proven track records.
+              Delivering tailored IT solutions across diverse sectors
             </p>
           </div>
 
-          <div className="grid  md:grid-cols-3 lg:grid-cols-5 gap-6">
+          {/* STRIP */}
+          <div className="flex w-full overflow-x-auto py-2">
             {[
               {
                 name: "Government",
-                icon: Building2,
-                desc: "Secure digital transformation for public sector",
+                img: "https://education.cfr.org/sites/default/files/images/photo/2020/09/US-Capitol-Building-Stock-760-380.jpg",
               },
               {
                 name: "Oil & Gas",
-                icon: Zap,
-                desc: "Mission-critical systems for energy sector",
+                img: "https://cdn.corporatefinanceinstitute.com/assets/Oil-1.jpg",
               },
               {
                 name: "Banking",
-                icon: Shield,
-                desc: "Financial technology and compliance solutions",
+                img: "https://static.investindia.gov.in/s3fs-public/2020-02/shutterstock_400246663.jpg",
               },
               {
                 name: "Enterprise",
-                icon: Server,
-                desc: "Large-scale business IT infrastructure",
+                img: "https://www.jotform.com/blog/wp-content/uploads/2020/01/people-sitting-on-chairs-beside-their-desks-in-an-office-1170412-1-992x500.jpg",
               },
               {
                 name: "SME",
-                icon: Lightbulb,
-                desc: "Scalable solutions for growing businesses",
+                img: "https://gradmalaysia.com/sites/default/files/GA_MNCs%20SMEs%20and%20Startups-%20What%E2%80%99s%20the%20Difference-01.png",
               },
-            ].map((industry, i) => (
+            ].map((item, i) => (
               <div
                 key={i}
-                data-aos="fade-up"
-                className="bg-white rounded-xl p-6 text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-slate-200 group"
+                className="relative min-w-[240px] md:flex-1 h-[380px] overflow-hidden group ml-12"
+                style={{
+                  transform: "skewX(-15deg)",
+                }}
               >
-                <industry.icon
-                  className="mx-auto mb-4 text-amber-500 group-hover:scale-110 transition-transform duration-300"
-                  size={40}
-                />
-                <h3 className="font-bold text-slate-900 mb-2">
-                  {industry.name}
-                </h3>
-                <p className="text-slate-600 text-sm">{industry.desc}</p>
+                {/* INNER FIX (removes distortion) */}
+                <div className="w-full h-full relative">
+                  {/* IMAGE */}
+                  <img
+                    src={item.img}
+                    alt={item.name}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+
+                  {/* OVERLAY */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex items-center justify-center">
+                    <h3 className="text-white font-semibold text-lg md:text-xl text-center px-3 tracking-wide">
+                      {item.name}
+                    </h3>
+                  </div>
+                </div>
               </div>
             ))}
           </div>

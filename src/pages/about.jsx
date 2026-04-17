@@ -13,12 +13,8 @@ import {
 import { Link } from "react-router-dom";
 
 export default function About() {
-  useEffect(() => {
-    AOS.init({ once: true });
-  }, []);
-
   return (
-    <div className="font-sans overflow-hidden">
+    <div className="overflow-hidden">
       {/* HERO */}
       <section
         className="relative h-[30vh] md:h-[50vh] flex items-center text-white"
@@ -166,7 +162,7 @@ export default function About() {
       </section>
 
       {/* LEADERSHIP */}
-      <section className="bg-slate-50 py-24">
+      <section className="py-24">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 uppercase mb-4">
@@ -178,29 +174,24 @@ export default function About() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-8">
             {[
               {
                 name: "Ahmed Al-Rashid",
-                role: "Chief Executive Officer",
+                role: "Chief Executive",
                 image: "https://randomuser.me/api/portraits/men/32.jpg",
               },
               {
                 name: "Fatima Al-Zahra",
-                role: "Chief Technology Officer",
+                role: "Chief Technology",
                 image: "https://randomuser.me/api/portraits/women/45.jpg",
-              },
-              {
-                name: "Omar Al-Mansoori",
-                role: "Chief Operations Officer",
-                image: "https://randomuser.me/api/portraits/men/28.jpg",
               },
             ].map((leader, i) => (
               <div
                 key={i}
                 data-aos="fade-up"
                 data-aos-delay={i * 100}
-                className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden"
+                className="bg-white hover:shadow-xl transition-shadow duration-300 overflow-hidden"
               >
                 <div className="p-6 text-center">
                   <img
@@ -234,22 +225,19 @@ export default function About() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
             {[
               {
                 icon: Award,
                 title: "ISO 9001:2015",
-                desc: "Quality Management Systems certification ensuring consistent service excellence.",
               },
               {
                 icon: Shield,
                 title: "ISO 27001:2013",
-                desc: "Information Security Management certification for robust data protection.",
               },
               {
                 icon: Globe,
                 title: "Global Technology Partners",
-                desc: "70+ strategic partnerships with leading technology providers worldwide.",
               },
             ].map((cert, i) => (
               <div
@@ -262,9 +250,6 @@ export default function About() {
                 <h3 className="text-white font-bold text-xl mb-3">
                   {cert.title}
                 </h3>
-                <p className="text-slate-300 text-sm leading-relaxed">
-                  {cert.desc}
-                </p>
               </div>
             ))}
           </div>
