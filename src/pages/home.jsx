@@ -417,6 +417,71 @@ export default function Home() {
         </div>
       </section>
 
+            <section className="bg-slate-50 py-24 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4">
+          {/* TITLE */}
+          <div className="text-center mb-14">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 uppercase mb-4">
+              Industries We Serve
+            </h2>
+            <p className="text-slate-600 max-w-2xl mx-auto">
+              Delivering tailored IT solutions across diverse sectors
+            </p>
+          </div>
+
+          {/* STRIP */}
+          <div className="flex w-full overflow-x-auto py-2">
+            {[
+              {
+                name: "Government",
+                img: "https://education.cfr.org/sites/default/files/images/photo/2020/09/US-Capitol-Building-Stock-760-380.jpg",
+              },
+              {
+                name: "Oil & Gas",
+                img: "https://cdn.corporatefinanceinstitute.com/assets/Oil-1.jpg",
+              },
+              {
+                name: "Banking",
+                img: "https://static.investindia.gov.in/s3fs-public/2020-02/shutterstock_400246663.jpg",
+              },
+              {
+                name: "Enterprise",
+                img: "https://www.jotform.com/blog/wp-content/uploads/2020/01/people-sitting-on-chairs-beside-their-desks-in-an-office-1170412-1-992x500.jpg",
+              },
+              {
+                name: "SME",
+                img: "https://gradmalaysia.com/sites/default/files/GA_MNCs%20SMEs%20and%20Startups-%20What%E2%80%99s%20the%20Difference-01.png",
+              },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="relative min-w-[240px] md:flex-1 h-[380px] overflow-hidden group ml-12"
+                style={{
+                  transform: "skewX(-15deg)",
+                }}
+              >
+                {/* INNER FIX (removes distortion) */}
+                <div className="w-full h-full relative">
+                  {/* IMAGE */}
+                  <img
+                    src={item.img}
+                    alt={item.name}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+
+                  {/* OVERLAY */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex items-center justify-center">
+                    <h3 className="text-white font-semibold text-lg md:text-xl text-center px-3 tracking-wide">
+                      {item.name}
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      
       {/* WHY CHOOSE US - ICON STYLE */}
       <section className="bg-slate-900 py-24">
         <div className="max-w-6xl mx-auto px-6">
@@ -518,71 +583,6 @@ export default function Home() {
               </div>
               <h3 className="font-semibold text-slate-100">Expert Team</h3>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-slate-50 py-24 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4">
-          {/* TITLE */}
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 uppercase mb-4">
-              Industries We Serve
-            </h2>
-            <p className="text-slate-600 max-w-2xl mx-auto">
-              Delivering tailored IT solutions across diverse sectors
-            </p>
-          </div>
-
-          {/* STRIP */}
-          <div className="flex w-full overflow-x-auto py-2">
-            {[
-              {
-                name: "Government",
-                img: "https://education.cfr.org/sites/default/files/images/photo/2020/09/US-Capitol-Building-Stock-760-380.jpg",
-              },
-              {
-                name: "Oil & Gas",
-                img: "https://cdn.corporatefinanceinstitute.com/assets/Oil-1.jpg",
-              },
-              {
-                name: "Banking",
-                img: "https://static.investindia.gov.in/s3fs-public/2020-02/shutterstock_400246663.jpg",
-              },
-              {
-                name: "Enterprise",
-                img: "https://www.jotform.com/blog/wp-content/uploads/2020/01/people-sitting-on-chairs-beside-their-desks-in-an-office-1170412-1-992x500.jpg",
-              },
-              {
-                name: "SME",
-                img: "https://gradmalaysia.com/sites/default/files/GA_MNCs%20SMEs%20and%20Startups-%20What%E2%80%99s%20the%20Difference-01.png",
-              },
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="relative min-w-[240px] md:flex-1 h-[380px] overflow-hidden group ml-12"
-                style={{
-                  transform: "skewX(-15deg)",
-                }}
-              >
-                {/* INNER FIX (removes distortion) */}
-                <div className="w-full h-full relative">
-                  {/* IMAGE */}
-                  <img
-                    src={item.img}
-                    alt={item.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-
-                  {/* OVERLAY */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex items-center justify-center">
-                    <h3 className="text-white font-semibold text-lg md:text-xl text-center px-3 tracking-wide">
-                      {item.name}
-                    </h3>
-                  </div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
