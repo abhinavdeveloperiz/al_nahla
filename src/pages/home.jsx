@@ -144,7 +144,7 @@ export default function Home() {
     <div className="font-sans overflow-hidden">
       {/* HERO */}
       <section
-        className="relative h-[80vh] md:h-[90vh] flex items-center text-white md:m-6 md:rounded-3xl md:shadow-xl"
+        className="relative h-[80vh] md:h-[90vh] flex items-center text-white"
         data-aos="fade-in"
         style={{
           backgroundImage: `url("https://wallpaperaccess.com/full/7333590.gif")`,
@@ -153,7 +153,7 @@ export default function Home() {
           backgroundAttachment: "fixed",
         }}
       >
-        <div className="absolute inset-0 bg-black/40 rounded-3xl" />
+        <div className="absolute inset-0 bg-black/40" />
 
         <div className="relative z-10 max-w-6xl mx-auto px-6 py-32">
           <h1
@@ -534,7 +534,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <div className="grid  md:grid-cols-3 lg:grid-cols-5 gap-6">
             {[
               {
                 name: "Government",
