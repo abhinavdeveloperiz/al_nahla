@@ -1,4 +1,5 @@
 import Logo from "../../assets/logo/logo.png";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -14,16 +15,19 @@ export default function Footer() {
           <h3 className="font-semibold mb-3">Quick Links</h3>
           <ul className="space-y-2 text-gray-400">
             <li>
-              <a href="/">Home</a>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <a href="/about">About</a>
+              <Link to="/about">About</Link>
             </li>
             <li>
-              <a href="/services">Careers</a>
+              <Link to="/careers">Careers</Link>
             </li>
             <li>
-              <a href="/blog">Blog</a>
+              <Link to="/blog">Blog</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
             </li>
           </ul>
         </div>
@@ -31,7 +35,7 @@ export default function Footer() {
         {/* Contact */}
         <div>
           <h3 className="font-semibold mb-3">Contact</h3>
-          <p className="text-gray-400">Trivandrum, Kerala</p>
+          <p className="text-gray-400">Dubai</p>
           <p className="text-gray-400">email@example.com</p>
         </div>
       </div>

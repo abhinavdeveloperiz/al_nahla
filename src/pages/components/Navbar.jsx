@@ -7,7 +7,7 @@ import Logo from "../../assets/logo/logonobg.png";
 const navItems = [
   { name: "Home", path: "/", icon: <Home size={18} /> },
   { name: "About", path: "/about", icon: <Info size={18} /> },
-  { name: "Careers", path: "/services", icon: <Briefcase size={18} /> },
+  { name: "Careers", path: "/careers", icon: <Briefcase size={18} /> },
   { name: "Blog", path: "/blog", icon: <BookOpen size={18} /> },
   { name: "Contact", path: "/contact", icon: <Phone size={18} /> },
 ];
