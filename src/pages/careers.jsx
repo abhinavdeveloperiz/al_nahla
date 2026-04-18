@@ -64,21 +64,23 @@ export default function Careers() {
         </div>
       </section>
 
-      {/* WHY JOIN - PREMIUM WITH BUBBLES */}
+      {/* WHY JOIN - PREMIUM WITH CONTINUOUS BUBBLES */}
       <section className="relative bg-slate-900 py-20 md:py-28 overflow-hidden">
         {/* FLOATING BUBBLES */}
         <div className="absolute inset-0 overflow-hidden">
-          {[...Array(12)].map((_, i) => (
+          {[...Array(18)].map((_, i) => (
             <span
               key={i}
-              className="absolute block rounded-full bg-white/5 backdrop-blur-md animate-bubble"
+              className="absolute block rounded-full bg-white/10 backdrop-blur-md animate-bubble"
               style={{
                 width: `${Math.random() * 60 + 20}px`,
                 height: `${Math.random() * 60 + 20}px`,
                 left: `${Math.random() * 100}%`,
-                bottom: `-80px`,
-                animationDuration: `${Math.random() * 10 + 10}s`,
-                animationDelay: `${Math.random() * 5}s`,
+                top: `${Math.random() * 100}%`, 
+                animationDuration: `${Math.random() * 15 + 12}s`,
+                animationDelay: `${-Math.random() * 25}s`,
+                opacity: Math.random() * 0.4 + 0.1,
+                filter: `blur(${Math.random() * 2}px)`,
               }}
             />
           ))}
@@ -98,7 +100,7 @@ export default function Careers() {
 
           {/* GRID */}
           <div className="grid gap-6 sm:gap-8 md:grid-cols-3">
-            {/* CARD */}
+            {/* CARD 1 */}
             <div className="group relative p-[1px] rounded-xl md:rounded-2xl bg-gradient-to-br from-amber-400/40 via-transparent to-transparent">
               <div className="bg-slate-900/80 backdrop-blur-xl rounded-xl md:rounded-2xl p-6 sm:p-8 md:p-10 h-full border border-white/10 hover:border-amber-400/40 transition duration-500">
                 <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center rounded-lg md:rounded-xl bg-amber-400/10 mb-4 md:mb-6 group-hover:scale-110 transition">
@@ -122,7 +124,7 @@ export default function Careers() {
               </div>
             </div>
 
-            {/* CARD */}
+            {/* CARD 2 */}
             <div className="group relative p-[1px] rounded-xl md:rounded-2xl bg-gradient-to-br from-amber-400/40 via-transparent to-transparent">
               <div className="bg-slate-900/80 backdrop-blur-xl rounded-xl md:rounded-2xl p-6 sm:p-8 md:p-10 h-full border border-white/10 hover:border-amber-400/40 transition duration-500">
                 <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center rounded-lg md:rounded-xl bg-amber-400/10 mb-4 md:mb-6 group-hover:scale-110 transition">
@@ -146,7 +148,7 @@ export default function Careers() {
               </div>
             </div>
 
-            {/* CARD */}
+            {/* CARD 3 */}
             <div className="group relative p-[1px] rounded-xl md:rounded-2xl bg-gradient-to-br from-amber-400/40 via-transparent to-transparent">
               <div className="bg-slate-900/80 backdrop-blur-xl rounded-xl md:rounded-2xl p-6 sm:p-8 md:p-10 h-full border border-white/10 hover:border-amber-400/40 transition duration-500">
                 <div className="w-12 h-12 md:w-16 md:h-16 flex items-center justify-center rounded-lg md:rounded-xl bg-amber-400/10 mb-4 md:mb-6 group-hover:scale-110 transition">
@@ -168,18 +170,15 @@ export default function Careers() {
           </div>
         </div>
 
-        {/* BUBBLE ANIMATION STYLE */}
+        {/* BUBBLE ANIMATION */}
         <style jsx>{`
           @keyframes bubble {
             0% {
-              transform: translateY(0) scale(1);
-              opacity: 0;
-            }
-            30% {
-              opacity: 1;
+              transform: translateY(0) translateX(0) scale(1);
+              opacity: 0.4;
             }
             100% {
-              transform: translateY(-120vh) scale(1.2);
+              transform: translateY(-120vh) translateX(40px) scale(1.2);
               opacity: 0;
             }
           }
