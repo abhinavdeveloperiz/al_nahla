@@ -27,7 +27,9 @@ export default function FloatingNavbar() {
           className="flex items-center gap-2 p-2 bg-white border border-gray-200 rounded-full pointer-events-auto"
           onMouseLeave={() => setHoveredPath(location.pathname)}
         >
-          <img src={Logo} alt="Logo" className="h-8 w-auto ml-3 mr-4" />
+          <Link to="/">
+            <img src={Logo} alt="Logo" className="h-8 w-auto ml-3 mr-4" />
+          </Link>
 
           <div className="flex items-center gap-1">
             {navItems.map((item) => {
