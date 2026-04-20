@@ -74,35 +74,37 @@ export default function Home() {
     {
       title: "Managed Services",
       desc: "Full IT support & monitoring",
-      image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31",
+      image:
+        "https://th.bing.com/th/id/R.2e353704568d8461df59e69b19de19cf?rik=HuUdGsaaVgdiCQ&riu=http%3a%2f%2f22centurydesign.com%2fwp-content%2fuploads%2f2022%2f08%2fAdobeStock_494839224-scaled.jpeg&ehk=4TJuZI1j42CSF%2fkX2erak1Lv0oKY63lr%2bX53ddKkwEA%3d&risl=&pid=ImgRaw&r=0",
     },
     {
       title: "IT Consultancy",
       desc: "Strategic IT planning",
-      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40",
+      image:
+        "https://i.pinimg.com/736x/53/ad/5a/53ad5ae5b21d5437660a0914aa477e9a.jpg",
     },
     {
       title: "Professional Services",
       desc: "Deployment & integration",
       image:
-        "https://milestone.inc/wp-content/uploads/2025/02/What-is-categorized-as-professional-services-.webp",
+        "https://cdn.sanity.io/images/tlr8oxjg/production/acaceb27f1c52bce9db7527d89fbd95299df7421-1456x816.png?w=1080&q=100&fit=clip&auto=format",
     },
     {
       title: "Solution Architecture",
       desc: "Future-ready systems",
-      image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
+      image: "https://i.pcmag.com/imagery/roundups/05jgY5MYN5mNQUsxoGLX5Iu-1.fit_lim.size_400x250.v1607029548.jpg",
     },
     {
       title: "Staff Augmentation",
       desc: "On-demand engineers",
       image:
-        "https://www.datatobiz.com/wp-content/uploads/2024/04/staff-augmentation.png",
+        "https://community.cisco.com/t5/image/serverpage/image-id/243146i87E00DDB923C90E7/image-size/medium?v=v2&px=400",
     },
     {
       title: "Annual Maintenance",
       desc: "Guaranteed uptime",
       image:
-        "https://www.innovairtechnology.com/wp-content/uploads/keywords/annual-maintenance-service.jpg",
+        "https://www.cmarix.com/blog/wp-content/uploads/2022/08/benefits-BaaS-brings-to-your-business.jpg",
     },
   ];
 
@@ -429,27 +431,30 @@ export default function Home() {
           </div>
 
           {/* STRIP */}
-          <div className="flex w-full overflow-x-auto py-2">
+          <div
+            className="flex w-full overflow-x-auto py-2"
+            data-aos="slide-left"
+          >
             {[
               {
                 name: "Government",
-                img: "https://education.cfr.org/sites/default/files/images/photo/2020/09/US-Capitol-Building-Stock-760-380.jpg",
+                img: "https://static.vecteezy.com/system/resources/thumbnails/002/082/060/small_2x/scanning-view-of-the-interface-structure-city-skyscrapers-in-blue-color-vector.jpg",
               },
               {
                 name: "Oil & Gas",
-                img: "https://cdn.corporatefinanceinstitute.com/assets/Oil-1.jpg",
+                img: "https://static.vecteezy.com/system/resources/thumbnails/050/679/200/small_2x/oil-pumps-working-at-night-under-a-starry-blue-sky-with-artificial-lighting-illuminating-the-scene-in-a-modern-industrial-setting-photo.jpg",
               },
               {
                 name: "Banking",
-                img: "https://static.investindia.gov.in/s3fs-public/2020-02/shutterstock_400246663.jpg",
+                img: "https://static.vecteezy.com/system/resources/previews/010/518/833/original/digital-finance-and-banking-investment-service-on-microchip-with-cloud-computing-in-futuristic-background-bank-building-with-online-payment-secure-money-and-financial-innovation-technology-vector.jpg",
               },
               {
                 name: "Enterprise",
-                img: "https://www.jotform.com/blog/wp-content/uploads/2020/01/people-sitting-on-chairs-beside-their-desks-in-an-office-1170412-1-992x500.jpg",
+                img: "https://img.freepik.com/premium-photo/corporate-blue-business-background_87720-128495.jpg",
               },
               {
                 name: "SME",
-                img: "https://gradmalaysia.com/sites/default/files/GA_MNCs%20SMEs%20and%20Startups-%20What%E2%80%99s%20the%20Difference-01.png",
+                img: "https://tse1.mm.bing.net/th/id/OIP.HakeDa58wUEAulJrzZ5yVwHaDL?rs=1&pid=ImgDetMain&o=7&rm=3",
               },
             ].map((item, i) => (
               <div

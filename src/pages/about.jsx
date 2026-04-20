@@ -44,7 +44,7 @@ export default function About() {
       <section className="bg-white py-24">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
           <img
-            src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d"
+            src="https://tse2.mm.bing.net/th/id/OIP.XenbpiWtkIADyTn4r44gMQHaEK?rs=1&pid=ImgDetMain&o=7&rm=3"
             className="rounded-2xl shadow-xl"
             alt="About"
           />
