@@ -11,6 +11,7 @@ import Contact from "./pages/contact"
 import Navbar from "./pages/components/Navbar"
 import Footer from "./pages/components/Footer"
 import ScrollToTop from "./pages/components/ScrollToTop"
+import Loader from "./pages/components/Loader";
 
 import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom"
 
@@ -30,6 +31,7 @@ function AppWrapper() {
 
   return (
     <>
+      <Loader />
       <Navbar />
       <ScrollToTop />
       <Routes>
