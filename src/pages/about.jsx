@@ -305,10 +305,10 @@ export default function About() {
                   </div>
                 </div>
                 <Link
-                  to="/careers"
+                  to="/services"
                   className="inline-block px-8 py-3 bg-amber-400 text-black font-semibold rounded-lg hover:bg-amber-500 transition-colors duration-300"
                 >
-                  View Open Positions
+                  Services
                 </Link>
               </div>
             </div>

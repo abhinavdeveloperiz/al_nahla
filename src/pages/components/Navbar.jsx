@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Home, Info, Briefcase, BookOpen, Phone } from "lucide-react";
+import { Home, Info, Briefcase, BookOpen, Phone, Server } from "lucide-react";
 import { motion } from "framer-motion";
 import Logo from "../../assets/logo/logonobg.png";
 
 const navItems = [
   { name: "Home", path: "/", icon: <Home size={18} /> },
   { name: "About", path: "/about", icon: <Info size={18} /> },
-  { name: "Careers", path: "/careers", icon: <Briefcase size={18} /> },
+  { name: "Services", path: "/services", icon: <Briefcase size={18} /> },
+  { name: "Technologies", path: "/technologies", icon: <Server size={18} /> },
   { name: "Blog", path: "/blog", icon: <BookOpen size={18} /> },
   { name: "Contact", path: "/contact", icon: <Phone size={18} /> },
 ];

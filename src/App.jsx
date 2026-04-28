@@ -4,7 +4,8 @@ import "aos/dist/aos.css"
 
 import Home from "./pages/home"
 import About from "./pages/about"
-import Careers from "./pages/careers"
+import Services from "./pages/services"
+import Technologies from "./pages/technologies"
 import Blog from "./pages/blog"
 import Contact from "./pages/contact"
 
@@ -37,7 +38,8 @@ function AppWrapper() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/careers" element={<Careers />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/technologies" element={<Technologies />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
