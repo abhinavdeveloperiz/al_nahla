@@ -37,14 +37,14 @@ export default function Blog() {
           backgroundPosition: "center",
         }}
       >
-        <div className="absolute inset-0 bg-black/70" />
+        <div className="absolute inset-0 bg-[#0872b9]/70" />
 
         <div className="relative z-10 max-w-6xl mx-auto px-6">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 uppercase">
             Blogs
           </h1>
-          <p className="text-slate-300 max-w-xl">
-            <Link to="/" className="text-amber-400 hover:underline">
+          <p className="text-white max-w-xl">
+            <Link to="/" className="text-[#f38020] hover:underline">
               Home
             </Link>{" "}
             / Blog
@@ -56,10 +56,10 @@ export default function Blog() {
       <section className="bg-white py-24">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold uppercase text-slate-900">
+            <h2 className="text-3xl md:text-4xl font-bold uppercase text-[#0872b9]">
               Latest Articles
             </h2>
-            <p className="text-slate-500 mt-4">
+            <p className="text-[#0872b9] mt-4">
               Stay updated with industry insights and innovations
             </p>
           </div>
@@ -82,16 +82,16 @@ export default function Blog() {
 
                 {/* CONTENT */}
                 <div className="p-6">
-                  <span className="text-xs text-amber-500 font-semibold">
-                    <span className="text-gray-600">Posted On:</span>{" "}
+                  <span className="text-xs text-[#f38020] font-semibold">
+                    <span className="text-[#0872b9]">Posted On:</span>{" "}
                     {post.date}
                   </span>
 
-                  <h3 className="text-xl font-bold text-slate-900 mt-2">
+                  <h3 className="text-xl font-bold text-[#0872b9] mt-2">
                     {post.title}
                   </h3>
 
-                  <p className="text-slate-600 text-sm mt-3 leading-relaxed">
+                  <p className="text-[#0872b9] text-sm mt-3 leading-relaxed">
                     {post.desc}
                   </p>
                 </div>
@@ -102,18 +102,18 @@ export default function Blog() {
       </section>
 
       {/* CTA SECTION (Match Home) */}
-      <section className="bg-gradient-to-r from-amber-400 to-amber-500 py-20 text-center">
+      <section className="bg-gradient-to-r from-[#f38020] to-[#f38020] py-20 text-center">
         <div className="max-w-3xl mx-auto px-6">
-          <h2 className="text-3xl font-bold text-black mb-4">
+          <h2 className="text-3xl font-bold text-[#0872b9] mb-4">
             Want Expert IT Insights?
           </h2>
-          <p className="text-black/80 mb-6">
+          <p className="text-[#0872b9]/80 mb-6">
             Follow our blog for the latest updates in enterprise technology.
           </p>
 
           <a
             href="/contact"
-            className="px-6 py-3 bg-black text-white rounded-lg font-semibold hover:bg-gray-800 transition"
+            className="px-6 py-3 bg-[#0872b9] text-white rounded-lg font-semibold hover:bg-[#0872b9] transition"
           >
             Contact Us
           </a>
@@ -122,3 +122,5 @@ export default function Blog() {
     </div>
   );
 }
+
+

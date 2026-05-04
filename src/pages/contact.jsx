@@ -16,14 +16,14 @@ export default function Contact() {
           backgroundPosition: "center",
         }}
       >
-        <div className="absolute inset-0 bg-black/70" />
+        <div className="absolute inset-0 bg-[#0872b9]/70" />
 
         <div className="relative z-10 max-w-6xl mx-auto px-6">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 uppercase">
             Contact Us
           </h1>
-          <p className="text-slate-300 max-w-xl">
-            <Link to="/" className="text-amber-400 hover:underline">
+          <p className="text-white max-w-xl">
+            <Link to="/" className="text-[#f38020] hover:underline">
               Home
             </Link>{" "}
             / Contact Us
@@ -36,7 +36,7 @@ export default function Contact() {
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12">
           {/* LEFT - FORM */}
           <div data-aos="fade-right">
-            <h2 className="text-2xl font-bold mb-6 text-slate-900 uppercase">
+            <h2 className="text-2xl font-bold mb-6 text-[#0872b9] uppercase">
               Send a Message
             </h2>
 
@@ -44,25 +44,25 @@ export default function Contact() {
               <input
                 type="text"
                 placeholder="Full Name"
-                className="w-full px-4 py-3 border rounded-xl focus:border-amber-400 outline-none"
+                className="w-full px-4 py-3 border rounded-xl focus:border-[#f38020] outline-none"
               />
               <input
                 type="email"
                 placeholder="Email Address"
-                className="w-full px-4 py-3 border rounded-xl focus:border-amber-400 outline-none"
+                className="w-full px-4 py-3 border rounded-xl focus:border-[#f38020] outline-none"
               />
               <input
                 type="text"
                 placeholder="Company"
-                className="w-full px-4 py-3 border rounded-xl focus:border-amber-400 outline-none"
+                className="w-full px-4 py-3 border rounded-xl focus:border-[#f38020] outline-none"
               />
               <textarea
                 rows={5}
                 placeholder="Your Message"
-                className="w-full px-4 py-3 border rounded-xl focus:border-amber-400 outline-none"
+                className="w-full px-4 py-3 border rounded-xl focus:border-[#f38020] outline-none"
               />
 
-              <button className="px-6 py-3 bg-amber-400 text-black font-semibold rounded-xl hover:bg-amber-500 transition flex items-center gap-2">
+              <button className="px-6 py-3 bg-[#f38020] text-[#0872b9] font-semibold rounded-xl hover:bg-[#f38020] transition flex items-center gap-2">
                 Send Message <ArrowRight size={16} />
               </button>
             </div>
@@ -71,40 +71,40 @@ export default function Contact() {
           {/* RIGHT - ADDRESS */}
           <div
             data-aos="fade-left"
-            className="bg-slate-50 p-8 rounded-2xl shadow-md"
+            className="bg-white p-8 rounded-2xl shadow-md"
           >
-            <h2 className="text-2xl font-bold mb-6 text-slate-900 uppercase">
+            <h2 className="text-2xl font-bold mb-6 text-[#0872b9] uppercase">
               Contact Details
             </h2>
 
-            <div className="space-y-6 text-slate-700">
+            <div className="space-y-6 text-[#0872b9]">
               <div className="flex items-start gap-3">
-                <MapPin className="text-amber-500" />
+                <MapPin className="text-[#f38020]" />
                 <div>
                   <p className="font-semibold">Abu Dhabi HQ</p>
-                  <p className="text-sm text-slate-500">
+                  <p className="text-sm text-[#0872b9]">
                     Al Nahla Solutions, Abu Dhabi, UAE
                   </p>
                 </div>
               </div>
 
               <div className="flex items-start gap-3">
-                <MapPin className="text-amber-500" />
+                <MapPin className="text-[#f38020]" />
                 <div>
                   <p className="font-semibold">Dubai Office</p>
-                  <p className="text-sm text-slate-500">
+                  <p className="text-sm text-[#0872b9]">
                     Dubai Business Center, UAE
                   </p>
                 </div>
               </div>
 
               <div className="flex items-start gap-3">
-                <Phone className="text-amber-500" />
+                <Phone className="text-[#f38020]" />
                 <p>+971 50 000 0000</p>
               </div>
 
               <div className="flex items-start gap-3">
-                <Mail className="text-amber-500" />
+                <Mail className="text-[#f38020]" />
                 <p>info@alnahla.com</p>
               </div>
             </div>
@@ -113,10 +113,10 @@ export default function Contact() {
       </section>
 
       {/* GOOGLE MAPS SECTION */}
-      <section className="bg-slate-100 py-20">
+      <section className="bg-white py-20">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold uppercase text-slate-900">
+            <h2 className="text-3xl font-bold uppercase text-[#0872b9]">
               Our Locations
             </h2>
           </div>
@@ -147,3 +147,5 @@ export default function Contact() {
     </div>
   );
 }
+
+

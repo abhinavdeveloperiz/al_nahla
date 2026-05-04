@@ -8,6 +8,7 @@ import {
   CloudCog,
   Laptop,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Technologies() {
   const SOLUTIONS = [
@@ -54,14 +55,14 @@ export default function Technologies() {
   ];
 
   return (
-    <section className="bg-slate-950 text-white py-24">
+    <section className="bg-[#0872b9] text-white py-24">
       <div className="max-w-6xl mx-auto px-6">
         {/* HEADER */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold uppercase mt-12">
             Technologies & Solutions
           </h2>
-          <p className="text-slate-400 mt-4 max-w-xl mx-auto">
+          <p className="text-[#0872b9] mt-4 max-w-xl mx-auto">
             Delivering cutting-edge technology solutions to power modern
             enterprises.
           </p>
@@ -70,27 +71,28 @@ export default function Technologies() {
         {/* GRID */}
         <div className="grid md:grid-cols-4 gap-6">
           {SOLUTIONS.map((item, i) => (
-            <div
+            <Link
               key={i}
-              className="group border border-slate-800 rounded-xl p-6 hover:bg-slate-900 transition duration-300"
+              to="/technologies/details"
+              className="group bg-gray-800 hover:bg-gray-900 border border-[#0872b9] rounded-xl p-6 hover:bg-[#0872b9] transition duration-300"
               data-aos="fade-up"
             >
               {/* ICON */}
               <div className="mb-4">
-                <item.icon className="w-10 h-10 text-amber-400 group-hover:scale-110 transition" />
+                <item.icon className="w-10 h-10 text-[#f38020] group-hover:scale-110 transition" />
               </div>
 
               {/* TITLE */}
               <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
 
               {/* DESC */}
-              <p className="text-slate-400 text-sm leading-relaxed">
+              <p className="text-[#0872b9] text-sm leading-relaxed">
                 {item.desc}
               </p>
 
               {/* HOVER LINE */}
-              <div className="mt-4 h-[2px] w-0 bg-amber-400 group-hover:w-full transition-all duration-300"></div>
-            </div>
+              <div className="mt-4 h-[2px] w-0 bg-[#f38020] group-hover:w-full transition-all duration-300"></div>
+            </Link>
           ))}
         </div>
       </div>

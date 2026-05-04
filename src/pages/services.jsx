@@ -61,14 +61,14 @@ export default function Services() {
           backgroundPosition: "center",
         }}
       >
-        <div className="absolute inset-0 bg-black/70" />
+        <div className="absolute inset-0 bg-[#0872b9]/70" />
 
         <div className="relative z-10 max-w-6xl mx-auto px-6">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 uppercase">
             Services
           </h1>
-          <p className="text-slate-300 max-w-xl">
-            <Link to="/" className="text-amber-400 hover:underline">
+          <p className="text-white max-w-xl">
+            <Link to="/" className="text-[#f38020] hover:underline">
               Home
             </Link>{" "}
             / Services
@@ -80,34 +80,46 @@ export default function Services() {
       <section id="services" className="bg-white py-24">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 uppercase">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0872b9] uppercase">
               Our Services
             </h2>
-            <p className="text-slate-500 mt-4 max-w-xl mx-auto">
+            <p className="text-[#0872b9] mt-4 max-w-xl mx-auto">
               How we deliver enterprise-grade IT solutions across UAE.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {SERVICES.map((service, i) => (
-              <div
+              <Link
+                to="/services/details"
                 key={i}
                 data-aos="zoom-in"
-                className="group relative rounded-2xl overflow-hidden shadow-lg"
+                className="group bg-white rounded-2xl overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
               >
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="h-64 w-full object-cover group-hover:scale-110 transition duration-500"
-                />
+                {/* IMAGE */}
+                <div className="overflow-hidden">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="h-64 w-full object-cover group-hover:scale-110 transition duration-500"
+                  />
+                </div>
 
-                <div className="absolute inset-0 bg-black/60 flex flex-col justify-end p-6">
-                  <h3 className="text-white text-xl font-semibold">
+                {/* CONTENT BELOW */}
+                <div className="p-6">
+                  <h3 className="text-[#0872b9] text-xl font-semibold">
                     {service.title}
                   </h3>
-                  <p className="text-slate-300 text-sm mt-2">{service.desc}</p>
+
+                  <p className="text-slate-600 text-sm mt-2">{service.desc}</p>
+
+                  <div className="mt-4">
+                    <span className="text-[#f38020] text-sm font-medium group-hover:underline">
+                      Learn More →
+                    </span>
+                  </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

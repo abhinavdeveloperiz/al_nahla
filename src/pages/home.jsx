@@ -46,13 +46,13 @@ function RotatingText() {
         className="
           text-5xl md:text-6xl lg:text-7xl
           font-extrabold
-          text-slate-900
+          text-[#0872b9]
           leading-tight
           tracking-tight
           transition-all duration-700
         "
       >
-        <span className="bg-gradient-to-r from-black to-amber-600 uppercase bg-clip-text text-transparent">
+        <span className="bg-gradient-to-r from-[#0872b9] to-[#f38020] uppercase bg-clip-text text-transparent">
           {lines[index]}
         </span>
       </h2>
@@ -68,6 +68,51 @@ export default function Home() {
     { value: "750+", label: "Clients" },
     { value: "500+", label: "Projects" },
     { value: "70+", label: "Partners" },
+  ];
+
+  const stats = [
+    {
+      value: "18+",
+      label: "Years Experience",
+      color: "blue",
+      pos: "top-10 left-10",
+    },
+    {
+      value: "750+",
+      label: "Happy Clients",
+      color: "orange",
+      pos: "top-40 left-1/3",
+    },
+    {
+      value: "24x7",
+      label: "Support",
+      color: "orange",
+      pos: "top-40 right-1/3",
+    },
+    {
+      value: "3+",
+      label: "Service Hubs\n(Oman + UAE)",
+      color: "blue",
+      pos: "top-10 right-10",
+    },
+    {
+      value: "500+",
+      label: "Projects Completed",
+      color: "orange",
+      pos: "bottom-10 left-20",
+    },
+    {
+      value: "60+",
+      label: "Work Force",
+      color: "blue",
+      pos: "bottom-20 left-1/2 -translate-x-1/2",
+    },
+    {
+      value: "70+",
+      label: "Partnerships",
+      color: "orange",
+      pos: "bottom-10 right-20",
+    },
   ];
 
   const SERVICES = [
@@ -92,7 +137,8 @@ export default function Home() {
     {
       title: "Solution Architecture",
       desc: "Future-ready systems",
-      image: "https://i.pcmag.com/imagery/roundups/05jgY5MYN5mNQUsxoGLX5Iu-1.fit_lim.size_400x250.v1607029548.jpg",
+      image:
+        "https://i.pcmag.com/imagery/roundups/05jgY5MYN5mNQUsxoGLX5Iu-1.fit_lim.size_400x250.v1607029548.jpg",
     },
     {
       title: "Staff Augmentation",
@@ -155,21 +201,21 @@ export default function Home() {
           backgroundAttachment: "fixed",
         }}
       >
-        <div className="absolute inset-0 bg-black/0" />
+        <div className="absolute inset-0 bg-[#0872b9]/0" />
 
         <div className="relative z-10 max-w-6xl mx-auto px-6 py-32">
           <h1
             data-aos="fade-up"
             className="text-3xl md:text-6xl font-bold mb-6 uppercase"
           >
-            Smart IT Solutions for <br />
-            <span className="text-amber-400"> Modern Business</span>
+            Al Nahla <br />
+            <span className=" text-[#f38020]"> Modern Business</span>
           </h1>
 
           <p
             data-aos="fade-up"
             data-aos-delay="200"
-            className="text-slate-300 mb-8 max-w-xl"
+            className="text-[#f38020] mb-8 max-w-xl"
           >
             Secure, scalable and future-ready IT infrastructure for enterprises.
           </p>
@@ -181,14 +227,14 @@ export default function Home() {
           >
             <Link
               to="/contact"
-              className="px-6 py-3 bg-amber-400 text-black font-semibold rounded-lg shadow hover:bg-amber-500 transition"
+              className="px-6 py-3 bg-[#f38020] text-white font-semibold rounded-lg shadow hover:bg-[#f38020] transition"
             >
               Get Started
             </Link>
 
             <Link
               to="/services"
-              className="px-6 py-3 border border-slate-300 text-slate-50 hover:text-black font-medium rounded-lg hover:bg-slate-100 transition"
+              className="px-6 py-3 border border-[#0872b9] text-white hover:text-[#0872b9] font-medium rounded-lg hover:bg-white transition"
             >
               Services
             </Link>
@@ -197,12 +243,12 @@ export default function Home() {
       </section>
 
       {/* STATS */}
-      <div className="bg-slate-900 py-10">
+      <div className="bg-[#0872b9] py-10">
         <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 text-center gap-6">
           {STATS.map((s, i) => (
             <div key={i}>
-              <h3 className="text-3xl text-amber-400 font-bold">{s.value}</h3>
-              <p className="text-slate-400 text-sm">{s.label}</p>
+              <h3 className="text-3xl text-[#f38020] font-bold">{s.value}</h3>
+              <p className="text-[#0872b9] text-sm">{s.label}</p>
             </div>
           ))}
         </div>
@@ -216,7 +262,7 @@ export default function Home() {
       </section>
 
       {/* ABOUT US SECTION */}
-      <section className="bg-white py-24 overflow-hidden">
+      <section className="bg-[#0872b9] py-24 overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
           {/* LEFT IMAGE */}
           <div data-aos="fade-right" className="relative">
@@ -227,7 +273,7 @@ export default function Home() {
             />
 
             {/* Floating badge */}
-            <div className="absolute -bottom-6 -left-6 bg-amber-400 text-black px-6 py-3 rounded-xl shadow-lg text-sm font-semibold">
+            <div className="absolute -bottom-6 -left-6 bg-[#f38020] text-[#0872b9] px-6 py-3 rounded-xl shadow-lg text-sm font-semibold">
               17+ Years Experience
             </div>
           </div>
@@ -237,7 +283,7 @@ export default function Home() {
             {/* Heading */}
             <h2
               data-aos="fade-up"
-              className="text-3xl md:text-4xl font-bold text-slate-900 mb-6 uppercase"
+              className="text-3xl md:text-4xl font-bold text-white mb-6 uppercase"
             >
               About Al Nahla UAE
             </h2>
@@ -246,7 +292,7 @@ export default function Home() {
             <p
               data-aos="fade-up"
               data-aos-delay="100"
-              className="text-slate-600 leading-relaxed mb-8 text-justify"
+              className="text-white leading-relaxed mb-8 text-justify"
             >
               Al Nahla Solutions brings 17 years of proven IT excellence from
               Oman into the UAE market. With a strong foundation of enterprise
@@ -258,10 +304,8 @@ export default function Home() {
             {/* ICON FEATURES */}
             <div className="grid grid-cols-2 gap-6">
               <div data-aos="zoom-in" className="flex items-start gap-3">
-                <Shield className="text-amber-500" />
-                <span className="text-slate-700 font-medium">
-                  ISO Certified
-                </span>
+                <Shield className="text-[#f38020]" />
+                <span className="text-white font-medium">ISO Certified</span>
               </div>
 
               <div
@@ -269,10 +313,8 @@ export default function Home() {
                 data-aos-delay="100"
                 className="flex items-start gap-3"
               >
-                <Building2 className="text-amber-500" />
-                <span className="text-slate-700 font-medium">
-                  Enterprise Focus
-                </span>
+                <Building2 className="text-[#f38020]" />
+                <span className="text-white font-medium">Enterprise Focus</span>
               </div>
 
               <div
@@ -280,8 +322,8 @@ export default function Home() {
                 data-aos-delay="200"
                 className="flex items-start gap-3"
               >
-                <Network className="text-amber-500" />
-                <span className="text-slate-700 font-medium">70+ Partners</span>
+                <Network className="text-[#f38020]" />
+                <span className="text-white font-medium">70+ Partners</span>
               </div>
 
               <div
@@ -289,8 +331,8 @@ export default function Home() {
                 data-aos-delay="300"
                 className="flex items-start gap-3"
               >
-                <TrendingUp className="text-amber-500" />
-                <span className="text-slate-700 font-medium">750+ Clients</span>
+                <TrendingUp className="text-[#f38020]" />
+                <span className="text-white font-medium">750+ Clients</span>
               </div>
             </div>
 
@@ -298,7 +340,7 @@ export default function Home() {
             <div data-aos="fade-up" data-aos-delay="400" className="mt-8">
               <a
                 href="/about"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-amber-300 text-white font-semibold hover:bg-amber-600 rounded-xl hover:rounded-3xl transition duration-900"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-[#f38020] text-white font-semibold hover:bg-[#f38020] rounded-xl hover:rounded-3xl transition duration-900"
               >
                 Learn More <ArrowRight size={16} />
               </a>
@@ -307,14 +349,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SERVICES - IMAGE CARDS */}
       <section id="services" className="bg-white py-24">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 uppercase">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0872b9] uppercase">
               Our Services
             </h2>
-            <p className="text-slate-500 mt-4 max-w-xl mx-auto">
+            <p className="text-[#0872b9] mt-4 max-w-xl mx-auto">
               How we deliver enterprise-grade IT solutions across UAE.
             </p>
           </div>
@@ -324,19 +365,31 @@ export default function Home() {
               <div
                 key={i}
                 data-aos="zoom-in"
-                className="group relative rounded-2xl overflow-hidden shadow-lg"
+                className="group bg-white rounded-2xl overflow-hidden hover:shadow-xl transition"
               >
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="h-64 w-full object-cover group-hover:scale-110 transition duration-500"
-                />
+                {/* IMAGE */}
+                <div className="overflow-hidden">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="h-64 w-full object-cover group-hover:scale-110 transition duration-500"
+                  />
+                </div>
 
-                <div className="absolute inset-0 bg-black/60 flex flex-col justify-end p-6">
-                  <h3 className="text-white text-xl font-semibold">
+                {/* CONTENT BELOW IMAGE */}
+                <div className="p-6 ">
+                  <h3 className="text-[#0872b9] text-xl font-semibold">
                     {service.title}
                   </h3>
-                  <p className="text-slate-300 text-sm mt-2">{service.desc}</p>
+
+                  <p className="text-slate-600 text-sm mt-2">{service.desc}</p>
+
+                  {/* OPTIONAL CTA */}
+                  <div className="mt-4">
+                    <span className="text-[#f38020] font-medium text-sm group-hover:underline cursor-pointer">
+                      Learn More →
+                    </span>
+                  </div>
                 </div>
               </div>
             ))}
@@ -353,7 +406,7 @@ export default function Home() {
         }}
       >
         {/* DARK OVERLAY */}
-        <div className="absolute inset-0 bg-black/75" />
+        <div className="absolute inset-0 bg-[#0872b9]/75" />
 
         <div className="relative max-w-6xl mx-auto px-6">
           {/* Heading */}
@@ -368,7 +421,7 @@ export default function Home() {
             <div
               data-aos="fade-up"
               data-aos-delay="100"
-              className="w-16 h-[2px] bg-amber-400 mx-auto mt-4"
+              className="w-16 h-[2px] bg-[#f38020] mx-auto mt-4"
             />
           </div>
 
@@ -397,18 +450,18 @@ export default function Home() {
                     <div className="mt-1">
                       <Icon
                         size={22}
-                        className="text-white group-hover:text-amber-400 transition"
+                        className="text-white group-hover:text-[#f38020] transition"
                       />
                     </div>
 
                     {/* Text */}
                     <div>
-                      <p className="text-white font-semibold leading-snug group-hover:text-amber-400 transition">
+                      <p className="text-white font-semibold leading-snug group-hover:text-[#f38020] transition">
                         {tech.name}
                       </p>
 
                       {/* underline */}
-                      <div className="w-0 group-hover:w-12 h-[2px] bg-amber-400 mt-2 transition-all duration-300" />
+                      <div className="w-0 group-hover:w-12 h-[2px] bg-[#f38020] mt-2 transition-all duration-300" />
                     </div>
                   </div>
                 );
@@ -418,14 +471,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-slate-50 py-24 overflow-hidden">
+      <section className="bg-white py-24 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
           {/* TITLE */}
           <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 uppercase mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0872b9] uppercase mb-4">
               Industries We Serve
             </h2>
-            <p className="text-slate-600 max-w-2xl mx-auto">
+            <p className="text-[#0872b9] max-w-2xl mx-auto">
               Delivering tailored IT solutions across diverse sectors
             </p>
           </div>
@@ -459,7 +512,7 @@ export default function Home() {
             ].map((item, i) => (
               <div
                 key={i}
-                className="relative min-w-[240px] md:flex-1 h-[380px] overflow-hidden group ml-12"
+                className="relative min-w-[240px] md:flex-1 h-[280px] overflow-hidden group ml-12"
                 style={{
                   transform: "skewX(-15deg)",
                 }}
@@ -486,107 +539,55 @@ export default function Home() {
         </div>
       </section>
 
-      {/* WHY CHOOSE US - ICON STYLE */}
-      <section className="bg-slate-900 py-24">
-        <div className="max-w-6xl mx-auto px-6">
-          {/* Heading */}
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-100 uppercase">
-              Why Choose Al Nahla UAE
-            </h2>
+      <section className="relative bg-white py-20 md:py-28 overflow-hidden">
+        <div className="max-w-6xl mx-auto px-4 md:px-6 text-center relative">
+          {/* BIG ? (smaller on mobile) */}
+          <h1 className="absolute inset-0 flex items-center justify-center text-[120px] md:text-[220px] font-bold text-gray-200 opacity-40 select-none">
+            ?
+          </h1>
+
+          {/* TITLE */}
+          <h2 className="text-3xl md:text-5xl font-bold relative z-10">
+            <span className="text-[#0872b9]">Why Al Nahla</span>{" "}
+          </h2>
+
+          <p className="text-gray-500 mt-3 relative z-10 text-sm md:text-base">
+            The proven partner bringing GCC excellence to the UAE
+          </p>
+
+          {/* ---------- MOBILE VIEW (GRID) ---------- */}
+          <div className="grid grid-cols-2 gap-6 mt-12 md:hidden">
+            {stats.map((item, i) => (
+              <div key={i} className="flex justify-center">
+                <div
+                  className={`w-28 h-28 rounded-full flex flex-col items-center justify-center text-white shadow-lg
+                ${item.color === "blue" ? "bg-[#0872b9]" : "bg-[#f38020]"}`}
+                >
+                  <h3 className="text-lg font-bold">{item.value}</h3>
+                  <p className="text-[10px] text-center px-2 whitespace-pre-line leading-tight">
+                    {item.label}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
 
-          {/* Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {/* Item 1 */}
-            <div data-aos="zoom-in" className="group">
-              <div className="flex justify-center mb-4">
-                <Shield
-                  size={40}
-                  className="text-amber-500 group-hover:scale-110 transition"
-                />
+          {/* ---------- DESKTOP VIEW (FLOATING) ---------- */}
+          <div className="hidden md:block relative mt-24 h-[500px]">
+            {stats.map((item, i) => (
+              <div key={i} className={`absolute ${item.pos}`}>
+                <div
+                  className={`w-32 h-32 rounded-full flex flex-col items-center justify-center text-white shadow-xl
+                ${item.color === "blue" ? "bg-[#0872b9]" : "bg-[#f38020]"}
+                hover:scale-110 transition duration-300`}
+                >
+                  <h3 className="text-2xl font-bold">{item.value}</h3>
+                  <p className="text-xs text-center px-2 whitespace-pre-line leading-tight">
+                    {item.label}
+                  </p>
+                </div>
               </div>
-              <h3 className="font-semibold text-slate-100">ISO Certified</h3>
-            </div>
-
-            {/* Item 2 */}
-            <div data-aos="zoom-in" className="group">
-              <div className="flex justify-center mb-4">
-                <Building2
-                  size={40}
-                  className="text-amber-500 group-hover:scale-110 transition"
-                />
-              </div>
-              <h3 className="font-semibold text-slate-100 ">
-                Enterprise Solutions
-              </h3>
-            </div>
-
-            {/* Item 3 */}
-            <div data-aos="zoom-in" className="group">
-              <div className="flex justify-center mb-4">
-                <Network
-                  size={40}
-                  className="text-amber-500 group-hover:scale-110 transition"
-                />
-              </div>
-              <h3 className="font-semibold text-slate-100">70+ Partners</h3>
-            </div>
-
-            {/* Item 4 */}
-            <div data-aos="zoom-in" className="group">
-              <div className="flex justify-center mb-4">
-                <TrendingUp
-                  size={40}
-                  className="text-amber-500 group-hover:scale-110 transition"
-                />
-              </div>
-              <h3 className="font-semibold text-slate-100">750+ Clients</h3>
-            </div>
-
-            {/* Item 5 */}
-            <div data-aos="zoom-in" className="group">
-              <div className="flex justify-center mb-4">
-                <Zap
-                  size={40}
-                  className="text-amber-500 group-hover:scale-110 transition"
-                />
-              </div>
-              <h3 className="font-semibold text-slate-100">Fast Delivery</h3>
-            </div>
-
-            {/* Item 6 */}
-            <div data-aos="zoom-in" className="group">
-              <div className="flex justify-center mb-4">
-                <Server
-                  size={40}
-                  className="text-amber-500 group-hover:scale-110 transition"
-                />
-              </div>
-              <h3 className="font-semibold text-slate-100">Cloud & Infra</h3>
-            </div>
-
-            {/* Item 7 */}
-            <div data-aos="zoom-in" className="group">
-              <div className="flex justify-center mb-4">
-                <Code2
-                  size={40}
-                  className="text-amber-500 group-hover:scale-110 transition"
-                />
-              </div>
-              <h3 className="font-semibold text-slate-100">Custom Software</h3>
-            </div>
-
-            {/* Item 8 */}
-            <div data-aos="zoom-in" data-aos-delay="300" className="group">
-              <div className="flex justify-center mb-4">
-                <Users2
-                  size={40}
-                  className="text-amber-500 group-hover:scale-110 transition"
-                />
-              </div>
-              <h3 className="font-semibold text-slate-100">Expert Team</h3>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -596,13 +597,13 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6">
           {/* Heading */}
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 uppercase mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0872b9] uppercase mb-4">
               What Our Clients Say
             </h2>
             <p
               data-aos="fade-up"
               data-aos-delay="100"
-              className="text-slate-600 mt-4 max-w-xl mx-auto"
+              className="text-[#0872b9] mt-4 max-w-xl mx-auto"
             >
               Trusted by businesses across UAE and Oman for delivering reliable,
               innovative IT solutions that drive success.
@@ -620,11 +621,11 @@ export default function Home() {
                   className="min-w-full px-2 md:px-4"
                   data-aos="fade-up"
                 >
-                  <div className="bg-gradient-to-br from-slate-50 to-white border border-slate-200 p-8 md:p-12 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 h-full relative">
-                    <div className="absolute top-6 left-6 text-amber-400 text-2xl">
+                  <div className="bg-gradient-to-br from-white to-white border border-[#0872b9] p-8 md:p-12 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 h-full relative">
+                    <div className="absolute top-6 left-6 text-[#f38020] text-2xl">
                       "
                     </div>
-                    <p className="text-slate-700 mb-8 text-lg md:text-xl leading-relaxed pl-8">
+                    <p className="text-[#0872b9] mb-8 text-lg md:text-xl leading-relaxed pl-8">
                       {testimonial.quote}
                     </p>
 
@@ -632,18 +633,18 @@ export default function Home() {
                       <img
                         src={testimonial.avatar}
                         alt={testimonial.name}
-                        className="w-16 h-16 rounded-full object-cover border-2 border-amber-200"
+                        className="w-16 h-16 rounded-full object-cover border-2 border-[#f38020]/20"
                       />
                       <div>
-                        <h4 className="font-bold text-slate-900 text-lg">
+                        <h4 className="font-bold text-[#0872b9] text-lg">
                           {testimonial.name}
                         </h4>
-                        <span className="text-slate-600 font-medium">
+                        <span className="text-[#0872b9] font-medium">
                           {testimonial.title}
                         </span>
                         <div className="flex gap-1 mt-1">
                           {[...Array(5)].map((_, i) => (
-                            <span key={i} className="text-amber-400 text-sm">
+                            <span key={i} className="text-[#f38020] text-sm">
                               ★
                             </span>
                           ))}
@@ -663,8 +664,8 @@ export default function Home() {
                   onClick={() => setActiveTestimonial(idx)}
                   className={`h-3 w-3 rounded-full transition-all duration-300 ${
                     idx === activeTestimonial
-                      ? "bg-amber-400 scale-125"
-                      : "bg-slate-300 hover:bg-slate-400"
+                      ? "bg-[#f38020] scale-125"
+                      : "bg-[#0872b9] hover:bg-[#0872b9]"
                   }`}
                   aria-label={`Show testimonial ${idx + 1}`}
                 />
@@ -675,25 +676,25 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="bg-gradient-to-r from-amber-400 to-amber-500 py-24 text-center">
+      <section className="bg-gradient-to-r from-[#f38020] to-[#f38020] py-24 text-center">
         <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-black mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0872b9] mb-6">
             Ready to Transform Your Business?
           </h2>
-          <p className="text-black/80 mb-8 text-lg">
+          <p className="text-[#0872b9]/80 mb-8 text-lg">
             Partner with Al Nahla Solutions for enterprise-grade IT services in
             UAE and Oman. Let's discuss your next project.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="#contact"
-              className="px-8 py-4 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition-colors duration-300"
+              className="px-8 py-4 bg-[#0872b9] text-white font-semibold rounded-lg hover:bg-[#0872b9] transition-colors duration-300"
             >
               Request a Consultation
             </a>
             <a
               href="/services"
-              className="px-8 py-4 border-2 border-black text-black font-semibold rounded-lg hover:bg-black hover:text-white transition-colors duration-300"
+              className="px-8 py-4 border-2 border-[#0872b9] text-[#0872b9] font-semibold rounded-lg hover:bg-[#0872b9] hover:text-white transition-colors duration-300"
             >
               Our Services
             </a>

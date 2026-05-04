@@ -25,14 +25,14 @@ export default function About() {
           backgroundPosition: "center",
         }}
       >
-        <div className="absolute inset-0 bg-black/70" />
+        <div className="absolute inset-0 bg-[#0872b9]/70" />
 
         <div className="relative z-10 max-w-6xl mx-auto px-6">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 uppercase">
             About Us
           </h1>
-          <p className="text-slate-300 max-w-xl">
-            <Link to="/" className="text-amber-400 hover:underline">
+          <p className="text-white max-w-xl">
+            <Link to="/" className="text-[#f38020] hover:underline">
               Home
             </Link>{" "}
             / About Us
@@ -50,11 +50,11 @@ export default function About() {
           />
 
           <div>
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">
+            <h2 className="text-3xl font-bold text-[#0872b9] mb-6">
               Who We Are
             </h2>
 
-            <p className="text-slate-600 leading-relaxed mb-6 text-justify">
+            <p className="text-[#0872b9] leading-relaxed mb-6 text-justify">
               Al Nahla Solutions brings over 17 years of proven IT expertise
               from Oman into the UAE market. Our Abu Dhabi headquarters
               represents a strategic expansion delivering enterprise-grade,
@@ -63,19 +63,19 @@ export default function About() {
 
             <div className="grid grid-cols-2 gap-6">
               <div className="flex gap-3">
-                <Shield className="text-amber-500" />
+                <Shield className="text-[#f38020]" />
                 <span>ISO Certified</span>
               </div>
               <div className="flex gap-3">
-                <Building2 className="text-amber-500" />
+                <Building2 className="text-[#f38020]" />
                 <span>Enterprise Focus</span>
               </div>
               <div className="flex gap-3">
-                <Users2 className="text-amber-500" />
+                <Users2 className="text-[#f38020]" />
                 <span>750+ Clients</span>
               </div>
               <div className="flex gap-3">
-                <TrendingUp className="text-amber-500" />
+                <TrendingUp className="text-[#f38020]" />
                 <span>500+ Projects</span>
               </div>
             </div>
@@ -92,7 +92,7 @@ export default function About() {
         }}
       >
         {/* OVERLAY */}
-        <div className="absolute inset-0 bg-black/80" />
+        <div className="absolute inset-0 bg-[#0872b9]/80" />
 
         <div className="relative max-w-5xl mx-auto px-6">
           {/* Heading */}
@@ -100,7 +100,7 @@ export default function About() {
             <h2 className="text-3xl md:text-4xl font-bold text-white uppercase">
               Our Journey
             </h2>
-            <div className="w-16 h-[2px] bg-amber-400 mx-auto mt-4" />
+            <div className="w-16 h-[2px] bg-[#f38020] mx-auto mt-4" />
           </div>
 
           {/* Timeline Wrapper */}
@@ -141,7 +141,7 @@ export default function About() {
                   data-aos="fade-up"
                   className="w-full md:w-[45%] ml-10 md:ml-0 backdrop-blur-md bg-white/5 border border-white/10 p-6 rounded-xl"
                 >
-                  <h3 className="text-amber-400 font-bold text-lg mb-2">
+                  <h3 className="text-[#f38020] font-bold text-lg mb-2">
                     {item.year}
                   </h3>
                   <p className="text-white/80">{item.text}</p>
@@ -150,7 +150,7 @@ export default function About() {
                 {/* Dot */}
                 <div
                   className={`
-              absolute w-4 h-4 bg-amber-400 rounded-full shadow-lg
+              absolute w-4 h-4 bg-[#f38020] rounded-full shadow-lg
               md:left-1/2 md:-translate-x-1/2
               left-4
             `}
@@ -165,10 +165,10 @@ export default function About() {
       <section className="py-24">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 uppercase mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0872b9] uppercase mb-4">
               Leadership Team
             </h2>
-            <p className="text-slate-600 max-w-2xl mx-auto">
+            <p className="text-[#0872b9] max-w-2xl mx-auto">
               Meet the visionary leaders driving Al Nahla Solutions' success in
               delivering innovative IT solutions across UAE and Oman.
             </p>
@@ -196,13 +196,13 @@ export default function About() {
                 <div className="p-6 text-center">
                   <img
                     src={leader.image}
-                    className="w-24 h-24 mx-auto rounded-full mb-4 object-cover border-4 border-amber-100"
+                    className="w-24 h-24 mx-auto rounded-full mb-4 object-cover border-4 border-[#f38020]/20"
                     alt={leader.name}
                   />
-                  <h3 className="font-bold text-slate-900 text-lg mb-1">
+                  <h3 className="font-bold text-[#0872b9] text-lg mb-1">
                     {leader.name}
                   </h3>
-                  <p className="text-amber-600 font-medium mb-3">
+                  <p className="text-[#f38020] font-medium mb-3">
                     {leader.role}
                   </p>
                 </div>
@@ -213,13 +213,13 @@ export default function About() {
       </section>
 
       {/* CERTIFICATIONS */}
-      <section className="bg-slate-900 py-24">
+      <section className="bg-[#0872b9] py-24">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-white uppercase mb-4">
               Certifications & Partnerships
             </h2>
-            <p className="text-slate-300 max-w-2xl mx-auto">
+            <p className="text-white max-w-2xl mx-auto">
               Our commitment to excellence is validated through industry-leading
               certifications and strategic global partnerships.
             </p>
@@ -244,9 +244,9 @@ export default function About() {
                 key={i}
                 data-aos="fade-up"
                 data-aos-delay={i * 150}
-                className="bg-slate-800 rounded-xl p-8 text-center hover:bg-slate-700 transition-colors duration-300 border border-slate-700"
+                className="bg-[#0872b9] rounded-xl p-8 text-center hover:bg-[#0872b9] transition-colors duration-300 border border-[#0872b9]"
               >
-                <cert.icon className="mx-auto mb-6 text-amber-400" size={48} />
+                <cert.icon className="mx-auto mb-6 text-[#f38020]" size={48} />
                 <h3 className="text-white font-bold text-xl mb-3">
                   {cert.title}
                 </h3>
@@ -260,10 +260,10 @@ export default function About() {
       <section className="bg-white py-24">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 uppercase mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0872b9] uppercase mb-4">
               Join Our Team
             </h2>
-            <p className="text-slate-600 max-w-2xl mx-auto mb-8">
+            <p className="text-[#0872b9] max-w-2xl mx-auto mb-8">
               Be part of a dynamic team shaping the future of enterprise IT
               solutions across UAE and Oman.
             </p>
@@ -271,7 +271,7 @@ export default function About() {
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div data-aos="fade-right">
-              <h3 className="text-2xl font-bold text-slate-900 mb-6">
+              <h3 className="text-2xl font-bold text-[#0872b9] mb-6">
                 Why Choose Al Nahla?
               </h3>
               <ul className="space-y-4">
@@ -283,30 +283,30 @@ export default function About() {
                   "International exposure across UAE and Oman markets",
                 ].map((benefit, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <div className="w-2 h-2 bg-amber-400 rounded-full mt-2 flex-shrink-0"></div>
-                    <span className="text-slate-600">{benefit}</span>
+                    <div className="w-2 h-2 bg-[#f38020] rounded-full mt-2 flex-shrink-0"></div>
+                    <span className="text-[#0872b9]">{benefit}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
             <div data-aos="fade-left" className="text-center">
-              <div className="bg-slate-50 rounded-xl p-8 mb-8">
+              <div className="bg-white rounded-xl p-8 mb-8">
                 <div className="grid grid-cols-2 gap-6 mb-6">
                   <div>
-                    <div className="text-3xl font-bold text-amber-600">
+                    <div className="text-3xl font-bold text-[#f38020]">
                       200+
                     </div>
-                    <div className="text-slate-600">Team Members</div>
+                    <div className="text-[#0872b9]">Team Members</div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-amber-600">15+</div>
-                    <div className="text-slate-600">Open Positions</div>
+                    <div className="text-3xl font-bold text-[#f38020]">15+</div>
+                    <div className="text-[#0872b9]">Open Positions</div>
                   </div>
                 </div>
                 <Link
                   to="/services"
-                  className="inline-block px-8 py-3 bg-amber-400 text-black font-semibold rounded-lg hover:bg-amber-500 transition-colors duration-300"
+                  className="inline-block px-8 py-3 bg-[#f38020] text-[#0872b9] font-semibold rounded-lg hover:bg-[#f38020] transition-colors duration-300"
                 >
                   Services
                 </Link>
@@ -317,25 +317,25 @@ export default function About() {
       </section>
 
       {/* CTA */}
-      <section className="bg-gradient-to-r from-amber-400 to-amber-500 py-24 text-center">
+      <section className="bg-gradient-to-r from-[#f38020] to-[#f38020] py-24 text-center">
         <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-black mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0872b9] mb-6">
             Ready to Transform Your Business?
           </h2>
-          <p className="text-black/80 mb-8 text-lg">
+          <p className="text-[#0872b9]/80 mb-8 text-lg">
             Let's discuss how Al Nahla Solutions can help you achieve your IT
             goals with our proven expertise and innovative solutions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/contact"
-              className="px-8 py-4 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition-colors duration-300"
+              className="px-8 py-4 bg-[#0872b9] text-white font-semibold rounded-lg hover:bg-[#0872b9] transition-colors duration-300"
             >
               Get In Touch
             </Link>
             <Link
               to="/services"
-              className="px-8 py-4 border-2 border-black text-black font-semibold rounded-lg hover:bg-black hover:text-white transition-colors duration-300"
+              className="px-8 py-4 border-2 border-[#0872b9] text-[#0872b9] font-semibold rounded-lg hover:bg-[#0872b9] hover:text-white transition-colors duration-300"
             >
               Our Services
             </Link>
@@ -345,3 +345,5 @@ export default function About() {
     </div>
   );
 }
+
+
