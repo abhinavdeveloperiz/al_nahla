@@ -48,99 +48,124 @@ export default function FloatingNavbar() {
 
   return (
     <>
-      {/* ================= DESKTOP: FLOATING PILL ================= */}
-      <div className="hidden md:flex fixed top-6 left-0 w-full z-50 justify-center pointer-events-none">
+      {/* ================= DESKTOP: FULL NAVBAR ================= */}
+      <div className="hidden md:block fixed top-0 left-0 w-full z-50 bg-white border-b border-[#0872b9]/20 shadow-sm">
         <motion.nav
-          initial={{ y: -50, opacity: 0 }}
+          initial={{ y: -40, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ type: "spring", stiffness: 400, damping: 25 }}
-          className="flex items-center gap-2 p-2 bg-white border border-[#0872b9] rounded-full pointer-events-auto"
-          onMouseLeave={() => setHoveredPath(location.pathname)}
+          transition={{ type: "spring", stiffness: 300, damping: 25 }}
+          className="max-w-7xl mx-auto h-20 px-8 flex items-center justify-between"
         >
-          <Link to="/">
-            <img src={Logo} alt="Logo" className="h-8 w-auto ml-3 mr-4" />
-          </Link>
-
-          <div className="relative">
-            <button
-              type="button"
-              onClick={() => setMenuOpen((prev) => !prev)}
-              className="inline-flex items-center gap-2 rounded-full border border-[#0872b9] bg-white px-4 py-2 text-sm font-medium text-[#0872b9] hover:bg-[#f7fbff] transition"
-            >
-              Explore
-              <ChevronDown size={16} />
-            </button>
-            {menuOpen && (
-              <div className="absolute left-0 mt-2 w-[320px] rounded-3xl border border-[#0872b9]/20 bg-white p-4 shadow-2xl shadow-slate-900/10 z-50">
-                <div className="grid gap-4 md:grid-cols-2">
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.3em] text-[#0872b9]/70 mb-3">
-                      Services
-                    </p>
-                    <ul className="space-y-2 text-sm text-slate-700">
-                      {servicesList.map((item) => (
-                        <li key={item}>
-                          <Link
-                            to="/services"
-                            onClick={() => setMenuOpen(false)}
-                            className="block rounded-2xl px-3 py-2 hover:bg-[#0872b9]/5 hover:text-[#0872b9] transition"
-                          >
-                            {item}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.3em] text-[#0872b9]/70 mb-3">
-                      Technologies
-                    </p>
-                    <ul className="space-y-2 text-sm text-slate-700">
-                      {technologiesList.map((item) => (
-                        <li key={item}>
-                          <Link
-                            to="/technologies"
-                            onClick={() => setMenuOpen(false)}
-                            className="block rounded-2xl px-3 py-2 hover:bg-[#0872b9]/5 hover:text-[#0872b9] transition"
-                          >
-                            {item}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-
-          <div className="flex items-center gap-1">
-            {navItems.map((item) => {
+          {/* LEFT NAV */}
+          <div className="flex items-center gap-2">
+            {navItems.slice(0, 2).map((item) => {
               const isActive = location.pathname === item.path;
-              const isHovered = hoveredPath === item.path;
 
               return (
                 <Link
                   key={item.name}
                   to={item.path}
-                  onMouseEnter={() => setHoveredPath(item.path)}
-                  className={`relative px-4 py-2 rounded-full flex items-center gap-2 text-sm font-medium transition-colors z-10 
-                    ${isActive || isHovered ? "text-[#0872b9]" : "text-[#0872b9] hover:text-[#0872b9]"}`}
+                  className={`px-4 py-2 rounded-full flex items-center gap-2 text-sm font-medium transition
+            ${
+              isActive
+                ? "bg-[#0872b9] text-white"
+                : "text-[#0872b9] hover:bg-[#0872b9]/10"
+            }`}
                 >
-                  {isHovered && (
-                    <motion.div
-                      layoutId="nav-pill"
-                      className="absolute inset-0 bg-[#0872b9]/10 rounded-full -z-10"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 500,
-                        damping: 30,
-                      }}
-                    />
-                  )}
+                  {item.icon}
+                  <span>{item.name}</span>
+                </Link>
+              );
+            })}
+
+            {/* SERVICES DROPDOWN */}
+            {/* SERVICES DROPDOWN */}
+            <div className="relative group">
+              <Link
+                to="/services"
+                className={`px-4 py-2 rounded-full flex items-center gap-2 text-sm font-medium transition
+    ${
+      location.pathname === "/services"
+        ? "bg-[#0872b9] text-white"
+        : "text-[#0872b9] hover:bg-[#0872b9]/10"
+    }`}
+              >
+                <Briefcase size={18} />
+                Services
+                <ChevronDown size={16} />
+              </Link>
+
+              <div className="absolute top-full left-0 mt-3 w-72 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 bg-white border border-[#0872b9]/10 rounded-3xl shadow-2xl p-4">
+                <ul className="space-y-2">
+                  {servicesList.map((item) => (
+                    <li key={item}>
+                      <Link
+                        to="/services"
+                        className="block px-4 py-3 rounded-2xl text-sm text-slate-700 hover:bg-[#0872b9]/5 hover:text-[#0872b9] transition"
+                      >
+                        {item}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* CENTER LOGO */}
+          <Link to="/" className="absolute left-1/2 -translate-x-1/2">
+            <img src={Logo} alt="Logo" className="h-12 w-auto" />
+          </Link>
+
+          {/* RIGHT NAV */}
+          <div className="flex items-center gap-2">
+            {/* TECHNOLOGIES DROPDOWN */}
+            {/* TECHNOLOGIES DROPDOWN */}
+            <div className="relative group">
+              <Link
+                to="/technologies"
+                className={`px-4 py-2 rounded-full flex items-center gap-2 text-sm font-medium transition
+    ${
+      location.pathname === "/technologies"
+        ? "bg-[#0872b9] text-white"
+        : "text-[#0872b9] hover:bg-[#0872b9]/10"
+    }`}
+              >
+                <Server size={18} />
+                Technologies
+                <ChevronDown size={16} />
+              </Link>
+
+              <div className="absolute top-full right-0 mt-3 w-80 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 bg-white border border-[#0872b9]/10 rounded-3xl shadow-2xl p-4">
+                <ul className="space-y-2">
+                  {technologiesList.map((item) => (
+                    <li key={item}>
+                      <Link
+                        to="/technologies"
+                        className="block px-4 py-3 rounded-2xl text-sm text-slate-700 hover:bg-[#0872b9]/5 hover:text-[#0872b9] transition"
+                      >
+                        {item}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {navItems.slice(4).map((item) => {
+              const isActive = location.pathname === item.path;
+
+              return (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  className={`px-4 py-2 rounded-full flex items-center gap-2 text-sm font-medium transition
+            ${
+              isActive
+                ? "bg-[#0872b9] text-white"
+                : "text-[#0872b9] hover:bg-[#0872b9]/10"
+            }`}
+                >
                   {item.icon}
                   <span>{item.name}</span>
                 </Link>

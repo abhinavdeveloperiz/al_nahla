@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import AOS from "aos";
+import Logo from "../assets/logo/logonobg.png";
 import {
   Zap,
   Shield,
@@ -57,6 +58,63 @@ function RotatingText() {
         </span>
       </h2>
     </div>
+  );
+}
+
+function Counter({ end, suffix }) {
+  const [count, setCount] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.5 },
+    );
+
+    const element = document.getElementById(`counter-${end}-${suffix}`);
+
+    if (element) observer.observe(element);
+
+    return () => {
+      if (element) observer.unobserve(element);
+    };
+  }, [end, suffix]);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    let start = 0;
+    const duration = 2000;
+    const incrementTime = 16;
+    const steps = duration / incrementTime;
+    const increment = end / steps;
+
+    const timer = setInterval(() => {
+      start += increment;
+
+      if (start >= end) {
+        setCount(end);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, incrementTime);
+
+    return () => clearInterval(timer);
+  }, [isVisible, end]);
+
+  return (
+    <span
+      id={`counter-${end}-${suffix}`}
+      className="block whitespace-nowrap leading-none"
+    >
+      {count.toLocaleString()}
+      {suffix}
+    </span>
   );
 }
 
@@ -192,67 +250,79 @@ export default function Home() {
     <div className=" overflow-hidden">
       {/* HERO */}
       <section
-        className="relative h-[70vh] md:h-[80vh] flex items-center text-white"
+        className="relative h-[70vh] md:h-[90vh] flex items-center text-white"
         data-aos="fade-in"
         style={{
-          backgroundImage: `url("https://wallpaperaccess.com/full/7333590.gif")`,
+          backgroundPosition: "center",
+          backgroundImage: `url("https://static.vecteezy.com/system/resources/previews/004/924/971/original/abstract-luxury-modern-background-3d-free-vector.jpg")`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundAttachment: "fixed",
         }}
       >
-        <div className="absolute inset-0 bg-[#0872b9]/0" />
+        <div className="absolute inset-0 bg-black/50" />
 
-        <div className="relative z-10 max-w-6xl mx-auto px-6 py-32">
-          <h1
-            data-aos="fade-up"
-            className="text-3xl md:text-6xl font-bold mb-6 uppercase"
-          >
-            Al Nahla <br />
-            <span className=" text-[#f38020]"> Modern Business</span>
-          </h1>
-
+        <div className="relative z-10 max-w-6xl mx-auto px-6 py-32 text-center">
+          {/* Arabic Text */}
           <p
             data-aos="fade-up"
-            data-aos-delay="200"
-            className="text-[#f38020] mb-8 max-w-xl"
+            className="text-[#f38020] text-xl md:text-3xl font-medium tracking-wide mb-3 mt-10"
           >
-            Secure, scalable and future-ready IT infrastructure for enterprises.
+            النهلة لحلول تكنولوجيا المعلومات ذ.م.م
           </p>
 
+          {/* Main Heading */}
+          <h1
+            data-aos="fade-up"
+            data-aos-delay="100"
+            className="text-4xl md:text-7xl font-extrabold leading-tight"
+          >
+            <span className="text-[#0872b9]">Al Nahla</span>{" "}
+            <span className="text-[#f38020]">Solutions L.L.C</span>
+          </h1>
+
+          {/* Subtitle */}
+          <h2
+            data-aos="fade-up"
+            data-aos-delay="200"
+            className="text-[#0872b9] text-lg md:text-2xl font-semibold tracking-[0.2em] uppercase mt-4"
+          >
+            Information Technology
+          </h2>
+
+          {/* Description */}
+          <p
+            data-aos="fade-up"
+            data-aos-delay="300"
+            className="text-white/90 text-base md:text-lg max-w-3xl mx-auto mt-8 leading-relaxed"
+          >
+            Delivering secure, scalable and future-ready IT infrastructure,
+            enterprise solutions, cybersecurity and digital transformation
+            services for modern businesses.
+          </p>
+
+          {/* Buttons */}
           <div
             data-aos="fade-up"
             data-aos-delay="400"
-            className="flex flex-wrap gap-4 mt-6"
+            className="flex flex-wrap justify-center gap-4 mt-10"
           >
             <Link
               to="/contact"
-              className="px-6 py-3 bg-[#f38020] text-white font-semibold rounded-lg shadow hover:bg-[#f38020] transition"
+              className="px-8 py-3 bg-[#f38020] text-white font-semibold rounded-xl shadow-lg hover:scale-105 hover:bg-[#de6f14] transition-all duration-300"
             >
               Get Started
             </Link>
 
             <Link
               to="/services"
-              className="px-6 py-3 border border-[#0872b9] text-white hover:text-[#0872b9] font-medium rounded-lg hover:bg-white transition"
+              className="px-8 py-3 border border-white text-white font-medium rounded-xl hover:bg-white hover:text-[#0872b9] transition-all duration-300"
             >
-              Services
+              Our Services
             </Link>
           </div>
         </div>
       </section>
-
-      {/* STATS */}
-      <div className="bg-[#0872b9] py-10">
-        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 text-center gap-6">
-          {STATS.map((s, i) => (
-            <div key={i}>
-              <h3 className="text-3xl text-[#f38020] font-bold">{s.value}</h3>
-              <p className="text-[#0872b9] text-sm">{s.label}</p>
-            </div>
-          ))}
-        </div>
-      </div>
 
       {/* UAE INTRO SECTION */}
       <section className="bg-white py-24 flex items-center justify-center overflow-hidden">
@@ -261,89 +331,42 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ABOUT US SECTION */}
-      <section className="bg-[#0872b9] py-24 overflow-hidden">
-        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-          {/* LEFT IMAGE */}
-          <div data-aos="fade-right" className="relative">
-            <img
-              src="https://vserviceitsolutions.com/wp-content/uploads/2022/07/it-serv-inner.jpg"
-              alt="About Al Nahla"
-              className="rounded-2xl shadow-xl w-full object-cover"
-            />
+      {/* ================= ABOUT SECTION ================= */}
+      <section className="relative bg-[#0872b9] py-28 overflow-hidden">
+        {/* BACKGROUND GLOW */}
+        <div className="absolute top-0 left-0 w-96 h-96 bg-[#f38020]/20 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/10 blur-3xl rounded-full translate-x-1/2 translate-y-1/2" />
 
-            {/* Floating badge */}
-            <div className="absolute -bottom-6 -left-6 bg-[#f38020] text-[#0872b9] px-6 py-3 rounded-xl shadow-lg text-sm font-semibold">
-              17+ Years Experience
-            </div>
-          </div>
-
-          {/* RIGHT CONTENT */}
-          <div>
-            {/* Heading */}
-            <h2
-              data-aos="fade-up"
-              className="text-3xl md:text-4xl font-bold text-white mb-6 uppercase"
-            >
-              About Al Nahla UAE
-            </h2>
-
-            {/* Text */}
-            <p
-              data-aos="fade-up"
-              data-aos-delay="100"
-              className="text-white leading-relaxed mb-8 text-justify"
-            >
-              Al Nahla Solutions brings 17 years of proven IT excellence from
-              Oman into the UAE market. With a strong foundation of enterprise
-              delivery, certified processes, and regional expertise, our Abu
-              Dhabi headquarters marks a new chapter in delivering scalable and
-              secure technology solutions across industries.
-            </p>
-
-            {/* ICON FEATURES */}
-            <div className="grid grid-cols-2 gap-6">
-              <div data-aos="zoom-in" className="flex items-start gap-3">
-                <Shield className="text-[#f38020]" />
-                <span className="text-white font-medium">ISO Certified</span>
-              </div>
-
-              <div
-                data-aos="zoom-in"
-                data-aos-delay="100"
-                className="flex items-start gap-3"
-              >
-                <Building2 className="text-[#f38020]" />
-                <span className="text-white font-medium">Enterprise Focus</span>
-              </div>
-
-              <div
-                data-aos="zoom-in"
-                data-aos-delay="200"
-                className="flex items-start gap-3"
-              >
-                <Network className="text-[#f38020]" />
-                <span className="text-white font-medium">70+ Partners</span>
-              </div>
-
-              <div
-                data-aos="zoom-in"
-                data-aos-delay="300"
-                className="flex items-start gap-3"
-              >
-                <TrendingUp className="text-[#f38020]" />
-                <span className="text-white font-medium">750+ Clients</span>
-              </div>
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* LEFT SIDE */}
+            <div data-aos="fade-right" className="relative">
+              {/* BIG HEADING */}
+              <h2 className="text-2xl lg:text-4xl font-black leading-tight text-white">
+                Global Systems Integrator.
+                <span className="block">Local Partner of Choice.</span>
+              </h2>
             </div>
 
-            {/* CTA */}
-            <div data-aos="fade-up" data-aos-delay="400" className="mt-8">
-              <a
-                href="/about"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-[#f38020] text-white font-semibold hover:bg-[#f38020] rounded-xl hover:rounded-3xl transition duration-900"
-              >
-                Learn More <ArrowRight size={16} />
-              </a>
+            {/* RIGHT SIDE */}
+            <div data-aos="fade-left" className="relative">
+              {/* GLASS CARD */}
+              <div className="relative  backdrop-blur-2xl rounded-[32px] p-8 md:p-10">
+                {/* TOP LABEL */}
+                <div className="inline-flex px-4 py-2 rounded-full bg-orange-500 text-white text-sm font-medium mb-6">
+                  About Al Nahla UAE
+                </div>
+
+                {/* PARAGRAPH */}
+                <p className="text-white/90 leading-relaxed text-lg mb-8 text-justify">
+                  Al Nahla Solutions brings 17 years of proven IT excellence
+                  from Oman into the UAE market. With a strong foundation of
+                  enterprise delivery, certified processes, and regional
+                  expertise, our Abu Dhabi headquarters marks a new chapter in
+                  delivering scalable, secure, and future-ready technology
+                  solutions across industries.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -362,7 +385,8 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {SERVICES.map((service, i) => (
-              <div
+              <Link
+                to="/services/details"
                 key={i}
                 data-aos="zoom-in"
                 className="group bg-white rounded-2xl overflow-hidden hover:shadow-xl transition"
@@ -391,7 +415,7 @@ export default function Home() {
                     </span>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -512,13 +536,10 @@ export default function Home() {
             ].map((item, i) => (
               <div
                 key={i}
-                className="relative min-w-[240px] md:flex-1 h-[280px] overflow-hidden group ml-12"
-                style={{
-                  transform: "skewX(-15deg)",
-                }}
+                className="relative min-w-[240px] md:flex-1 group ml-12"
               >
-                {/* INNER FIX (removes distortion) */}
-                <div className="w-full h-full relative">
+                {/* IMAGE CARD */}
+                <div className="relative h-[280px] overflow-hidden rounded-2xl">
                   {/* IMAGE */}
                   <img
                     src={item.img}
@@ -526,12 +547,18 @@ export default function Home() {
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
 
-                  {/* OVERLAY */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex items-center justify-center">
-                    <h3 className="text-white font-semibold text-lg md:text-xl text-center px-3 tracking-wide">
-                      {item.name}
-                    </h3>
-                  </div>
+                  {/* DARK OVERLAY */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                </div>
+
+                {/* TEXT OUTSIDE IMAGE */}
+                <div className="mt-5 pl-2">
+                  <h3 className="text-[#0872b9] font-bold text-xl md:text-2xl leading-snug tracking-wide">
+                    {item.name}
+                  </h3>
+
+                  {/* SMALL LINE */}
+                  <div className="mt-3 w-24 h-[3px] bg-[#f38020] rounded-full group-hover:w-44 transition-all duration-500" />
                 </div>
               </div>
             ))}
@@ -586,6 +613,112 @@ export default function Home() {
                     {item.label}
                   </p>
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ================= PROOF IN NUMBERS ================= */}
+      <section className="relative bg-[#f5f7fa] py-24 overflow-hidden">
+        <div className="relative max-w-7xl mx-auto px-6">
+          {/* TOP HEADER */}
+          <div className="max-w-3xl mb-16">
+            <p
+              data-aos="fade-up"
+              className="text-[#0872b9] uppercase tracking-[4px] font-semibold mb-4"
+            >
+              Our Impact
+            </p>
+
+            <h2
+              data-aos="fade-up"
+              data-aos-delay="100"
+              className="text-4xl md:text-6xl font-black text-slate-900 leading-tight"
+            >
+              Proof in the
+              <span className="block text-[#0872b9]">Numbers.</span>
+            </h2>
+
+            <p
+              data-aos="fade-up"
+              data-aos-delay="200"
+              className="mt-6 text-slate-600 text-lg leading-relaxed max-w-2xl"
+            >
+              Delivering enterprise-grade IT infrastructure, cybersecurity,
+              collaboration, and digital transformation solutions across UAE and
+              Oman with proven operational excellence.
+            </p>
+          </div>
+
+          {/* STATS GRID */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
+            {[
+              {
+                number: 7,
+                suffix: "",
+                label: "Offices in the Middle East",
+              },
+              {
+                number: 400,
+                suffix: "+",
+                label: "Experts in the Middle East",
+              },
+              {
+                number: 80,
+                suffix: "%",
+                label: "Technical background workforce",
+              },
+              {
+                number: 400,
+                suffix: "+",
+                label: "Certifications and licenses",
+              },
+              {
+                number: 220,
+                suffix: "+",
+                label: "Global locations",
+              },
+              {
+                number: 5000,
+                suffix: "+",
+                label: "Installations completed",
+              },
+              {
+                number: 11000,
+                suffix: "+",
+                label: "Colleagues worldwide",
+              },
+              {
+                number: 2000,
+                suffix: "+",
+                label: "Global certifications",
+              },
+            ].map((item, index) => (
+              <div
+                key={index}
+                data-aos="fade-up"
+                className="group relative bg-white rounded-[30px] border border-slate-200 p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden min-h-[250px] flex flex-col justify-between"
+              >
+                {/* TOP ORANGE BAR */}
+                <div className="absolute top-0 left-0 h-1 w-0 bg-[#f38020] group-hover:w-full transition-all duration-500" />
+
+                {/* NUMBER */}
+                <div>
+                  <h3 className="text-[48px] sm:text-[56px] leading-none font-black tracking-tight text-slate-900 group-hover:text-[#0872b9] transition-colors duration-300 whitespace-nowrap overflow-hidden">
+                    <Counter end={item.number} suffix={item.suffix} />
+                  </h3>
+                </div>
+
+                {/* LABEL */}
+                <div className="mt-8">
+                  <p className="text-[#0872b9] text-xl leading-snug font-medium max-w-[220px]">
+                    {item.label}
+                  </p>
+                </div>
+
+                {/* BOTTOM LINE */}
+                <div className="mt-8 w-12 h-[3px] bg-[#0872b9]/20 rounded-full group-hover:w-20 group-hover:bg-[#f38020] transition-all duration-500" />
               </div>
             ))}
           </div>

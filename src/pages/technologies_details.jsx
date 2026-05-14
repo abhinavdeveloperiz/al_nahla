@@ -1,119 +1,182 @@
-﻿import { Link } from "react-router-dom";
-import {
+﻿import {
   ShieldCheck,
   Server,
-  ArrowRight,
-  Layers,
   Globe,
-  Sparkles,
+  Layers,
+  ArrowRight,
+  CheckCircle,
+  Network,
+  Lock,
+  Cloud,
+  Database,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function TechnologiesDetails() {
-  const features = [
+  const technologies = [
     {
-      icon: ShieldCheck,
-      title: "Secure Architecture",
+      title: "Threat Detection",
       description:
-        "Designing resilient, enterprise-grade systems with security built in at every layer.",
+        "Real-time threat intelligence and advanced detection mechanisms to identify and mitigate cyber risks before they impact operations.",
     },
     {
-      icon: Server,
-      title: "Reliable Infrastructure",
+      title: "Endpoint Security",
       description:
-        "Optimized cloud and on-premise solutions for high availability and performance.",
+        "Comprehensive protection for endpoints, user devices, and enterprise systems against malware, ransomware, and unauthorized access.",
     },
     {
-      icon: Globe,
-      title: "Global Connectivity",
+      title: "Data Protection",
       description:
-        "Seamless networking and integration across regional offices and hybrid environments.",
+        "Advanced encryption, backup, and access control strategies ensuring the security and integrity of critical business data.",
     },
     {
-      icon: Layers,
-      title: "Modern Stack",
+      title: "Security Monitoring",
       description:
-        "Leveraging best-in-class platforms and tools to accelerate digital transformation.",
+        "24/7 continuous monitoring and rapid incident response to maintain operational continuity and enterprise resilience.",
     },
   ];
 
   return (
-    <div className="bg-white text-[#0872b9] overflow-hidden">
-      <section className="relative min-h-[55vh] md:h-[60vh] flex items-center pt-20 md:pt-0">
-        <div className="absolute inset-0 bg-[#0872b9]/80" />
-        <div className="relative z-10 max-w-6xl mx-auto px-6 text-white">
-          <p className="mb-3 text-sm uppercase tracking-[0.3em] text-[#f38020]">
-            Technologies & Solutions
-          </p>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Technology Strategy for Enterprise Growth
+    <div className="bg-white overflow-hidden">
+      <section className="relative h-[30vh] md:h-[50vh] flex items-center text-white">
+        <div className="absolute inset-0 bg-[#0872b9]" />
+
+        <div className="relative z-10 max-w-6xl mx-auto px-6">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 uppercase">
+            Cyber Security
           </h1>
-          <p className="max-w-2xl leading-relaxed text-[#f6f6f6] text-sm md:text-base">
-            Delivering secure, scalable, and future-ready technology frameworks
-            that power digital transformation across UAE and beyond.
+          <p className="text-white max-w-xl">
+            <Link to="/" className="text-[#f38020] hover:underline">
+              Home
+            </Link>{" "}
+            / About Us
           </p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Link
-              to="/technologies"
-              className="inline-flex items-center gap-2 rounded-full bg-[#f38020] px-6 py-3 text-[#0872b9] font-semibold shadow-lg hover:bg-[#ffaa50] transition"
-            >
-              Back to Technologies
-              <ArrowRight size={18} />
-            </Link>
-          </div>
         </div>
       </section>
 
-      <section className="max-w-6xl mx-auto px-6 py-20">
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 rounded-full bg-[#f38020]/10 px-4 py-2 text-[#0872b9] text-sm font-semibold uppercase tracking-[0.18em]">
-              <Sparkles size={18} className="text-[#f38020]" />
-              Technology Focus
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold">
-              Building intelligent infrastructure for modern enterprises.
-            </h2>
-            <p className="text-[#334155] leading-relaxed text-base md:text-lg">
-              At Al Nahla, we blend innovation with operational excellence. Our
-              technology solutions are tailored to help businesses reduce risk,
-              accelerate delivery, and unlock measurable value from IT
-              investments.
-            </p>
-            <div className="space-y-5">
-              <div>
-                <h3 className="text-xl font-semibold mb-2">
-                  Why choose our technology services?
-                </h3>
-                <p className="text-[#334155] leading-relaxed">
-                  From strategy to implementation, we support your digital
-                  roadmap with secure architectures, performance-driven
-                  platforms, and unified enterprise services.
-                </p>
+      {/* ================= INTRO ================= */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-20 items-start">
+            {/* LEFT */}
+            <div>
+              <div
+                data-aos="fade-right"
+                className="inline-flex items-center gap-2 rounded-full bg-[#f38020]/10 px-5 py-2 text-[#0872b9] text-sm font-semibold uppercase tracking-[0.18em]"
+              >
+                <ShieldCheck size={18} className="text-[#f38020]" />
+                Cyber Security Focus
               </div>
-              <div className="grid gap-4 sm:grid-cols-2">
+
+              <h2
+                data-aos="fade-right"
+                data-aos-delay="100"
+                className="mt-8 text-4xl md:text-5xl font-black text-slate-900 leading-tight"
+              >
+                Protecting enterprise
+                <span className="block text-[#0872b9]">
+                  digital environments.
+                </span>
+              </h2>
+
+              <p
+                data-aos="fade-right"
+                data-aos-delay="200"
+                className="mt-8 text-slate-600 text-lg leading-relaxed text-justify"
+              >
+                Al Nahla Solutions delivers enterprise-grade cybersecurity
+                services designed to protect businesses from evolving digital
+                threats. Our security strategies combine proactive monitoring,
+                advanced threat detection, compliance management, and resilient
+                infrastructure protection to ensure operational continuity.
+              </p>
+
+              {/* FEATURES */}
+              <div className="mt-10 space-y-5">
                 {[
-                  "Scalable cloud solutions",
-                  "Integrated network management",
-                  "Cybersecurity and compliance",
-                  "Custom enterprise applications",
+                  "Advanced threat detection & prevention",
+                  "Endpoint & network security",
+                  "Security monitoring & incident response",
+                  "Compliance & governance management",
+                  "Data protection & backup security",
                 ].map((item, index) => (
                   <div
                     key={index}
-                    className="rounded-3xl border border-[#f38020]/30 bg-[#f38020]/5 p-5"
+                    data-aos="fade-right"
+                    data-aos-delay={index * 100}
+                    className="flex items-center gap-4"
                   >
-                    <p className="text-sm text-[#0872b9]">{item}</p>
+                    <div className="w-11 h-11 rounded-2xl bg-[#0872b9]/10 flex items-center justify-center">
+                      <CheckCircle size={22} className="text-[#0872b9]" />
+                    </div>
+
+                    <p className="text-slate-700 text-lg font-medium">{item}</p>
                   </div>
                 ))}
               </div>
             </div>
-          </div>
 
-          <div className="rounded-[32px] overflow-hidden shadow-2xl shadow-[#0872b9]/10 ring-1 ring-[#0872b9]/5">
-            <img
-              src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80"
-              alt="Technology solutions"
-              className="w-full h-full object-cover min-h-[420px]"
-            />
+            {/* RIGHT */}
+            <div className="space-y-6">
+              {technologies.map((item, index) => (
+                <div
+                  key={index}
+                  data-aos="fade-left"
+                  data-aos-delay={index * 120}
+                  className="group bg-[#f8fafc] border border-slate-200 rounded-[32px] p-8 hover:bg-[#0872b9] hover:border-[#0872b9] transition-all duration-500"
+                >
+                  <div className="flex gap-6 items-start">
+                    {/* CONTENT */}
+                    <div>
+                      <h3 className="text-2xl font-bold text-slate-900 group-hover:text-white transition-colors duration-500">
+                        {item.title}
+                      </h3>
+
+                      <p className="mt-4 text-slate-600 group-hover:text-white/80 leading-relaxed transition-colors duration-500">
+                        {item.description}
+                      </p>
+
+                      <div className="mt-6 w-12 h-[3px] bg-[#0872b9]/20 rounded-full group-hover:w-20 group-hover:bg-[#f38020] transition-all duration-500" />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= CTA ================= */}
+      <section className="py-24 bg-[#0872b9] relative overflow-hidden">
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#f38020]/20 blur-3xl rounded-full" />
+
+        <div className="relative max-w-5xl mx-auto px-6 text-center">
+          <p
+            data-aos="fade-up"
+            className="text-[#f38020] uppercase text-sm tracking-[4px] text-sm font-semibold mb-5"
+          >
+            Enterprise Cyber Defense
+          </p>
+
+          <h2
+            data-aos="fade-up"
+            data-aos-delay="100"
+            className="text-2xl md:text-4xl font-black text-white leading-tight uppercase"
+          >
+            Secure your business
+            <span className="block text-[#f38020]">
+              against modern cyber threats.
+            </span>
+          </h2>
+
+          <div data-aos="fade-up" data-aos-delay="300" className="mt-6">
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-3 rounded-full bg-[#f38020] px-6 py-2 text-white font-semibold shadow-xl hover:scale-105 transition-all duration-300"
+            >
+              Contact Us
+              <ArrowRight size={20} />
+            </Link>
           </div>
         </div>
       </section>

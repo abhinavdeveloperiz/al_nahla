@@ -92,7 +92,7 @@ export default function About() {
         }}
       >
         {/* OVERLAY */}
-        <div className="absolute inset-0 bg-[#0872b9]/80" />
+        <div className="absolute inset-0 bg-black/70" />
 
         <div className="relative max-w-5xl mx-auto px-6">
           {/* Heading */}
@@ -141,7 +141,7 @@ export default function About() {
                   data-aos="fade-up"
                   className="w-full md:w-[45%] ml-10 md:ml-0 backdrop-blur-md bg-white/5 border border-white/10 p-6 rounded-xl"
                 >
-                  <h3 className="text-[#f38020] font-bold text-lg mb-2">
+                  <h3 className="text-white font-bold text-lg mb-2">
                     {item.year}
                   </h3>
                   <p className="text-white/80">{item.text}</p>
@@ -345,5 +345,3 @@ export default function About() {
     </div>
   );
 }
-
-
