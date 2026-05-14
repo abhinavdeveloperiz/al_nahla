@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import AOS from "aos";
 import Logo from "../assets/logo/logonobg.png";
+import BgImage from "../assets/images/bgsec.png";
+
 import {
   Zap,
   Shield,
@@ -21,20 +23,14 @@ import {
 } from "lucide-react";
 
 function RotatingText() {
-  const lines = [
-    "Abu Dhabi HQ Launch",
-    "Aligned with Oman Legacy",
-    "Enterprise IT Excellence",
-    "Technologies • Services • Business",
-    "Built for UAE Market",
-  ];
+  const lines = ["Secure", "Scalable", "Smart"];
 
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % lines.length);
-    }, 2500);
+    }, 1500);
 
     return () => clearInterval(interval);
   }, []);
@@ -566,67 +562,22 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative bg-white py-20 md:py-28 overflow-hidden">
-        <div className="max-w-6xl mx-auto px-4 md:px-6 text-center relative">
-          {/* BIG ? (smaller on mobile) */}
-          <h1 className="absolute inset-0 flex items-center justify-center text-[120px] md:text-[220px] font-bold text-gray-200 opacity-40 select-none">
-            ?
-          </h1>
-
-          {/* TITLE */}
-          <h2 className="text-3xl md:text-5xl font-bold relative z-10">
-            <span className="text-[#0872b9]">Why Al Nahla</span>{" "}
-          </h2>
-
-          <p className="text-gray-500 mt-3 relative z-10 text-sm md:text-base">
-            The proven partner bringing GCC excellence to the UAE
-          </p>
-
-          {/* ---------- MOBILE VIEW (GRID) ---------- */}
-          <div className="grid grid-cols-2 gap-6 mt-12 md:hidden">
-            {stats.map((item, i) => (
-              <div key={i} className="flex justify-center">
-                <div
-                  className={`w-28 h-28 rounded-full flex flex-col items-center justify-center text-white shadow-lg
-                ${item.color === "blue" ? "bg-[#0872b9]" : "bg-[#f38020]"}`}
-                >
-                  <h3 className="text-lg font-bold">{item.value}</h3>
-                  <p className="text-[10px] text-center px-2 whitespace-pre-line leading-tight">
-                    {item.label}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* ---------- DESKTOP VIEW (FLOATING) ---------- */}
-          <div className="hidden md:block relative mt-24 h-[500px]">
-            {stats.map((item, i) => (
-              <div key={i} className={`absolute ${item.pos}`}>
-                <div
-                  className={`w-32 h-32 rounded-full flex flex-col items-center justify-center text-white shadow-xl
-                ${item.color === "blue" ? "bg-[#0872b9]" : "bg-[#f38020]"}
-                hover:scale-110 transition duration-300`}
-                >
-                  <h3 className="text-2xl font-bold">{item.value}</h3>
-                  <p className="text-xs text-center px-2 whitespace-pre-line leading-tight">
-                    {item.label}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+      <section className="relative overflow-hidden ">
+        <img
+          src={BgImage}
+          alt="Background"
+          className="w-full h-full object-cover"
+        />
       </section>
 
       {/* ================= PROOF IN NUMBERS ================= */}
-      <section className="relative bg-[#f5f7fa] py-24 overflow-hidden">
+      <section className="relative bg-[#f5f7fa] pb-24 overflow-hidden">
         <div className="relative max-w-7xl mx-auto px-6">
           {/* TOP HEADER */}
           <div className="max-w-3xl mb-16">
             <p
               data-aos="fade-up"
-              className="text-[#0872b9] uppercase tracking-[4px] font-semibold mb-4"
+              className="text-[#0872b9] uppercase tracking-[4px] font-semibold mb-4 mt-24"
             >
               Our Impact
             </p>
