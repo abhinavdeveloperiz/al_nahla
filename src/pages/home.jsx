@@ -49,7 +49,7 @@ function RotatingText() {
           transition-all duration-700
         "
       >
-        <span className="bg-gradient-to-r from-[#0872b9] to-[#f38020] uppercase bg-clip-text text-transparent">
+        <span className="bg-gradient-to-r from-[#0872b9] to-[#f38020] bg-clip-text text-transparent">
           {lines[index]}
         </span>
       </h2>
@@ -246,11 +246,11 @@ export default function Home() {
     <div className=" overflow-hidden">
       {/* HERO */}
       <section
-        className="relative h-[70vh] md:h-[90vh] flex items-center text-white"
+        className="relative h-[70vh] md:h-[100vh] flex items-center text-white"
         data-aos="fade-in"
         style={{
           backgroundPosition: "center",
-          backgroundImage: `url("https://static.vecteezy.com/system/resources/previews/004/924/971/original/abstract-luxury-modern-background-3d-free-vector.jpg")`,
+          backgroundImage: `url("https://i.pinimg.com/736x/bd/aa/07/bdaa078b959811fc5f56cd02512bb22c.jpg")`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundAttachment: "fixed",
@@ -262,7 +262,7 @@ export default function Home() {
           {/* Arabic Text */}
           <p
             data-aos="fade-up"
-            className="text-[#f38020] text-xl md:text-3xl font-medium tracking-wide mb-3 mt-10"
+            className="text-[#f38020] text-3xl md:text-4xl font-medium tracking-wide mb-3 mt-10"
           >
             النهلة لحلول تكنولوجيا المعلومات ذ.م.م
           </p>
@@ -271,7 +271,7 @@ export default function Home() {
           <h1
             data-aos="fade-up"
             data-aos-delay="100"
-            className="text-4xl md:text-7xl font-extrabold leading-tight"
+            className="text-4xl md:text-4xl font-extrabold leading-tight"
           >
             <span className="text-[#0872b9]">Al Nahla</span>{" "}
             <span className="text-[#f38020]">Solutions L.L.C</span>
@@ -281,7 +281,7 @@ export default function Home() {
           <h2
             data-aos="fade-up"
             data-aos-delay="200"
-            className="text-[#0872b9] text-lg md:text-2xl font-semibold tracking-[0.2em] uppercase mt-4"
+            className="text-[#0872b9] text-lg md:text-2xl font-semibold tracking-[0.2em] mt-4"
           >
             Information Technology
           </h2>
@@ -302,21 +302,7 @@ export default function Home() {
             data-aos="fade-up"
             data-aos-delay="400"
             className="flex flex-wrap justify-center gap-4 mt-10"
-          >
-            <Link
-              to="/contact"
-              className="px-8 py-3 bg-[#f38020] text-white font-semibold rounded-xl shadow-lg hover:scale-105 hover:bg-[#de6f14] transition-all duration-300"
-            >
-              Get Started
-            </Link>
-
-            <Link
-              to="/services"
-              className="px-8 py-3 border border-white text-white font-medium rounded-xl hover:bg-white hover:text-[#0872b9] transition-all duration-300"
-            >
-              Our Services
-            </Link>
-          </div>
+          ></div>
         </div>
       </section>
 
@@ -339,8 +325,7 @@ export default function Home() {
             <div data-aos="fade-right" className="relative">
               {/* BIG HEADING */}
               <h2 className="text-2xl lg:text-4xl font-black leading-tight text-white">
-                Global Systems Integrator.
-                <span className="block">Local Partner of Choice.</span>
+                18 Years of IT Excellence. Now in the UAE.
               </h2>
             </div>
 
@@ -355,13 +340,23 @@ export default function Home() {
 
                 {/* PARAGRAPH */}
                 <p className="text-white/90 leading-relaxed text-lg mb-8 text-justify">
-                  Al Nahla Solutions brings 17 years of proven IT excellence
-                  from Oman into the UAE market. With a strong foundation of
-                  enterprise delivery, certified processes, and regional
-                  expertise, our Abu Dhabi headquarters marks a new chapter in
-                  delivering scalable, secure, and future-ready technology
-                  solutions across industries.
+                  Al Nahla Solutions is a trusted enterprise IT solutions
+                  provider with over 17 years of proven experience across Oman
+                  and the GCC. Delivering enterprise-grade IT solutions to
+                  government entities, financial institutions, oil & gas
+                  enterprises, large corporates, and SMEs, we have grown into
+                  one of the region's most reliable technology partners. As we
+                  extend our presence into the UAE, we bring with us the same
+                  commitment to excellence, Tier-1 vendor partnerships, and
+                  relationship-driven approach that has defined our success —
+                  now closer than ever to clients across the Emirates.
                 </p>
+                <Link
+                  to="/about"
+                  className="inline-flex items-center gap-2 bg-[#f38020] p-3 rounded-lg font-medium hover:underline"
+                >
+                  Read Our Story <ArrowRight size={16} />
+                </Link>
               </div>
             </div>
           </div>
@@ -371,7 +366,7 @@ export default function Home() {
       <section id="services" className="bg-white py-24">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0872b9] uppercase">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0872b9]">
               Our Services
             </h2>
             <p className="text-[#0872b9] mt-4 max-w-xl mx-auto">
@@ -433,7 +428,7 @@ export default function Home() {
           <div className="text-center mb-20">
             <h2
               data-aos="fade-up"
-              className="text-3xl md:text-4xl font-bold text-white uppercase tracking-wide"
+              className="text-3xl md:text-4xl font-bold text-white tracking-wide"
             >
               Technologies
             </h2>
@@ -495,7 +490,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4">
           {/* TITLE */}
           <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0872b9] uppercase mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0872b9] mb-4">
               Industries We Serve
             </h2>
             <p className="text-[#0872b9] max-w-2xl mx-auto">
@@ -527,7 +522,7 @@ export default function Home() {
               },
               {
                 name: "SME",
-                img: "https://tse1.mm.bing.net/th/id/OIP.HakeDa58wUEAulJrzZ5yVwHaDL?rs=1&pid=ImgDetMain&o=7&rm=3",
+                img: "https://image.shutterstock.com/z/stock-vector-sme-vector-illustration-small-and-medium-enterprise-word-lettering-illustration-in-business-719558965.jpg",
               },
             ].map((item, i) => (
               <div
@@ -535,7 +530,7 @@ export default function Home() {
                 className="relative min-w-[240px] md:flex-1 group ml-12"
               >
                 {/* IMAGE CARD */}
-                <div className="relative h-[280px] overflow-hidden rounded-2xl">
+                <div className="relative h-[240px] overflow-hidden rounded-full">
                   {/* IMAGE */}
                   <img
                     src={item.img}
@@ -571,13 +566,12 @@ export default function Home() {
       </section>
 
       {/* ================= PROOF IN NUMBERS ================= */}
-      <section className="relative bg-[#f5f7fa] pb-24 overflow-hidden">
+      {/* <section className="relative bg-[#f5f7fa] pb-24 overflow-hidden">
         <div className="relative max-w-7xl mx-auto px-6">
-          {/* TOP HEADER */}
           <div className="max-w-3xl mb-16">
             <p
               data-aos="fade-up"
-              className="text-[#0872b9] uppercase tracking-[4px] font-semibold mb-4 mt-24"
+              className="text-[#0872b9] tracking-[4px] font-semibold mb-4 mt-24"
             >
               Our Impact
             </p>
@@ -602,7 +596,6 @@ export default function Home() {
             </p>
           </div>
 
-          {/* STATS GRID */}
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
             {[
               {
@@ -651,137 +644,50 @@ export default function Home() {
                 data-aos="fade-up"
                 className="group relative bg-white rounded-[30px] border border-slate-200 p-8 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 overflow-hidden min-h-[250px] flex flex-col justify-between"
               >
-                {/* TOP ORANGE BAR */}
                 <div className="absolute top-0 left-0 h-1 w-0 bg-[#f38020] group-hover:w-full transition-all duration-500" />
 
-                {/* NUMBER */}
                 <div>
                   <h3 className="text-[48px] sm:text-[56px] leading-none font-black tracking-tight text-slate-900 group-hover:text-[#0872b9] transition-colors duration-300 whitespace-nowrap overflow-hidden">
                     <Counter end={item.number} suffix={item.suffix} />
                   </h3>
                 </div>
 
-                {/* LABEL */}
                 <div className="mt-8">
                   <p className="text-[#0872b9] text-xl leading-snug font-medium max-w-[220px]">
                     {item.label}
                   </p>
                 </div>
 
-                {/* BOTTOM LINE */}
                 <div className="mt-8 w-12 h-[3px] bg-[#0872b9]/20 rounded-full group-hover:w-20 group-hover:bg-[#f38020] transition-all duration-500" />
               </div>
             ))}
           </div>
         </div>
-      </section>
-
-      {/* TESTIMONIALS */}
-      <section className="bg-white py-24">
-        <div className="max-w-6xl mx-auto px-6">
-          {/* Heading */}
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0872b9] uppercase mb-4">
-              What Our Clients Say
-            </h2>
-            <p
-              data-aos="fade-up"
-              data-aos-delay="100"
-              className="text-[#0872b9] mt-4 max-w-xl mx-auto"
-            >
-              Trusted by businesses across UAE and Oman for delivering reliable,
-              innovative IT solutions that drive success.
-            </p>
-          </div>
-
-          <div className="relative overflow-hidden">
-            <div
-              className="flex transition-transform duration-700 ease-out"
-              style={{ transform: `translateX(-${activeTestimonial * 100}%)` }}
-            >
-              {TESTIMONIALS.map((testimonial, index) => (
-                <div
-                  key={index}
-                  className="min-w-full px-2 md:px-4"
-                  data-aos="fade-up"
-                >
-                  <div className="bg-gradient-to-br from-white to-white border border-[#0872b9] p-8 md:p-12 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 h-full relative">
-                    <div className="absolute top-6 left-6 text-[#f38020] text-2xl">
-                      "
-                    </div>
-                    <p className="text-[#0872b9] mb-8 text-lg md:text-xl leading-relaxed pl-8">
-                      {testimonial.quote}
-                    </p>
-
-                    <div className="flex items-center gap-4 pl-8">
-                      <img
-                        src={testimonial.avatar}
-                        alt={testimonial.name}
-                        className="w-16 h-16 rounded-full object-cover border-2 border-[#f38020]/20"
-                      />
-                      <div>
-                        <h4 className="font-bold text-[#0872b9] text-lg">
-                          {testimonial.name}
-                        </h4>
-                        <span className="text-[#0872b9] font-medium">
-                          {testimonial.title}
-                        </span>
-                        <div className="flex gap-1 mt-1">
-                          {[...Array(5)].map((_, i) => (
-                            <span key={i} className="text-[#f38020] text-sm">
-                              ★
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-8 flex justify-center gap-3">
-              {TESTIMONIALS.map((_, idx) => (
-                <button
-                  key={idx}
-                  type="button"
-                  onClick={() => setActiveTestimonial(idx)}
-                  className={`h-3 w-3 rounded-full transition-all duration-300 ${
-                    idx === activeTestimonial
-                      ? "bg-[#f38020] scale-125"
-                      : "bg-[#0872b9] hover:bg-[#0872b9]"
-                  }`}
-                  aria-label={`Show testimonial ${idx + 1}`}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      </section> */}
 
       {/* CTA */}
       <section className="bg-gradient-to-r from-[#f38020] to-[#f38020] py-24 text-center">
         <div className="max-w-4xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0872b9] mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             Ready to Transform Your Business?
           </h2>
-          <p className="text-[#0872b9]/80 mb-8 text-lg">
+          <p className="text-white/80 mb-8 text-lg">
             Partner with Al Nahla Solutions for enterprise-grade IT services in
             UAE and Oman. Let's discuss your next project.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="#contact"
+            <Link
+              to="/contact"
               className="px-8 py-4 bg-[#0872b9] text-white font-semibold rounded-lg hover:bg-[#0872b9] transition-colors duration-300"
             >
               Request a Consultation
-            </a>
-            <a
-              href="/services"
-              className="px-8 py-4 border-2 border-[#0872b9] text-[#0872b9] font-semibold rounded-lg hover:bg-[#0872b9] hover:text-white transition-colors duration-300"
+            </Link>
+            <Link
+              to="/services"
+              className="px-8 py-4 border-2 border-[#0872b9] text-white font-semibold rounded-lg hover:bg-[#0872b9] hover:text-white transition-colors duration-300"
             >
               Our Services
-            </a>
+            </Link>
           </div>
         </div>
       </section>

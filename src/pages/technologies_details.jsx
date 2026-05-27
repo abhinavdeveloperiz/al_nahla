@@ -42,15 +42,9 @@ export default function TechnologiesDetails() {
         <div className="absolute inset-0 bg-[#0872b9]" />
 
         <div className="relative z-10 max-w-6xl mx-auto px-6">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 uppercase">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">
             Cyber Security
           </h1>
-          <p className="text-white max-w-xl">
-            <Link to="/" className="text-[#f38020] hover:underline">
-              Home
-            </Link>{" "}
-            / About Us
-          </p>
         </div>
       </section>
 
@@ -62,7 +56,7 @@ export default function TechnologiesDetails() {
             <div>
               <div
                 data-aos="fade-right"
-                className="inline-flex items-center gap-2 rounded-full bg-[#f38020]/10 px-5 py-2 text-[#0872b9] text-sm font-semibold uppercase tracking-[0.18em]"
+                className="inline-flex items-center gap-2 rounded-full bg-[#f38020]/10 px-5 py-2 text-[#0872b9] text-sm font-semibold tracking-[0.18em]"
               >
                 <ShieldCheck size={18} className="text-[#f38020]" />
                 Cyber Security Focus
@@ -153,7 +147,7 @@ export default function TechnologiesDetails() {
         <div className="relative max-w-5xl mx-auto px-6 text-center">
           <p
             data-aos="fade-up"
-            className="text-[#f38020] uppercase text-sm tracking-[4px] text-sm font-semibold mb-5"
+            className="text-[#f38020] text-sm tracking-[4px] text-sm font-semibold mb-5"
           >
             Enterprise Cyber Defense
           </p>
@@ -161,7 +155,7 @@ export default function TechnologiesDetails() {
           <h2
             data-aos="fade-up"
             data-aos-delay="100"
-            className="text-2xl md:text-4xl font-black text-white leading-tight uppercase"
+            className="text-2xl md:text-4xl font-black text-white leading-tight"
           >
             Secure your business
             <span className="block text-[#f38020]">

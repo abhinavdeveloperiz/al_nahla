@@ -40,15 +40,7 @@ export default function Blog() {
         <div className="absolute inset-0 bg-[#0872b9]/70" />
 
         <div className="relative z-10 max-w-6xl mx-auto px-6">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 uppercase">
-            Blogs
-          </h1>
-          <p className="text-white max-w-xl">
-            <Link to="/" className="text-[#f38020] hover:underline">
-              Home
-            </Link>{" "}
-            / Blog
-          </p>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Blogs</h1>
         </div>
       </section>
 
@@ -56,7 +48,7 @@ export default function Blog() {
       <section className="bg-white py-24">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold uppercase text-[#0872b9]">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0872b9]">
               Latest Articles
             </h2>
             <p className="text-[#0872b9] mt-4">
@@ -68,7 +60,6 @@ export default function Blog() {
             {POSTS.map((post, i) => (
               <div
                 key={i}
-              
                 className="group rounded-2xl overflow-hidden shadow-lg bg-white"
               >
                 {/* IMAGE */}
@@ -122,5 +113,3 @@ export default function Blog() {
     </div>
   );
 }
-
-
