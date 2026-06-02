@@ -147,18 +147,6 @@ export default function FloatingNavbar() {
                 >
                   Services
                 </Link>
-
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setServicesOpen((s) => !s);
-                  }}
-                  aria-expanded={servicesOpen}
-                  className="rounded-full p-2 text-[#0872b9] hover:bg-[#0872b9]/10 transition-colors"
-                >
-                  <ChevronDown size={16} />
-                </button>
               </div>
 
               <div
@@ -213,18 +201,6 @@ export default function FloatingNavbar() {
                 >
                   Technologies
                 </Link>
-
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setTechnologiesOpen((s) => !s);
-                  }}
-                  aria-expanded={technologiesOpen}
-                  className="rounded-full p-2 text-[#0872b9] hover:bg-[#0872b9]/10 transition-colors"
-                >
-                  <ChevronDown size={16} />
-                </button>
               </div>
 
               <div

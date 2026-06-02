@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -23,6 +23,60 @@ export default function About() {
       once: true,
     });
   }, []);
+
+  function Counter({ end, suffix }) {
+    const [count, setCount] = useState(0);
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        },
+        { threshold: 0.5 },
+      );
+
+      const element = document.getElementById(`counter-${end}-${suffix}`);
+
+      if (element) observer.observe(element);
+
+      return () => {
+        if (element) observer.unobserve(element);
+      };
+    }, [end, suffix]);
+
+    useEffect(() => {
+      if (!isVisible) return;
+
+      let start = 0;
+      const duration = 2000;
+      const incrementTime = 16;
+      const steps = duration / incrementTime;
+      const increment = end / steps;
+
+      const timer = setInterval(() => {
+        start += increment;
+
+        if (start >= end) {
+          setCount(end);
+          clearInterval(timer);
+        } else {
+          setCount(Math.floor(start));
+        }
+      }, incrementTime);
+
+      return () => clearInterval(timer);
+    }, [isVisible, end]);
+
+    return (
+      <span id={`counter-${end}-${suffix}`}>
+        {count}
+        {suffix}
+      </span>
+    );
+  }
 
   return (
     <div className="overflow-hidden">
@@ -76,36 +130,6 @@ export default function About() {
               global vendors while delivering scalable and future-ready
               enterprise solutions across the GCC region.
             </p>
-
-            <div className="grid grid-cols-2 gap-6">
-              <div className="flex items-center gap-3">
-                <Shield className="text-[#f38020]" />
-                <span className="font-medium text-[#0872b9]">
-                  Trusted Solutions
-                </span>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <Building2 className="text-[#f38020]" />
-                <span className="font-medium text-[#0872b9]">
-                  Enterprise ICT
-                </span>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <Users2 className="text-[#f38020]" />
-                <span className="font-medium text-[#0872b9]">
-                  Government & SME
-                </span>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <TrendingUp className="text-[#f38020]" />
-                <span className="font-medium text-[#0872b9]">
-                  Digital Transformation
-                </span>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -122,10 +146,6 @@ export default function About() {
 
         <div className="relative max-w-6xl mx-auto px-6">
           <div className="text-center mb-20">
-            <span className="tracking-[4px] text-[#f38020] font-semibold">
-              Our Growth
-            </span>
-
             <h2 className="text-4xl font-bold text-white mt-4">Our Journey</h2>
           </div>
 
@@ -134,10 +154,6 @@ export default function About() {
               data-aos="fade-up"
               className="backdrop-blur-md bg-white/10 border border-white/10 p-8 rounded-2xl"
             >
-              <h3 className="text-2xl font-bold text-[#f38020] mb-4">
-                Founded in Oman
-              </h3>
-
               <p className="text-white/90 leading-relaxed">
                 Founded in Oman over 17 years ago, Al Nahla Solutions grew from
                 a focused IT services provider into one of the region’s most
@@ -150,10 +166,6 @@ export default function About() {
               data-aos-delay="100"
               className="backdrop-blur-md bg-white/10 border border-white/10 p-8 rounded-2xl"
             >
-              <h3 className="text-2xl font-bold text-[#f38020] mb-4">
-                Tier-1 Partnerships
-              </h3>
-
               <p className="text-white/90 leading-relaxed">
                 Today, we hold Tier-1 partner status with many of the world’s
                 leading technology vendors and have delivered hundreds of
@@ -166,10 +178,6 @@ export default function About() {
               data-aos-delay="200"
               className="backdrop-blur-md bg-white/10 border border-white/10 p-8 rounded-2xl"
             >
-              <h3 className="text-2xl font-bold text-[#f38020] mb-4">
-                UAE Expansion
-              </h3>
-
               <p className="text-white/90 leading-relaxed">
                 Our expansion into the UAE with headquarters established in Abu
                 Dhabi marks a natural progression of our regional growth.
@@ -181,10 +189,6 @@ export default function About() {
               data-aos-delay="300"
               className="backdrop-blur-md bg-white/10 border border-white/10 p-8 rounded-2xl"
             >
-              <h3 className="text-2xl font-bold text-[#f38020] mb-4">
-                GCC Expertise
-              </h3>
-
               <p className="text-white/90 leading-relaxed">
                 We bring deep GCC expertise and a proven delivery track record
                 to one of the world’s most dynamic technology markets.
@@ -195,49 +199,87 @@ export default function About() {
       </section>
 
       {/* MISSION & VISION */}
-      <section className="bg-white py-24">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10">
-          {/* Mission */}
-          <div
-            data-aos="fade-right"
-            className="bg-[#0872b9] p-10 rounded-3xl shadow-xl"
-          >
-            <h2 className="text-3xl font-bold text-white mb-6">Our Mission</h2>
+      <section className="bg-slate-50 py-24 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6">
+          {/* Section Heading */}
+          <div className="text-center mb-20">
+            <span className="inline-block px-4 py-2 bg-blue-100 text-[#0872b9] rounded-full text-sm font-semibold tracking-wide">
+              What Drives Us
+            </span>
 
-            <p className="text-white/90 leading-relaxed text-justify">
-              Our mission is to empower individuals and businesses through
-              transformative technology, support economic diversification, and
-              drive sustainable growth. Through advanced ICT solutions, we aim
-              to enhance efficiency while upholding social responsibility and
-              digital inclusion.
-            </p>
+            <h2 className="text-4xl md:text-5xl font-bold text-blue-500 mt-4">
+              Mission & Vision
+            </h2>
 
-            <p className="text-white/90 leading-relaxed mt-5 text-justify">
-              In the UAE, we are committed to supporting the nation’s transition
-              to a knowledge-based economy and reinforcing the region’s role as
-              a global ICT leader in line with UAE Vision 2031.
-            </p>
+            <div className="w-24 h-1 bg-gradient-to-r from-[#0872b9] to-[#f38020] mx-auto mt-5 rounded-full"></div>
           </div>
 
-          {/* Vision */}
-          <div
-            data-aos="fade-left"
-            className="bg-[#f38020] p-10 rounded-3xl shadow-xl"
-          >
-            <h2 className="text-3xl font-bold text-white mb-6">Our Vision</h2>
+          <div className="grid md:grid-cols-2 gap-16">
+            {/* Mission */}
+            <div data-aos="fade-right" className="relative">
+              {/* Outside Heading */}
+              <div className="mb-6 flex items-center gap-4">
+                <div className="w-14 h-14 rounded-2xl bg-[#0872b9] text-white flex items-center justify-center text-2xl shadow-lg">
+                  🎯
+                </div>
 
-            <p className="text-white leading-relaxed text-justify">
-              Our vision is to be a driving force in the UAE’s digital
-              transformation, supporting the goals of UAE Vision 2031 and the
-              Smart UAE Strategy.
-            </p>
+                <h3 className="text-4xl font-bold text-[#0872b9]">
+                  Our Mission
+                </h3>
+              </div>
 
-            <p className="text-white leading-relaxed mt-5 text-justify">
-              We are committed to delivering innovative ICT solutions that help
-              realize a smart, connected, and future-ready United Arab Emirates.
-              By bringing our proven Oman model to the UAE, we aim to become the
-              region’s most trusted ICT partner.
-            </p>
+              {/* Card */}
+              <div className="relative bg-white p-10 rounded-[32px] shadow-xl border border-blue-100 hover:-translate-y-2 transition-all duration-500">
+                <div className="absolute top-0 left-0 w-full h-2 bg-[#0872b9] rounded-t-[32px]"></div>
+
+                <p className="text-gray-700 leading-relaxed text-justify">
+                  Our mission is to empower individuals and businesses through
+                  transformative technology, support economic diversification,
+                  and drive sustainable growth. Through advanced ICT solutions,
+                  we aim to enhance efficiency while upholding social
+                  responsibility and digital inclusion.
+                </p>
+
+                <p className="text-gray-700 leading-relaxed mt-5 text-justify">
+                  In the UAE, we are committed to supporting the nation’s
+                  transition to a knowledge-based economy and reinforcing the
+                  region’s role as a global ICT leader in line with UAE Vision
+                  2031.
+                </p>
+              </div>
+            </div>
+
+            {/* Vision */}
+            <div data-aos="fade-left" className="relative">
+              {/* Outside Heading */}
+              <div className="mb-6 flex items-center gap-4">
+                <div className="w-14 h-14 rounded-2xl bg-[#f38020] text-white flex items-center justify-center text-2xl shadow-lg">
+                  🚀
+                </div>
+
+                <h3 className="text-4xl font-bold text-[#f38020]">
+                  Our Vision
+                </h3>
+              </div>
+
+              {/* Card */}
+              <div className="relative bg-white p-10 rounded-[32px] shadow-xl border border-orange-100 hover:-translate-y-2 transition-all duration-500">
+                <div className="absolute top-0 left-0 w-full h-2 bg-[#f38020] rounded-t-[32px]"></div>
+
+                <p className="text-gray-700 leading-relaxed text-justify">
+                  Our vision is to be a driving force in the UAE’s digital
+                  transformation, supporting the goals of UAE Vision 2031 and
+                  the Smart UAE Strategy.
+                </p>
+
+                <p className="text-gray-700 leading-relaxed mt-5 text-justify">
+                  We are committed to delivering innovative ICT solutions that
+                  help realize a smart, connected, and future-ready United Arab
+                  Emirates. By bringing our proven Oman model to the UAE, we aim
+                  to become the region’s most trusted ICT partner.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -374,6 +416,80 @@ export default function About() {
                 </a>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* OUR IMPACT */}
+      <section className="bg-[#f8fafc] py-24">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <span className="tracking-[4px] text-[#f38020] font-semibold">
+              Our Impact
+            </span>
+
+            <h2 className="text-4xl font-bold text-[#0872b9] mt-4">
+              What We Deliver
+            </h2>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                number: 7,
+                suffix: "",
+                label: "Offices in the Middle East",
+              },
+              {
+                number: 400,
+                suffix: "+",
+                label: "Experts in the Middle East",
+              },
+              {
+                number: 80,
+                suffix: "%",
+                label: "Technical background workforce",
+              },
+              {
+                number: 400,
+                suffix: "+",
+                label: "Certifications and licenses",
+              },
+              {
+                number: 220,
+                suffix: "+",
+                label: "Global locations",
+              },
+              {
+                number: 5000,
+                suffix: "+",
+                label: "Installations completed",
+              },
+              {
+                number: 11000,
+                suffix: "+",
+                label: "Colleagues worldwide",
+              },
+              {
+                number: 2000,
+                suffix: "+",
+                label: "Global certifications",
+              },
+            ].map((item, index) => (
+              <div
+                key={index}
+                data-aos="fade-up"
+                data-aos-delay={index * 50}
+                className="group relative bg-white p-8 rounded-3xl shadow-lg border border-slate-200 hover:-translate-y-2 transition-all duration-300"
+              >
+                <h3 className="text-5xl font-black tracking-tight text-[#0872b9] mb-4">
+                  <Counter end={item.number} suffix={item.suffix} />
+                </h3>
+                <p className="text-slate-700 font-medium leading-relaxed">
+                  {item.label}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
