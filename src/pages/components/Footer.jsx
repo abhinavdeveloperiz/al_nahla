@@ -1,6 +1,5 @@
 import Logo from "../../assets/logo/logo.png";
 import { Link } from "react-router-dom";
-import { Facebook, Instagram } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -60,28 +59,6 @@ export default function Footer() {
           <p className="text-white">info@alnahlasolutions.ae</p>
           <p className="text-white">sales@alnahlasolutions.ae</p>
           <p className="text-white mt-3">+971 58 1905435</p>
-
-          <div className="mt-6">
-            <h4 className="font-semibold mb-3 text-white">Follow Us</h4>
-            <div className="flex items-center gap-4">
-              <a
-                href="https://www.facebook.com/"
-                target="_blank"
-                rel="noreferrer"
-                className="text-white hover:text-[#f38020] transition"
-              >
-                <Facebook size={20} />
-              </a>
-              <a
-                href="https://www.instagram.com/"
-                target="_blank"
-                rel="noreferrer"
-                className="text-white hover:text-[#f38020] transition"
-              >
-                <Instagram size={20} />
-              </a>
-            </div>
-          </div>
         </div>
       </div>
 
