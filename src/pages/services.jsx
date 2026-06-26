@@ -51,25 +51,8 @@ export default function Services() {
 
   return (
     <div className="overflow-hidden">
-      {/* HERO (KEEP SAME) */}
-      <section
-        className="relative h-[30vh] md:h-[50vh] flex items-center text-white"
-        style={{
-          backgroundImage:
-            "url('https://wallpapers.com/images/hd/information-technology-artificial-intelligence-3lmq7rank0v68rhk.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="absolute inset-0 bg-[#0872b9]/70" />
-
-        <div className="relative z-10 max-w-6xl mx-auto px-6">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Services</h1>
-        </div>
-      </section>
-
       {/* SERVICES - IMAGE CARDS */}
-      <section id="services" className="bg-white py-24">
+      <section id="services" className="bg-white py-24 mt-20">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#0872b9]">

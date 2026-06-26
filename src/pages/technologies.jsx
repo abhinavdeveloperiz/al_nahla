@@ -59,7 +59,7 @@ export default function Technologies() {
       <div className="max-w-6xl mx-auto px-6">
         {/* HEADER */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mt-12">
+          <h2 className="text-3xl md:text-4xl font-bold mt-12 text-orange-400">
             Technologies & Solutions
           </h2>
           <p className="text-[#0872b9] mt-4 max-w-xl mx-auto">

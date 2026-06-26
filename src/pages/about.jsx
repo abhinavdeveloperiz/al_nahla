@@ -199,85 +199,99 @@ export default function About() {
       </section>
 
       {/* MISSION & VISION */}
-      <section className="bg-slate-50 py-24 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6">
-          {/* Section Heading */}
+      <section className="relative overflow-hidden bg-slate-50 py-24">
+        <div className="absolute top-0 left-0 w-72 h-72 bg-blue-100 rounded-full blur-3xl opacity-40"></div>
+        <div className="absolute bottom-0 right-0 w-72 h-72 bg-orange-100 rounded-full blur-3xl opacity-40"></div>
+
+        <div className="relative max-w-7xl mx-auto px-6">
+          {/* Heading */}
           <div className="text-center mb-20">
-            <span className="inline-block px-4 py-2 bg-blue-100 text-[#0872b9] rounded-full text-sm font-semibold tracking-wide">
+            <span className="inline-flex items-center rounded-full bg-blue-100 px-5 py-2 text-sm font-semibold text-[#0872b9]">
               What Drives Us
             </span>
 
-            <h2 className="text-4xl md:text-5xl font-bold text-blue-500 mt-4">
+            <h2 className="mt-5 text-4xl md:text-5xl font-black text-[#0872b9]">
               Mission & Vision
             </h2>
 
-            <div className="w-24 h-1 bg-gradient-to-r from-[#0872b9] to-[#f38020] mx-auto mt-5 rounded-full"></div>
+            <div className="w-24 h-1 rounded-full bg-gradient-to-r from-[#0872b9] to-[#f38020] mx-auto mt-5"></div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-16">
-            {/* Mission */}
-            <div data-aos="fade-right" className="relative">
-              {/* Outside Heading */}
-              <div className="mb-6 flex items-center gap-4">
-                <div className="w-14 h-14 rounded-2xl bg-[#0872b9] text-white flex items-center justify-center text-2xl shadow-lg">
-                  🎯
+          <div className="grid lg:grid-cols-2 gap-10">
+            {/* Mission Card */}
+            <div
+              data-aos="fade-right"
+              className="group bg-white rounded-[32px] shadow-xl hover:shadow-2xl border border-slate-200 overflow-hidden transition-all duration-500 hover:-translate-y-2"
+            >
+              <div className="h-2 bg-[#0872b9]"></div>
+
+              <div className="p-10">
+                <div className="flex items-center gap-5 mb-8">
+                  <div>
+                    <span className="uppercase tracking-[3px] text-[#0872b9]/70 text-sm font-semibold">
+                      Our Purpose
+                    </span>
+
+                    <h3 className="text-3xl font-bold text-[#0872b9] mt-1">
+                      Our Mission
+                    </h3>
+                  </div>
                 </div>
 
-                <h3 className="text-4xl font-bold text-[#0872b9]">
-                  Our Mission
-                </h3>
-              </div>
+                <div className="space-y-5 text-gray-600 leading-8">
+                  <p>
+                    Our mission is to empower individuals and businesses through
+                    transformative technology, support economic diversification,
+                    and drive sustainable growth. Through advanced ICT
+                    solutions, we enhance operational efficiency while promoting
+                    digital inclusion and social responsibility.
+                  </p>
 
-              {/* Card */}
-              <div className="relative bg-white p-10 rounded-[32px] shadow-xl border border-blue-100 hover:-translate-y-2 transition-all duration-500">
-                <div className="absolute top-0 left-0 w-full h-2 bg-[#0872b9] rounded-t-[32px]"></div>
-
-                <p className="text-gray-700 leading-relaxed text-justify">
-                  Our mission is to empower individuals and businesses through
-                  transformative technology, support economic diversification,
-                  and drive sustainable growth. Through advanced ICT solutions,
-                  we aim to enhance efficiency while upholding social
-                  responsibility and digital inclusion.
-                </p>
-
-                <p className="text-gray-700 leading-relaxed mt-5 text-justify">
-                  In the UAE, we are committed to supporting the nation’s
-                  transition to a knowledge-based economy and reinforcing the
-                  region’s role as a global ICT leader in line with UAE Vision
-                  2031.
-                </p>
+                  <p>
+                    In the UAE, we actively support the nation's transition to a
+                    knowledge-based economy and contribute towards the goals of
+                    UAE Vision 2031 by delivering innovative and future-ready
+                    technology solutions.
+                  </p>
+                </div>
               </div>
             </div>
 
-            {/* Vision */}
-            <div data-aos="fade-left" className="relative">
-              {/* Outside Heading */}
-              <div className="mb-6 flex items-center gap-4">
-                <div className="w-14 h-14 rounded-2xl bg-[#f38020] text-white flex items-center justify-center text-2xl shadow-lg">
-                  🚀
+            {/* Vision Card */}
+            <div
+              data-aos="fade-left"
+              className="group bg-white rounded-[32px] shadow-xl hover:shadow-2xl border border-slate-200 overflow-hidden transition-all duration-500 hover:-translate-y-2"
+            >
+              <div className="h-2 bg-[#f38020]"></div>
+
+              <div className="p-10">
+                <div className="flex items-center gap-5 mb-8">
+                  <div>
+                    <span className="uppercase tracking-[3px] text-[#f38020]/70 text-sm font-semibold">
+                      Our Future
+                    </span>
+
+                    <h3 className="text-3xl font-bold text-[#f38020] mt-1">
+                      Our Vision
+                    </h3>
+                  </div>
                 </div>
 
-                <h3 className="text-4xl font-bold text-[#f38020]">
-                  Our Vision
-                </h3>
-              </div>
+                <div className="space-y-5 text-gray-600 leading-8">
+                  <p>
+                    Our vision is to become a leading force in the UAE's digital
+                    transformation by supporting the ambitions of UAE Vision
+                    2031 and the Smart UAE Strategy through innovative ICT
+                    services.
+                  </p>
 
-              {/* Card */}
-              <div className="relative bg-white p-10 rounded-[32px] shadow-xl border border-orange-100 hover:-translate-y-2 transition-all duration-500">
-                <div className="absolute top-0 left-0 w-full h-2 bg-[#f38020] rounded-t-[32px]"></div>
-
-                <p className="text-gray-700 leading-relaxed text-justify">
-                  Our vision is to be a driving force in the UAE’s digital
-                  transformation, supporting the goals of UAE Vision 2031 and
-                  the Smart UAE Strategy.
-                </p>
-
-                <p className="text-gray-700 leading-relaxed mt-5 text-justify">
-                  We are committed to delivering innovative ICT solutions that
-                  help realize a smart, connected, and future-ready United Arab
-                  Emirates. By bringing our proven Oman model to the UAE, we aim
-                  to become the region’s most trusted ICT partner.
-                </p>
+                  <p>
+                    By bringing our successful Oman business model to the UAE,
+                    we aspire to become the region's most trusted ICT partner,
+                    delivering intelligent, connected, and future-ready digital
+                    solutions.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -345,77 +359,6 @@ export default function About() {
                 <p className="text-gray-600 leading-relaxed">{item.desc}</p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CAREERS */}
-      <section className="bg-white py-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <span className="tracking-[4px] text-[#f38020] font-semibold">
-              Careers
-            </span>
-
-            <h2 className="text-4xl font-bold text-[#0872b9] mt-4 mb-5">
-              Join Our Team
-            </h2>
-
-            <p className="text-gray-700 max-w-3xl mx-auto leading-relaxed">
-              Be part of a dynamic team shaping the future of enterprise IT
-              solutions across the UAE and Oman.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-14 items-center">
-            <div data-aos="fade-right">
-              <img
-                src="https://static.vecteezy.com/system/resources/previews/013/445/892/non_2x/digital-technology-banner-blue-background-ai-big-data-online-cyber-security-technology-abstract-privacy-hi-tech-binary-code-innovation-future-data-internet-network-connection-illustration-vector.jpg"
-                alt="Careers"
-                className="rounded-3xl shadow-2xl"
-              />
-            </div>
-
-            <div data-aos="fade-left">
-              <h3 className="text-3xl font-bold text-[#0872b9] mb-8">
-                Why Join Us?
-              </h3>
-
-              <ul className="space-y-5">
-                {[
-                  "Work on innovative projects using cutting-edge technologies",
-                  "Enjoy a competitive compensation and benefits package",
-                  "Access professional development and certification opportunities",
-                  "Experience work-life balance in a supportive environment",
-                  "Gain international exposure across the UAE and Oman markets",
-                ].map((item, i) => (
-                  <li key={i} className="flex gap-4">
-                    <CheckCircle
-                      className="text-[#f38020] flex-shrink-0 mt-1"
-                      size={22}
-                    />
-
-                    <span className="text-gray-700 leading-relaxed">
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-10 p-6 bg-[#0872b9] rounded-2xl">
-                <p className="text-white leading-relaxed mb-4">
-                  We are always looking for talented individuals who are
-                  passionate about technology and driven to make a difference.
-                </p>
-
-                <a
-                  href="mailto:careers@alnahlasolutions.ae"
-                  className="text-white font-semibold text-lg"
-                >
-                  careers@alnahlasolutions.ae
-                </a>
-              </div>
-            </div>
           </div>
         </div>
       </section>
