@@ -69,12 +69,6 @@ export default function Footer() {
             </li>
 
             <li>
-              <Link to="/blog" className="hover:text-[#f38020] transition">
-                Blog
-              </Link>
-            </li>
-
-            <li>
               <Link to="/contact" className="hover:text-[#f38020] transition">
                 Contact
               </Link>

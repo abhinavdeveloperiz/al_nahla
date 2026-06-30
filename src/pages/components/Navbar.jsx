@@ -4,7 +4,6 @@ import {
   Home,
   Info,
   Briefcase,
-  BookOpen,
   Phone,
   Server,
   ChevronDown,
@@ -18,7 +17,6 @@ const navItems = [
   { name: "About", path: "/about", icon: <Info size={18} /> },
   { name: "Services", path: "/services", icon: <Briefcase size={18} /> },
   { name: "Technologies", path: "/technologies", icon: <Server size={18} /> },
-  { name: "Blog", path: "/blog", icon: <BookOpen size={18} /> },
   { name: "Contact", path: "/contact", icon: <Phone size={18} /> },
 ];
 

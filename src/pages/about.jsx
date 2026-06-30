@@ -92,7 +92,7 @@ export default function About() {
         <div className="absolute inset-0 bg-[#0872b9]/80" />
 
         <div className="relative z-10 max-w-6xl mx-auto px-6">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">About Us</h1>
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">Al Nahla Edge</h1>
         </div>
       </section>
 
