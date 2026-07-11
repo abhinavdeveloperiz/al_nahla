@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import Logo from "../../assets/logo/logonobg.png";
+import { fetchServices, fetchTechnologies } from "../../api";
 
 const navItems = [
   { name: "Home", path: "/", icon: <Home size={18} /> },
@@ -20,36 +21,32 @@ const navItems = [
   { name: "Contact", path: "/contact", icon: <Phone size={18} /> },
 ];
 
-const servicesList = [
-  "Managed Services",
-  "IT Consultancy",
-  "Professional Services",
-  "Solution Architecture",
-  "Staff Augmentation",
-  "Annual Maintenance",
-];
-
-const technologiesList = [
-  "Digital Transformation",
-  "Cyber Security",
-  "Network Solutions",
-  "Enterprise Solutions",
-  "Infrastructure Solutions",
-  "Audio Visual Solutions",
-  "Software Solutions",
-  "Collaboration",
-];
-
 export default function FloatingNavbar() {
   const location = useLocation();
   const [servicesOpen, setServicesOpen] = useState(false);
   const [technologiesOpen, setTechnologiesOpen] = useState(false);
   const [mobileDropdown, setMobileDropdown] = useState(null); // 'services' | 'technologies' | null
+  const [services, setServices] = useState([]);
+  const [technologies, setTechnologies] = useState([]);
 
   const servicesRef = useRef(null);
   const technologiesRef = useRef(null);
   const servicesTimer = useRef(null);
   const technologiesTimer = useRef(null);
+
+  useEffect(() => {
+    async function load() {
+      try {
+        const sData = await fetchServices();
+        setServices(sData || []);
+        const tData = await fetchTechnologies();
+        setTechnologies(tData || []);
+      } catch (error) {
+        console.error("Error loading navbar dropdown items:", error);
+      }
+    }
+    load();
+  }, []);
 
   useEffect(() => {
     function handleDocClick(e) {
@@ -123,7 +120,7 @@ export default function FloatingNavbar() {
               ref={servicesRef}
               onMouseEnter={() => {
                 clearTimeout(servicesTimer.current);
-                setServicesOpen(true);
+                if (services.length > 0) setServicesOpen(true);
               }}
               onMouseLeave={() => {
                 servicesTimer.current = setTimeout(
@@ -147,28 +144,31 @@ export default function FloatingNavbar() {
                 </Link>
               </div>
 
-              <div
-                className={`absolute top-full left-0 mt-4 w-72 bg-white rounded-3xl border border-[#0872b9]/10 shadow-2xl p-4 transition-all duration-200 transform origin-top-left
-          ${
-            servicesOpen
-              ? "opacity-100 visible translate-y-0 scale-100"
-              : "opacity-0 invisible -translate-y-2 scale-95 pointer-events-none"
-          }`}
-              >
-                <ul className="space-y-2">
-                  {servicesList.map((item) => (
-                    <li key={item}>
-                      <Link
-                        to="/services"
-                        onClick={() => setServicesOpen(false)}
-                        className="block px-4 py-3 rounded-2xl text-sm font-medium text-slate-700 hover:bg-[#0872b9]/5 hover:text-[#0872b9] transition-all"
-                      >
-                        {item}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              {services.length > 0 && (
+                <div
+                  className={`absolute top-full left-0 mt-4 w-72 bg-white rounded-3xl border border-[#0872b9]/10 shadow-2xl p-4 transition-all duration-200 transform origin-top-left
+            ${
+              servicesOpen
+                ? "opacity-100 visible translate-y-0 scale-100"
+                : "opacity-0 invisible -translate-y-2 scale-95 pointer-events-none"
+            }`}
+                >
+                  <ul className="space-y-2">
+                    {services.map((item) => (
+                      <li key={item.id}>
+                        <Link
+                          to={`/services/details?id=${item.id}`}
+                          state={{ service: item }}
+                          onClick={() => setServicesOpen(false)}
+                          className="block px-4 py-3 rounded-2xl text-sm font-medium text-slate-700 hover:bg-[#0872b9]/5 hover:text-[#0872b9] transition-all"
+                        >
+                          {item.maintitle}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
 
             {/* TECHNOLOGIES DROPDOWN */}
@@ -177,7 +177,7 @@ export default function FloatingNavbar() {
               ref={technologiesRef}
               onMouseEnter={() => {
                 clearTimeout(technologiesTimer.current);
-                setTechnologiesOpen(true);
+                if (technologies.length > 0) setTechnologiesOpen(true);
               }}
               onMouseLeave={() => {
                 technologiesTimer.current = setTimeout(
@@ -201,28 +201,31 @@ export default function FloatingNavbar() {
                 </Link>
               </div>
 
-              <div
-                className={`absolute top-full right-0 mt-4 w-80 bg-white rounded-3xl border border-[#0872b9]/10 shadow-2xl p-4 transition-all duration-200 transform origin-top-right
-          ${
-            technologiesOpen
-              ? "opacity-100 visible translate-y-0 scale-100"
-              : "opacity-0 invisible -translate-y-2 scale-95 pointer-events-none"
-          }`}
-              >
-                <ul className="space-y-2">
-                  {technologiesList.map((item) => (
-                    <li key={item}>
-                      <Link
-                        to="/technologies"
-                        onClick={() => setTechnologiesOpen(false)}
-                        className="block px-4 py-3 rounded-2xl text-sm font-medium text-slate-700 hover:bg-[#0872b9]/5 hover:text-[#0872b9] transition-all"
-                      >
-                        {item}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              {technologies.length > 0 && (
+                <div
+                  className={`absolute top-full right-0 mt-4 w-80 bg-white rounded-3xl border border-[#0872b9]/10 shadow-2xl p-4 transition-all duration-200 transform origin-top-right
+            ${
+              technologiesOpen
+                ? "opacity-100 visible translate-y-0 scale-100"
+                : "opacity-0 invisible -translate-y-2 scale-95 pointer-events-none"
+            }`}
+                >
+                  <ul className="space-y-2">
+                    {technologies.map((item) => (
+                      <li key={item.id}>
+                        <Link
+                          to={`/technologies/details?id=${item.id}`}
+                          state={{ technology: item }}
+                          onClick={() => setTechnologiesOpen(false)}
+                          className="block px-4 py-3 rounded-2xl text-sm font-medium text-slate-700 hover:bg-[#0872b9]/5 hover:text-[#0872b9] transition-all"
+                        >
+                          {item.maintitle}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
 
             {/* REMAINING NAV ITEMS */}
@@ -256,6 +259,33 @@ export default function FloatingNavbar() {
           // Special handling for Services and Technologies on mobile: open bottom sheet
           if (item.name === "Services" || item.name === "Technologies") {
             const isOpen = mobileDropdown === item.name.toLowerCase();
+            const itemsList = item.name === "Services" ? services : technologies;
+
+            if (itemsList.length === 0) {
+              return (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  className="relative flex flex-col items-center justify-center w-14 gap-1 pt-1"
+                >
+                  <motion.div
+                    animate={{
+                      y: isActive ? -4 : 0,
+                      scale: isActive ? 1.1 : 1,
+                    }}
+                    transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                    className={`p-2 rounded-full transition-colors 
+                      ${isActive ? "bg-[#0872b9] text-white shadow-md shadow-[#0872b9]/40" : "text-[#0872b9]"}`}
+                  >
+                    {item.icon}
+                  </motion.div>
+
+                  <span className="text-[10px] font-medium tracking-wide text-[#0872b9]">
+                    {item.name}
+                  </span>
+                </Link>
+              );
+            }
 
             return (
               <div
@@ -355,22 +385,24 @@ export default function FloatingNavbar() {
               </button>
             </div>
 
-            <div className="divide-y divide-slate-100">
-              {(mobileDropdown === "services"
-                ? servicesList
-                : technologiesList
-              ).map((item) => (
+            <div className="divide-y divide-slate-100 max-h-60 overflow-y-auto">
+              {(mobileDropdown === "services" ? services : technologies).map((item) => (
                 <Link
-                  key={item}
+                  key={item.id}
                   to={
                     mobileDropdown === "services"
-                      ? "/services"
-                      : "/technologies"
+                      ? `/services/details?id=${item.id}`
+                      : `/technologies/details?id=${item.id}`
+                  }
+                  state={
+                    mobileDropdown === "services"
+                      ? { service: item }
+                      : { technology: item }
                   }
                   onClick={() => setMobileDropdown(null)}
                   className="block px-4 py-3 text-slate-700 rounded-xl hover:bg-[#0872b9]/5 hover:text-[#0872b9]"
                 >
-                  {item}
+                  {item.maintitle}
                 </Link>
               ))}
             </div>
@@ -380,3 +412,4 @@ export default function FloatingNavbar() {
     </>
   );
 }
+

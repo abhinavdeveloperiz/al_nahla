@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   ShieldCheck,
   Network,
@@ -9,6 +10,7 @@ import {
   Laptop,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { fetchTechnologies } from "../api";
 
 export default function Technologies() {
   const SOLUTIONS = [
@@ -54,6 +56,31 @@ export default function Technologies() {
     },
   ];
 
+  const [solutions, setSolutions] = useState(SOLUTIONS);
+
+  useEffect(() => {
+    async function load() {
+      const data = await fetchTechnologies();
+      if (data && data.length > 0) {
+        setSolutions(
+          data.map((t) => {
+            const match = SOLUTIONS.find(
+              (s) => s.title.toLowerCase() === t.maintitle.toLowerCase()
+            );
+            return {
+              id: t.id,
+              title: t.maintitle,
+              desc: t.maindescription,
+              icon: match ? match.icon : Workflow,
+              raw: t,
+            };
+          })
+        );
+      }
+    }
+    load();
+  }, []);
+
   return (
     <section className="bg-[#0872b9] text-white py-24">
       <div className="max-w-6xl mx-auto px-6">
@@ -70,17 +97,15 @@ export default function Technologies() {
 
         {/* GRID */}
         <div className="grid md:grid-cols-4 gap-6">
-          {SOLUTIONS.map((item, i) => (
+          {solutions.map((item, i) => (
             <Link
               key={i}
-              to="/technologies/details"
+              to={item.id ? `/technologies/details?id=${item.id}` : "/technologies/details"}
+              state={{ technology: item.raw }}
               className="group bg-gray-800 hover:bg-gray-900 border border-[#0872b9] rounded-xl p-6 hover:bg-[#0872b9] transition duration-300"
               data-aos="fade-up"
             >
-              {/* ICON */}
-              <div className="mb-4">
-                <item.icon className="w-10 h-10 text-[#f38020] group-hover:scale-110 transition" />
-              </div>
+            
 
               {/* TITLE */}
               <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
@@ -99,3 +124,4 @@ export default function Technologies() {
     </section>
   );
 }
+

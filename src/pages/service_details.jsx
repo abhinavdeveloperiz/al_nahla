@@ -1,21 +1,86 @@
+import { useState, useEffect } from "react";
+import { useLocation, Link } from "react-router-dom";
 import {
   CheckCircle,
   ArrowRight,
   ShieldCheck,
-  Server,
-  Headphones,
-  Activity,
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { fetchServices, getImageUrl } from "../api";
 
 export default function ServiceDetails() {
+  const location = useLocation();
+  const [service, setService] = useState(location.state?.service || null);
+  const [loading, setLoading] = useState(!service);
+
+  useEffect(() => {
+    if (!service) {
+      const searchParams = new URLSearchParams(location.search);
+      const id = searchParams.get("id");
+      if (id) {
+        async function load() {
+          try {
+            const list = await fetchServices();
+            const match = list.find((s) => String(s.id) === String(id));
+            if (match) {
+              setService(match);
+            }
+          } catch (e) {
+            console.error(e);
+          } finally {
+            setLoading(false);
+          }
+        }
+        load();
+      } else {
+        setLoading(false);
+      }
+    } else {
+      setLoading(false);
+    }
+  }, [service, location.search]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-50 text-[#0872b9]">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#0872b9]"></div>
+      </div>
+    );
+  }
+
+  if (!service) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 text-[#0872b9] p-6">
+        <h2 className="text-2xl font-bold mb-4 text-slate-800">Service Not Found</h2>
+        <Link to="/services" className="text-[#f38020] font-semibold hover:underline">
+          ← Back to Services
+        </Link>
+      </div>
+    );
+  }
+
+  const displayPoints = [
+    service.point1,
+    service.point2,
+    service.point3,
+    service.point4,
+    service.point5,
+  ].filter(Boolean);
+
+  const displayFeatures = [
+    { title: service.subtitle1, desc: service.description1 },
+    { title: service.subtitle2, desc: service.description2 },
+    { title: service.subtitle3, desc: service.description3 },
+    { title: service.subtitle4, desc: service.description4 },
+    { title: service.subtitle5, desc: service.description5 },
+    { title: service.subtitle6, desc: service.description6 },
+  ].filter((f) => f.title && f.desc);
+
   return (
     <div className="bg-white overflow-hidden">
       <section
         className="relative h-[30vh] md:h-[50vh] flex items-center text-white"
         style={{
-          backgroundImage:
-            "url('https://i.pinimg.com/736x/53/ad/5a/53ad5ae5b21d5437660a0914aa477e9a.jpg')",
+          backgroundImage: `url("${getImageUrl(service.image) || "https://i.pinimg.com/736x/53/ad/5a/53ad5ae5b21d5437660a0914aa477e9a.jpg"}")`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -24,7 +89,7 @@ export default function ServiceDetails() {
 
         <div className="relative z-10 max-w-6xl mx-auto px-6">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Enterprise IT Services
+            {service.maintitle || "Enterprise IT Services"}
           </h1>
         </div>
       </section>
@@ -48,10 +113,7 @@ export default function ServiceDetails() {
                 data-aos-delay="100"
                 className="mt-8 text-4xl md:text-5xl font-black text-slate-900 leading-tight"
               >
-                Proactive IT management
-                <span className="block text-[#0872b9]">
-                  for modern businesses.
-                </span>
+                {service.maintitle || "Proactive IT management"}
               </h2>
 
               <p
@@ -59,60 +121,34 @@ export default function ServiceDetails() {
                 data-aos-delay="200"
                 className="mt-8 text-slate-600 text-lg leading-relaxed text-justify"
               >
-                Our Managed Services ensure your IT infrastructure remains
-                secure, optimized, and operational around the clock. We
-                proactively monitor, maintain, and support your systems so your
-                organization can focus on growth and innovation.
+                {service.maindescription}
               </p>
 
               {/* FEATURES */}
-              <div className="mt-10 space-y-5">
-                {[
-                  "24/7 Infrastructure Monitoring",
-                  "Proactive Issue Resolution",
-                  "Security & Backup Management",
-                  "Performance Optimization",
-                  "Remote & On-Site Support",
-                ].map((item, index) => (
-                  <div
-                    key={index}
-                    data-aos="fade-right"
-                    data-aos-delay={index * 100}
-                    className="flex items-center gap-4"
-                  >
-                    <div className="w-11 h-11 rounded-2xl bg-[#0872b9]/10 flex items-center justify-center">
-                      <CheckCircle size={22} className="text-[#0872b9]" />
-                    </div>
+              {displayPoints.length > 0 && (
+                <div className="mt-10 space-y-5">
+                  {displayPoints.map((item, index) => (
+                    <div
+                      key={index}
+                      data-aos="fade-right"
+                      data-aos-delay={index * 100}
+                      className="flex items-center gap-4"
+                    >
+                      <div className="w-11 h-11 rounded-2xl bg-[#0872b9]/10 flex items-center justify-center">
+                        <CheckCircle size={22} className="text-[#0872b9]" />
+                      </div>
 
-                    <p className="text-slate-700 text-lg font-medium">{item}</p>
-                  </div>
-                ))}
-              </div>
+                      <p className="text-slate-700 text-lg font-medium">{item}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* RIGHT SIDE */}
-            <div className="space-y-6">
-              {[
-                {
-                  title: "Continuous Monitoring",
-                  desc: "Real-time monitoring and proactive alerts to minimize downtime and maintain operational continuity.",
-                },
-                {
-                  title: "Advanced Security",
-                  desc: "Integrated cybersecurity, backups, and compliance-driven protection across enterprise systems.",
-                },
-                {
-                  title: "Infrastructure Management",
-                  desc: "Optimized management of servers, networks, and cloud environments for maximum efficiency.",
-                },
-                {
-                  title: "Dedicated Support",
-                  desc: "Responsive technical assistance with experienced engineers available whenever needed.",
-                },
-              ].map((item, index) => {
-                const Icon = item.icon;
-
-                return (
+            {displayFeatures.length > 0 && (
+              <div className="space-y-6">
+                {displayFeatures.map((item, index) => (
                   <div
                     key={index}
                     data-aos="fade-left"
@@ -132,9 +168,9 @@ export default function ServiceDetails() {
                       </div>
                     </div>
                   </div>
-                );
-              })}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -174,3 +210,5 @@ export default function ServiceDetails() {
     </div>
   );
 }
+
+

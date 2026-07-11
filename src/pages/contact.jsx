@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import AOS from "aos";
 import {
   ArrowRight,
@@ -10,12 +10,39 @@ import {
 } from "lucide-react";
 
 export default function Contact() {
+  const contactNumber = "+97125464650";
+  const whatsappNumber = contactNumber.replace(/\D/g, "");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    company: "",
+    message: "",
+  });
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
       once: true,
     });
   }, []);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const details = [
+      `Name: ${formData.name || "N/A"}`,
+      `Email: ${formData.email || "N/A"}`,
+      `Company: ${formData.company || "N/A"}`,
+      `Message: ${formData.message || "N/A"}`,
+    ].join("\n");
+
+    window.location.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(details)}`;
+  };
 
   return (
     <div className="overflow-hidden">
@@ -116,36 +143,51 @@ export default function Contact() {
               </h3>
               <div className="w-20 h-1 bg-[#f38020] rounded-full mb-8"></div>
 
-              <div className="space-y-4">
+              <form className="space-y-4" onSubmit={handleSubmit}>
                 <input
                   type="text"
+                  name="name"
                   placeholder="Full Name"
+                  value={formData.name}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:border-[#f38020] focus:ring-2 focus:ring-[#f38020]/20 outline-none transition text-sm md:text-base"
                 />
 
                 <input
                   type="email"
+                  name="email"
                   placeholder="Email Address"
+                  value={formData.email}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:border-[#f38020] focus:ring-2 focus:ring-[#f38020]/20 outline-none transition text-sm md:text-base"
                 />
 
                 <input
                   type="text"
+                  name="company"
                   placeholder="Company"
+                  value={formData.company}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:border-[#f38020] focus:ring-2 focus:ring-[#f38020]/20 outline-none transition text-sm md:text-base"
                 />
 
                 <textarea
                   rows={4}
+                  name="message"
                   placeholder="Your Message"
+                  value={formData.message}
+                  onChange={handleChange}
                   className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:border-[#f38020] focus:ring-2 focus:ring-[#f38020]/20 outline-none resize-none transition text-sm md:text-base"
                 />
 
-                <button className="w-full py-3 bg-[#f38020] text-[#0872b9] font-semibold rounded-xl hover:bg-[#e57418] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer text-sm md:text-base">
+                <button
+                  type="submit"
+                  className="w-full py-3 bg-[#f38020] text-[#0872b9] font-semibold rounded-xl hover:bg-[#e57418] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer text-sm md:text-base"
+                >
                   Send Message
                   <ArrowRight size={18} />
                 </button>
-              </div>
+              </form>
             </div>
           </div>
         </div>
@@ -204,7 +246,9 @@ export default function Contact() {
                     <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 mt-1">
                       <CheckCircle size={16} className="text-[#f38020]" />
                     </div>
-                    <p className="text-blue-100 leading-relaxed text-base md:text-lg">{item}</p>
+                    <p className="text-blue-100 leading-relaxed text-base md:text-lg">
+                      {item}
+                    </p>
                   </div>
                 ))}
               </div>

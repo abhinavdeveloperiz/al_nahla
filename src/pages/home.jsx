@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import AOS from "aos";
 import Logo from "../assets/logo/logonobg.png";
 import BgImage from "../assets/images/bgsec.png";
+import { getImageUrl, fetchBanner, fetchServices, fetchIndustries, fetchTechnologies } from "../api";
 
 import {
   Zap,
@@ -116,6 +117,7 @@ function Counter({ end, suffix }) {
 
 export default function Home() {
   const [activeService, setActiveService] = useState(0);
+  const [banner, setBanner] = useState(null);
 
   const STATS = [
     { value: "17+", label: "Years" },
@@ -169,7 +171,7 @@ export default function Home() {
     },
   ];
 
-  const SERVICES = [
+  const DUMMY_SERVICES = [
     {
       title: "Managed Services",
       desc: "Full IT support & monitoring",
@@ -208,6 +210,46 @@ export default function Home() {
     },
   ];
 
+  const [services, setServices] = useState(DUMMY_SERVICES);
+
+  const DUMMY_INDUSTRIES = [
+    {
+      name: "Government",
+      img: "https://static.vecteezy.com/system/resources/thumbnails/002/082/060/small_2x/scanning-view-of-the-interface-structure-city-skyscrapers-in-blue-color-vector.jpg",
+    },
+    {
+      name: "Oil & Gas",
+      img: "https://static.vecteezy.com/system/resources/thumbnails/050/679/200/small_2x/oil-pumps-working-at-night-under-a-starry-blue-sky-with-artificial-lighting-illuminating-the-scene-in-a-modern-industrial-setting-photo.jpg",
+    },
+    {
+      name: "Banking",
+      img: "https://static.vecteezy.com/system/resources/previews/010/518/833/original/digital-finance-and-banking-investment-service-on-microchip-with-cloud-computing-in-futuristic-background-bank-building-with-online-payment-secure-money-and-financial-innovation-technology-vector.jpg",
+    },
+    {
+      name: "Enterprise",
+      img: "https://img.freepik.com/premium-photo/corporate-blue-business-background_87720-128495.jpg",
+    },
+    {
+      name: "SME",
+      img: "https://image.shutterstock.com/z/stock-vector-sme-vector-illustration-small-and-medium-enterprise-word-lettering-illustration-in-business-719558965.jpg",
+    },
+  ];
+
+  const [industries, setIndustries] = useState(DUMMY_INDUSTRIES);
+
+  const DUMMY_TECHS = [
+    { name: "Digital Transformation", icon: Lightbulb },
+    { name: "Cyber Security", icon: Shield },
+    { name: "Network Solutions", icon: Network },
+    { name: "Enterprise Solutions", icon: Building2 },
+    { name: "Infrastructure", icon: Server },
+    { name: "Audio Visual", icon: Zap },
+    { name: "Software Solutions", icon: Code2 },
+    { name: "Collaboration", icon: Users2 },
+  ];
+
+  const [technologies, setTechnologies] = useState(DUMMY_TECHS);
+
   const TESTIMONIALS = [
     {
       quote:
@@ -242,6 +284,46 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    async function loadData() {
+      const bannerData = await fetchBanner();
+      if (bannerData) setBanner(bannerData);
+
+      const servicesData = await fetchServices();
+      if (servicesData && servicesData.length > 0) {
+        setServices(servicesData.map(s => ({
+          id: s.id,
+          title: s.maintitle,
+          desc: s.maindescription,
+          image: getImageUrl(s.image),
+          raw: s
+        })));
+      }
+
+      const industriesData = await fetchIndustries();
+      if (industriesData && industriesData.length > 0) {
+        setIndustries(industriesData.map(ind => ({
+          name: ind.title,
+          img: getImageUrl(ind.image)
+        })));
+      }
+
+      const techData = await fetchTechnologies();
+      if (techData && techData.length > 0) {
+        setTechnologies(techData.map(t => {
+          const match = DUMMY_TECHS.find(dt => dt.name.toLowerCase() === t.maintitle.toLowerCase());
+          return {
+            id: t.id,
+            name: t.maintitle,
+            icon: match ? match.icon : Lightbulb,
+            raw: t
+          };
+        }));
+      }
+    }
+    loadData();
+  }, []);
+
   return (
     <div className=" overflow-hidden">
       {/* HERO */}
@@ -250,7 +332,7 @@ export default function Home() {
         data-aos="fade-in"
         style={{
           backgroundPosition: "center",
-          backgroundImage: `url("https://i.pinimg.com/736x/bd/aa/07/bdaa078b959811fc5f56cd02512bb22c.jpg")`,
+          backgroundImage: `url("${getImageUrl(banner ? banner.image : 'https://i.pinimg.com/736x/bd/aa/07/bdaa078b959811fc5f56cd02512bb22c.jpg')}")`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundAttachment: "fixed",
@@ -273,8 +355,14 @@ export default function Home() {
             data-aos-delay="100"
             className="text-4xl md:text-4xl font-extrabold leading-tight"
           >
-            <span className="text-[#0872b9]">Al Nahla</span>{" "}
-            <span className="text-[#f38020]">Solutions L.L.C</span>
+            {banner ? (
+              <span className="text-[#0872b9]">{banner.title}</span>
+            ) : (
+              <>
+                <span className="text-[#0872b9]">Al Nahla</span>{" "}
+                <span className="text-[#f38020]">Solutions L.L.C</span>
+              </>
+            )}
           </h1>
 
           {/* Subtitle */}
@@ -283,7 +371,7 @@ export default function Home() {
             data-aos-delay="200"
             className="text-[#0872b9] text-lg md:text-2xl font-semibold tracking-[0.2em] mt-4"
           >
-            Information Technology
+            {banner ? banner.subtitle : "Information Technology"}
           </h2>
 
           {/* Description */}
@@ -292,9 +380,7 @@ export default function Home() {
             data-aos-delay="300"
             className="text-white/90 text-base md:text-lg max-w-3xl mx-auto mt-8 leading-relaxed"
           >
-            Delivering secure, scalable and future-ready IT infrastructure,
-            enterprise solutions, cybersecurity and digital transformation
-            services for modern businesses.
+            {banner ? banner.description : "Delivering secure, scalable and future-ready IT infrastructure, enterprise solutions, cybersecurity and digital transformation services for modern businesses."}
           </p>
 
           {/* Buttons */}
@@ -375,9 +461,10 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {SERVICES.map((service, i) => (
+            {services.map((service, i) => (
               <Link
-                to="/services/details"
+                to={service.id ? `/services/details?id=${service.id}` : "/services/details"}
+                state={{ service: service.raw }}
                 key={i}
                 data-aos="zoom-in"
                 className="group bg-white rounded-2xl overflow-hidden hover:shadow-xl transition"
@@ -443,23 +530,16 @@ export default function Home() {
           {/* Glass Container */}
           <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-10">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-y-12 gap-x-10">
-              {[
-                { name: "Digital Transformation", icon: Lightbulb },
-                { name: "Cyber Security", icon: Shield },
-                { name: "Network Solutions", icon: Network },
-                { name: "Enterprise Solutions", icon: Building2 },
-                { name: "Infrastructure", icon: Server },
-                { name: "Audio Visual", icon: Zap },
-                { name: "Software Solutions", icon: Code2 },
-                { name: "Collaboration", icon: Users2 },
-              ].map((tech, i) => {
+              {technologies.map((tech, i) => {
                 const Icon = tech.icon;
 
                 return (
-                  <div
+                  <Link
+                    to={tech.id ? `/technologies/details?id=${tech.id}` : "/technologies/details"}
+                    state={{ technology: tech.raw }}
                     key={i}
                     data-aos="fade-up"
-                    className="group flex items-start gap-4"
+                    className="group flex items-start gap-4 cursor-pointer text-white hover:text-[#f38020] transition-colors"
                   >
                     {/* Icon */}
                     <div className="mt-1">
@@ -471,14 +551,14 @@ export default function Home() {
 
                     {/* Text */}
                     <div>
-                      <p className="text-white font-semibold leading-snug group-hover:text-[#f38020] transition">
+                      <p className="font-semibold leading-snug">
                         {tech.name}
                       </p>
 
                       {/* underline */}
                       <div className="w-0 group-hover:w-12 h-[2px] bg-[#f38020] mt-2 transition-all duration-300" />
                     </div>
-                  </div>
+                  </Link>
                 );
               })}
             </div>
@@ -503,28 +583,7 @@ export default function Home() {
             className="flex w-full overflow-x-auto py-2"
             data-aos="slide-left"
           >
-            {[
-              {
-                name: "Government",
-                img: "https://static.vecteezy.com/system/resources/thumbnails/002/082/060/small_2x/scanning-view-of-the-interface-structure-city-skyscrapers-in-blue-color-vector.jpg",
-              },
-              {
-                name: "Oil & Gas",
-                img: "https://static.vecteezy.com/system/resources/thumbnails/050/679/200/small_2x/oil-pumps-working-at-night-under-a-starry-blue-sky-with-artificial-lighting-illuminating-the-scene-in-a-modern-industrial-setting-photo.jpg",
-              },
-              {
-                name: "Banking",
-                img: "https://static.vecteezy.com/system/resources/previews/010/518/833/original/digital-finance-and-banking-investment-service-on-microchip-with-cloud-computing-in-futuristic-background-bank-building-with-online-payment-secure-money-and-financial-innovation-technology-vector.jpg",
-              },
-              {
-                name: "Enterprise",
-                img: "https://img.freepik.com/premium-photo/corporate-blue-business-background_87720-128495.jpg",
-              },
-              {
-                name: "SME",
-                img: "https://image.shutterstock.com/z/stock-vector-sme-vector-illustration-small-and-medium-enterprise-word-lettering-illustration-in-business-719558965.jpg",
-              },
-            ].map((item, i) => (
+            {industries.map((item, i) => (
               <div
                 key={i}
                 className="relative min-w-[240px] md:flex-1 group ml-12"

@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   Briefcase,
@@ -8,9 +9,10 @@ import {
   TrendingUp,
   Award,
 } from "lucide-react";
+import { fetchServices, getImageUrl } from "../api";
 
 export default function Services() {
-  const SERVICES = [
+  const DUMMY_SERVICES = [
     {
       title: "Managed Services",
       desc: "Full IT support & monitoring",
@@ -49,6 +51,26 @@ export default function Services() {
     },
   ];
 
+  const [services, setServices] = useState(DUMMY_SERVICES);
+
+  useEffect(() => {
+    async function load() {
+      const data = await fetchServices();
+      if (data && data.length > 0) {
+        setServices(
+          data.map((s) => ({
+            id: s.id,
+            title: s.maintitle,
+            desc: s.maindescription,
+            image: getImageUrl(s.image),
+            raw: s,
+          }))
+        );
+      }
+    }
+    load();
+  }, []);
+
   return (
     <div className="overflow-hidden">
       {/* SERVICES - IMAGE CARDS */}
@@ -64,9 +86,10 @@ export default function Services() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {SERVICES.map((service, i) => (
+            {services.map((service, i) => (
               <Link
-                to="/services/details"
+                to={service.id ? `/services/details?id=${service.id}` : "/services/details"}
+                state={{ service: service.raw }}
                 key={i}
                 data-aos="zoom-in"
                 className="group bg-white rounded-2xl overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
@@ -102,3 +125,4 @@ export default function Services() {
     </div>
   );
 }
+

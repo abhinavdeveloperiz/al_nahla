@@ -1,10 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import AOS from "aos";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { fetchBlogs, getImageUrl } from "../api";
 
 export default function Blog() {
-  const POSTS = [
+  const DUMMY_POSTS = [
     {
       title: "Future of Enterprise IT in UAE",
       desc: "Explore how digital transformation is reshaping businesses across UAE.",
@@ -24,6 +25,41 @@ export default function Blog() {
       date: "January 2026",
     },
   ];
+
+  const [posts, setPosts] = useState(DUMMY_POSTS);
+
+  useEffect(() => {
+    async function load() {
+      const data = await fetchBlogs();
+      if (data && data.length > 0) {
+        setPosts(
+          data.map((post) => {
+            let formattedDate = "Recent";
+            if (post.created_at) {
+              try {
+                formattedDate = new Date(post.created_at).toLocaleDateString(
+                  "en-US",
+                  {
+                    month: "long",
+                    year: "numeric",
+                  }
+                );
+              } catch (e) {
+                console.error("Error parsing date:", e);
+              }
+            }
+            return {
+              title: post.title,
+              desc: post.description,
+              image: getImageUrl(post.image),
+              date: formattedDate,
+            };
+          })
+        );
+      }
+    }
+    load();
+  }, []);
 
   return (
     <div className="overflow-hidden">
@@ -57,7 +93,7 @@ export default function Blog() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {POSTS.map((post, i) => (
+            {posts.map((post, i) => (
               <div
                 key={i}
                 className="group rounded-2xl overflow-hidden shadow-lg bg-white"
@@ -113,3 +149,4 @@ export default function Blog() {
     </div>
   );
 }
+
