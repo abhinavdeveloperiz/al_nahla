@@ -64,7 +64,7 @@ export default function Services() {
             desc: s.maindescription,
             image: getImageUrl(s.image),
             raw: s,
-          }))
+          })),
         );
       }
     }
@@ -88,28 +88,37 @@ export default function Services() {
           <div className="grid md:grid-cols-3 gap-8">
             {services.map((service, i) => (
               <Link
-                to={service.id ? `/services/details?id=${service.id}` : "/services/details"}
+                to={
+                  service.id
+                    ? `/services/details?id=${service.id}`
+                    : "/services/details"
+                }
                 state={{ service: service.raw }}
                 key={i}
                 data-aos="zoom-in"
-                className="group bg-white rounded-2xl overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
+                className="group bg-white rounded-2xl overflow-hidden "
               >
                 {/* IMAGE */}
                 <div className="overflow-hidden">
                   <img
                     src={service.image}
                     alt={service.title}
-                    className="h-64 w-full object-cover group-hover:scale-110 transition duration-500"
+                    className="h-64 w-full object-cover group-hover:scale-105 transition duration-500 "
                   />
                 </div>
 
                 {/* CONTENT BELOW */}
                 <div className="p-6">
-                  <h3 className="text-[#0872b9] text-xl font-semibold">
+                  <h3
+                    className="text-[#0872b9] text-xl font-semibold text-justify"
+                    style={{ textAlign: "justify" }}
+                  >
                     {service.title}
                   </h3>
 
-                  <p className="text-slate-600 text-sm mt-2">{service.desc}</p>
+                  <p className="text-slate-600 text-sm mt-2 text-justify">
+                    {service.desc}
+                  </p>
 
                   <div className="mt-4">
                     <span className="text-[#f38020] text-sm font-medium group-hover:underline">
@@ -125,4 +134,3 @@ export default function Services() {
     </div>
   );
 }
-

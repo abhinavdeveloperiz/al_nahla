@@ -65,7 +65,7 @@ export default function Technologies() {
         setSolutions(
           data.map((t) => {
             const match = SOLUTIONS.find(
-              (s) => s.title.toLowerCase() === t.maintitle.toLowerCase()
+              (s) => s.title.toLowerCase() === t.maintitle.toLowerCase(),
             );
             return {
               id: t.id,
@@ -74,7 +74,7 @@ export default function Technologies() {
               icon: match ? match.icon : Workflow,
               raw: t,
             };
-          })
+          }),
         );
       }
     }
@@ -96,22 +96,24 @@ export default function Technologies() {
         </div>
 
         {/* GRID */}
-        <div className="grid md:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-3 gap-6">
           {solutions.map((item, i) => (
             <Link
               key={i}
-              to={item.id ? `/technologies/details?id=${item.id}` : "/technologies/details"}
+              to={
+                item.id
+                  ? `/technologies/details?id=${item.id}`
+                  : "/technologies/details"
+              }
               state={{ technology: item.raw }}
               className="group bg-gray-800 hover:bg-gray-900 border border-[#0872b9] rounded-xl p-6 hover:bg-[#0872b9] transition duration-300"
               data-aos="fade-up"
             >
-            
-
               {/* TITLE */}
               <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
 
               {/* DESC */}
-              <p className="text-[#0872b9] text-sm leading-relaxed">
+              <p className="text-[#0872b9] text-sm leading-relaxed text-justify">
                 {item.desc}
               </p>
 
@@ -124,4 +126,3 @@ export default function Technologies() {
     </section>
   );
 }
-
