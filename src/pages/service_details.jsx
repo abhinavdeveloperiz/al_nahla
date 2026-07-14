@@ -9,35 +9,43 @@ import { fetchServices, getImageUrl } from "../api";
 
 export default function ServiceDetails() {
   const location = useLocation();
-  const [service, setService] = useState(location.state?.service || null);
-  const [loading, setLoading] = useState(!service);
+  const searchParams = new URLSearchParams(location.search);
+  const id = searchParams.get("id");
+
+  const stateService = location.state?.service;
+  const isStateMatching = stateService && String(stateService.id) === String(id);
+
+  const [service, setService] = useState(isStateMatching ? stateService : null);
+  const [loading, setLoading] = useState(!isStateMatching);
+  const [prevId, setPrevId] = useState(id);
+
+  if (id !== prevId) {
+    setPrevId(id);
+    setService(isStateMatching ? stateService : null);
+    setLoading(!isStateMatching);
+  }
 
   useEffect(() => {
-    if (!service) {
-      const searchParams = new URLSearchParams(location.search);
-      const id = searchParams.get("id");
-      if (id) {
-        async function load() {
-          try {
-            const list = await fetchServices();
-            const match = list.find((s) => String(s.id) === String(id));
-            if (match) {
-              setService(match);
-            }
-          } catch (e) {
-            console.error(e);
-          } finally {
-            setLoading(false);
+    if (!isStateMatching && id) {
+      async function load() {
+        try {
+          const list = await fetchServices();
+          const match = list.find((s) => String(s.id) === String(id));
+          if (match) {
+            setService(match);
+          } else {
+            setService(null);
           }
+        } catch (e) {
+          console.error(e);
+          setService(null);
+        } finally {
+          setLoading(false);
         }
-        load();
-      } else {
-        setLoading(false);
       }
-    } else {
-      setLoading(false);
+      load();
     }
-  }, [service, location.search]);
+  }, [id, isStateMatching]);
 
   if (loading) {
     return (

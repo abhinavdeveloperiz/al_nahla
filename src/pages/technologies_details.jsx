@@ -9,37 +9,43 @@ import { fetchTechnologies } from "../api";
 
 export default function TechnologiesDetails() {
   const location = useLocation();
-  const [technology, setTechnology] = useState(
-    location.state?.technology || null
-  );
-  const [loading, setLoading] = useState(!technology);
+  const searchParams = new URLSearchParams(location.search);
+  const id = searchParams.get("id");
+
+  const stateTechnology = location.state?.technology;
+  const isStateMatching = stateTechnology && String(stateTechnology.id) === String(id);
+
+  const [technology, setTechnology] = useState(isStateMatching ? stateTechnology : null);
+  const [loading, setLoading] = useState(!isStateMatching);
+  const [prevId, setPrevId] = useState(id);
+
+  if (id !== prevId) {
+    setPrevId(id);
+    setTechnology(isStateMatching ? stateTechnology : null);
+    setLoading(!isStateMatching);
+  }
 
   useEffect(() => {
-    if (!technology) {
-      const searchParams = new URLSearchParams(location.search);
-      const id = searchParams.get("id");
-      if (id) {
-        async function load() {
-          try {
-            const list = await fetchTechnologies();
-            const match = list.find((t) => String(t.id) === String(id));
-            if (match) {
-              setTechnology(match);
-            }
-          } catch (e) {
-            console.error(e);
-          } finally {
-            setLoading(false);
+    if (!isStateMatching && id) {
+      async function load() {
+        try {
+          const list = await fetchTechnologies();
+          const match = list.find((t) => String(t.id) === String(id));
+          if (match) {
+            setTechnology(match);
+          } else {
+            setTechnology(null);
           }
+        } catch (e) {
+          console.error(e);
+          setTechnology(null);
+        } finally {
+          setLoading(false);
         }
-        load();
-      } else {
-        setLoading(false);
       }
-    } else {
-      setLoading(false);
+      load();
     }
-  }, [technology, location.search]);
+  }, [id, isStateMatching]);
 
   if (loading) {
     return (
