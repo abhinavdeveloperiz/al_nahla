@@ -4,8 +4,11 @@ import {
   ShieldCheck,
   ArrowRight,
   CheckCircle,
+  Award,
+  Sparkles,
+  Layers,
 } from "lucide-react";
-import { fetchTechnologies } from "../api";
+import { fetchTechnologies, getImageUrl } from "../api";
 
 export default function TechnologiesDetails() {
   const location = useLocation();
@@ -85,107 +88,117 @@ export default function TechnologiesDetails() {
 
   return (
     <div className="bg-white overflow-hidden">
-      <section className="relative h-[30vh] md:h-[50vh] flex items-center text-white">
-        <div className="absolute inset-0 bg-[#0872b9]" />
+      {/* ================= INTRO & OVERVIEW SECTION ================= */}
+      <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-gradient-to-b from-[#0872b9]/5 via-white to-white">
+        <div className="max-w-4xl mx-auto px-6 text-center flex flex-col items-center justify-center" data-aos="fade-up">
+          <div className="inline-flex items-center gap-2 rounded-full bg-[#0872b9]/10 px-5 py-2 text-[#0872b9] text-sm font-bold tracking-[0.15em] mb-6">
+            <ShieldCheck size={18} className="text-[#f38020]" />
+            SOLUTIONS FOCUS
+          </div>
 
-        <div className="relative z-10 max-w-6xl mx-auto px-6">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-tight tracking-tight mb-8">
             {technology.maintitle || "Technology Solution"}
           </h1>
+
+          <p className="text-slate-600 text-lg md:text-xl leading-relaxed text-center max-w-3xl">
+            {technology.maindescription}
+          </p>
         </div>
       </section>
 
-      {/* ================= INTRO ================= */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-20 items-start">
-            {/* LEFT */}
-            <div>
-              <div
-                data-aos="fade-right"
-                className="inline-flex items-center gap-2 rounded-full bg-[#f38020]/10 px-5 py-2 text-[#0872b9] text-sm font-semibold tracking-[0.18em]"
-              >
-                <ShieldCheck size={18} className="text-[#f38020]" />
-                Solutions Focus
+      {/* ================= FEATURES SECTION (CARDS) ================= */}
+      {displayFeatures.length > 0 && (
+        <section className="py-24 bg-slate-50/60 border-y border-slate-100">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <div className="inline-flex items-center gap-2 rounded-full bg-[#f38020]/10 px-4 py-1.5 text-[#f38020] text-xs font-bold tracking-[0.2em] uppercase mb-4">
+                <Layers size={14} />
+                Core Capabilities
               </div>
-
-              <h2
-                data-aos="fade-right"
-                data-aos-delay="100"
-                className="mt-8 text-4xl md:text-5xl font-black text-slate-900 leading-tight"
-              >
-                {technology.maintitle}
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
+                Our Solutions & Features
               </h2>
-
-              <p
-                data-aos="fade-right"
-                data-aos-delay="200"
-                className="mt-8 text-slate-600 text-lg leading-relaxed text-justify"
-              >
-                {technology.maindescription}
+              <p className="text-slate-500 mt-4 text-lg">
+                Explore the key pillars and custom functionalities we offer under this solution.
               </p>
-
-              {/* FEATURES */}
-              {displayPoints.length > 0 && (
-                <div className="mt-10 space-y-5">
-                  {displayPoints.map((item, index) => (
-                    <div
-                      key={index}
-                      data-aos="fade-right"
-                      data-aos-delay={index * 100}
-                      className="flex items-center gap-4"
-                    >
-                      <div className="w-11 h-11 rounded-2xl bg-[#0872b9]/10 flex items-center justify-center">
-                        <CheckCircle size={22} className="text-[#0872b9]" />
-                      </div>
-
-                      <p className="text-slate-700 text-lg font-medium">{item}</p>
-                    </div>
-                  ))}
-                </div>
-              )}
             </div>
 
-            {/* RIGHT */}
-            {displayFeatures.length > 0 && (
-              <div className="space-y-6">
-                {displayFeatures.map((item, index) => (
-                  <div
-                    key={index}
-                    data-aos="fade-left"
-                    data-aos-delay={index * 120}
-                    className="group bg-[#f8fafc] border border-slate-200 rounded-[32px] p-8 hover:bg-[#0872b9] hover:border-[#0872b9] transition-all duration-500"
-                  >
-                    <div className="flex gap-6 items-start">
-                      {/* CONTENT */}
-                      <div>
-                        <h3 className="text-2xl font-bold text-slate-900 group-hover:text-white transition-colors duration-500">
-                          {item.title}
-                        </h3>
-
-                        <p className="mt-4 text-slate-600 group-hover:text-white/80 leading-relaxed transition-colors duration-500">
-                          {item.description}
-                        </p>
-
-                        <div className="mt-6 w-12 h-[3px] bg-[#0872b9]/20 rounded-full group-hover:w-20 group-hover:bg-[#f38020] transition-all duration-500" />
-                      </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {displayFeatures.map((item, index) => (
+                <div
+                  key={index}
+                  data-aos="fade-up"
+                  data-aos-delay={index * 100}
+                  className="group bg-white border border-slate-200/50 rounded-[28px] p-8 shadow-sm hover:shadow-2xl hover:border-[#0872b9]/20 hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between"
+                >
+                  <div>
+                    {/* Unique premium number bubble styling */}
+                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[#0872b9] to-[#0872b9]/80 text-white flex items-center justify-center font-bold text-lg shadow-lg shadow-[#0872b9]/25 mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                      {String(index + 1).padStart(2, '0')}
                     </div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
 
-      {/* ================= CTA ================= */}
+                    <h3 className="text-2xl font-bold text-slate-850 group-hover:text-[#0872b9] transition-colors duration-300">
+                      {item.title}
+                    </h3>
+
+                    <p className="mt-4 text-slate-650 leading-relaxed text-justify text-sm md:text-base">
+                      {item.description}
+                    </p>
+                  </div>
+
+                  <div className="mt-8 w-12 h-[3px] bg-[#f38020] rounded-full group-hover:w-24 group-hover:bg-[#0872b9] transition-all duration-500" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ================= KEY POINTS SECTION (AT LAST) ================= */}
+      {displayPoints.length > 0 && (
+        <section className="py-24 bg-white">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <div className="inline-flex items-center gap-2 rounded-full bg-[#0872b9]/10 px-4 py-1.5 text-[#0872b9] text-xs font-bold tracking-[0.2em] uppercase mb-4">
+                <Sparkles size={14} />
+                Key Highlights
+              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
+                Key Focus & Benefits
+              </h2>
+              <p className="text-slate-500 mt-4 text-lg">
+                The primary values and standards we guarantee with our solutions.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+              {displayPoints.map((item, index) => (
+                <div
+                  key={index}
+                  data-aos="fade-up"
+                  data-aos-delay={index * 80}
+                  className="flex items-center gap-4 bg-slate-50 border border-slate-100 rounded-2xl p-5 hover:bg-white hover:border-[#0872b9]/30 hover:shadow-lg transition-all duration-300"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-[#0872b9]/10 flex items-center justify-center shrink-0">
+                    <CheckCircle size={20} className="text-[#0872b9]" />
+                  </div>
+                  <p className="text-slate-800 text-base font-semibold">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ================= CTA SECTION ================= */}
       <section className="py-24 bg-[#0872b9] relative overflow-hidden">
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#f38020]/20 blur-3xl rounded-full" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#f38020]/25 blur-3xl rounded-full" />
+        <div className="absolute -bottom-10 -left-10 w-80 h-80 bg-[#0872b9]/30 blur-3xl rounded-full" />
 
         <div className="relative max-w-5xl mx-auto px-6 text-center">
           <p
             data-aos="fade-up"
-            className="text-[#f38020] text-sm tracking-[4px] text-sm font-semibold mb-5"
+            className="text-[#f38020] tracking-[4px] text-sm font-semibold mb-5 uppercase"
           >
             Ready to Transform Your Business?
           </p>
@@ -193,20 +206,18 @@ export default function TechnologiesDetails() {
           <h2
             data-aos="fade-up"
             data-aos-delay="100"
-            className="text-2xl md:text-4xl font-black text-white leading-tight"
+            className="text-3xl md:text-5xl font-black text-white leading-tight"
           >
             Secure your business
-            <span className="block text-[#f38020]">
-              against modern cyber threats.
-            </span>
+            <span className="block text-[#f38020] mt-2">against modern cyber threats.</span>
           </h2>
 
-          <div data-aos="fade-up" data-aos-delay="300" className="mt-6">
+          <div data-aos="fade-up" data-aos-delay="300" className="mt-10">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-3 rounded-full bg-[#f38020] px-6 py-2 text-white font-semibold shadow-xl hover:scale-105 transition-all duration-300"
+              className="inline-flex items-center gap-3 rounded-full bg-[#f38020] px-8 py-3.5 text-white font-bold shadow-xl hover:scale-105 hover:bg-[#e07010] transition-all duration-300"
             >
-              Contact Us
+              Contact Us Today
               <ArrowRight size={20} />
             </Link>
           </div>
