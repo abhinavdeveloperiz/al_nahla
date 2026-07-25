@@ -3,7 +3,13 @@ import { Link } from "react-router-dom";
 import AOS from "aos";
 import Logo from "../assets/logo/logonobg.png";
 import BgImage from "../assets/images/bgsec.png";
-import { getImageUrl, fetchBanner, fetchServices, fetchIndustries, fetchTechnologies } from "../api";
+import {
+  getImageUrl,
+  fetchBanner,
+  fetchServices,
+  fetchIndustries,
+  fetchTechnologies,
+} from "../api";
 
 import {
   Zap,
@@ -291,34 +297,42 @@ export default function Home() {
 
       const servicesData = await fetchServices();
       if (servicesData && servicesData.length > 0) {
-        setServices(servicesData.map(s => ({
-          id: s.id,
-          title: s.maintitle,
-          desc: s.maindescription,
-          image: getImageUrl(s.image),
-          raw: s
-        })));
+        setServices(
+          servicesData.map((s) => ({
+            id: s.id,
+            title: s.maintitle,
+            desc: s.maindescription,
+            image: getImageUrl(s.image),
+            raw: s,
+          })),
+        );
       }
 
       const industriesData = await fetchIndustries();
       if (industriesData && industriesData.length > 0) {
-        setIndustries(industriesData.map(ind => ({
-          name: ind.title,
-          img: getImageUrl(ind.image)
-        })));
+        setIndustries(
+          industriesData.map((ind) => ({
+            name: ind.title,
+            img: getImageUrl(ind.image),
+          })),
+        );
       }
 
       const techData = await fetchTechnologies();
       if (techData && techData.length > 0) {
-        setTechnologies(techData.map(t => {
-          const match = DUMMY_TECHS.find(dt => dt.name.toLowerCase() === t.maintitle.toLowerCase());
-          return {
-            id: t.id,
-            name: t.maintitle,
-            icon: match ? match.icon : Lightbulb,
-            raw: t
-          };
-        }));
+        setTechnologies(
+          techData.map((t) => {
+            const match = DUMMY_TECHS.find(
+              (dt) => dt.name.toLowerCase() === t.maintitle.toLowerCase(),
+            );
+            return {
+              id: t.id,
+              name: t.maintitle,
+              icon: match ? match.icon : Lightbulb,
+              raw: t,
+            };
+          }),
+        );
       }
     }
     loadData();
@@ -332,7 +346,7 @@ export default function Home() {
         data-aos="fade-in"
         style={{
           backgroundPosition: "center",
-          backgroundImage: `url("${getImageUrl(banner ? banner.image : 'https://i.pinimg.com/736x/bd/aa/07/bdaa078b959811fc5f56cd02512bb22c.jpg')}")`,
+          backgroundImage: `url("${getImageUrl(banner ? banner.image : "https://i.pinimg.com/736x/bd/aa/07/bdaa078b959811fc5f56cd02512bb22c.jpg")}")`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundAttachment: "fixed",
@@ -353,7 +367,7 @@ export default function Home() {
           <h1
             data-aos="fade-up"
             data-aos-delay="100"
-            className="text-4xl md:text-4xl font-extrabold leading-tight"
+            className="text-2xl md:text-4xl font-extrabold leading-tight"
           >
             {banner ? (
               <span className="text-[#0872b9]">{banner.title}</span>
@@ -366,21 +380,24 @@ export default function Home() {
           </h1>
 
           {/* Subtitle */}
-          <h2
+          {/* <h2
             data-aos="fade-up"
             data-aos-delay="200"
             className="text-[#0872b9] text-lg md:text-2xl font-semibold tracking-[0.2em] mt-4"
           >
             {banner ? banner.subtitle : "Information Technology"}
-          </h2>
+          </h2> */}
 
           {/* Description */}
           <p
             data-aos="fade-up"
             data-aos-delay="300"
-            className="text-white/90 text-base md:text-lg max-w-3xl mx-auto mt-8 leading-relaxed"
+            className=" text-blue-200 md:text-lg max-w-3xl italic mx-auto mt-6 leading-relaxed font-semibold tracking-wide"
+            style={{ fontFamily: "'Poppins', sans-serif" }}
           >
-            {banner ? banner.description : "Delivering secure, scalable and future-ready IT infrastructure, enterprise solutions, cybersecurity and digital transformation services for modern businesses."}
+            {banner
+              ? banner.description
+              : "Delivering secure, scalable and future-ready IT infrastructure, enterprise solutions, cybersecurity and digital transformation services for modern businesses."}
           </p>
 
           {/* Buttons */}
@@ -405,12 +422,12 @@ export default function Home() {
         <div className="absolute top-0 left-0 w-96 h-96 bg-[#f38020]/20 blur-3xl rounded-full -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/10 blur-3xl rounded-full translate-x-1/2 translate-y-1/2" />
 
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
+        <div className="relative max-w-7xl mx-auto lg:px-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* LEFT SIDE */}
             <div data-aos="fade-right" className="relative">
               {/* BIG HEADING */}
-              <h2 className="text-2xl lg:text-4xl font-black leading-tight text-white">
+              <h2 className="text-2xl lg:text-4xl mx-6  font-black leading-tight text-white">
                 18 Years of IT Excellence. Now in the UAE.
               </h2>
             </div>
@@ -463,7 +480,11 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             {services.map((service, i) => (
               <Link
-                to={service.id ? `/services/details?id=${service.id}` : "/services/details"}
+                to={
+                  service.id
+                    ? `/services/details?id=${service.id}`
+                    : "/services/details"
+                }
                 state={{ service: service.raw }}
                 key={i}
                 data-aos="zoom-in"
@@ -535,7 +556,11 @@ export default function Home() {
 
                 return (
                   <Link
-                    to={tech.id ? `/technologies/details?id=${tech.id}` : "/technologies/details"}
+                    to={
+                      tech.id
+                        ? `/technologies/details?id=${tech.id}`
+                        : "/technologies/details"
+                    }
                     state={{ technology: tech.raw }}
                     key={i}
                     data-aos="fade-up"
@@ -551,9 +576,7 @@ export default function Home() {
 
                     {/* Text */}
                     <div>
-                      <p className="font-semibold leading-snug">
-                        {tech.name}
-                      </p>
+                      <p className="font-semibold leading-snug">{tech.name}</p>
 
                       {/* underline */}
                       <div className="w-0 group-hover:w-12 h-[2px] bg-[#f38020] mt-2 transition-all duration-300" />
@@ -566,52 +589,28 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-white py-24 overflow-hidden">
+      <section className="bg-[#f8fafc] py-16 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
-          {/* TITLE */}
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0872b9] mb-4">
-              Industries We Serve
-            </h2>
-            <p className="text-[#0872b9] max-w-2xl mx-auto">
-              Delivering tailored IT solutions across diverse sectors
-            </p>
-          </div>
-
-          {/* STRIP */}
-          <div
-            className="flex w-full overflow-x-auto py-2"
-            data-aos="slide-left"
-          >
-            {industries.map((item, i) => (
-              <div
-                key={i}
-                className="relative min-w-[240px] md:flex-1 group ml-12"
-              >
-                {/* IMAGE CARD */}
-                <div className="relative h-[240px] overflow-hidden rounded-full">
-                  {/* IMAGE */}
+          <h2 className="mb-6 text-center text-3xl font-bold text-[#0872b9]">
+            Company Partners
+          </h2>
+          
+          <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+            <div className="marquee py-8">
+              {[...industries, ...industries].map((item, i) => (
+                <div
+                  key={`${item.name}-${i}`}
+                  className="flex h-24 min-w-[180px] items-center justify-center rounded-xl bg-slate-50 px-4 mx-3"
+                >
                   <img
                     src={item.img}
                     alt={item.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="h-full w-full object-contain"
                   />
-
-                  {/* DARK OVERLAY */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                 </div>
+              ))}
+            </div>
 
-                {/* TEXT OUTSIDE IMAGE */}
-                <div className="mt-5 pl-2">
-                  <h3 className="text-[#0872b9] font-bold text-xl md:text-2xl leading-snug tracking-wide">
-                    {item.name}
-                  </h3>
-
-                  {/* SMALL LINE */}
-                  <div className="mt-3 w-24 h-[3px] bg-[#f38020] rounded-full group-hover:w-44 transition-all duration-500" />
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>

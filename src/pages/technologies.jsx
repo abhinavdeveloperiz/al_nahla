@@ -71,6 +71,9 @@ export default function Technologies() {
               id: t.id,
               title: t.maintitle,
               desc: t.maindescription,
+              h1: t.heading1,
+              h2: t.heading2,
+              h3: t.heading3,
               icon: match ? match.icon : Workflow,
               raw: t,
             };
@@ -112,10 +115,11 @@ export default function Technologies() {
               {/* TITLE */}
               <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
 
-              {/* DESC */}
-              <p className="text-[#0872b9] text-sm leading-relaxed text-justify">
-                {item.desc}
-              </p>
+              <ul className="list-disc pl-5 text-blue-300 text-sm leading-relaxed text-justify space-y-2 mt-4">
+                {item.h1 && <li>{item.h1}</li>}
+                {item.h2 && <li>{item.h2}</li>}
+                {item.h3 && <li>{item.h3}</li>}
+              </ul>
 
               {/* HOVER LINE */}
               <div className="mt-4 h-[2px] w-0 bg-[#f38020] group-hover:w-full transition-all duration-300"></div>

@@ -154,11 +154,13 @@ export default function About() {
               data-aos="fade-up"
               className="backdrop-blur-md bg-white/10 border border-white/10 p-8 rounded-2xl"
             >
-              <p className="text-white/90 leading-relaxed">
-                Founded in Oman over 17 years ago, Al Nahla Solutions grew from
-                a focused IT services provider into one of the region’s most
-                trusted technology partners.
-              </p>
+              <ul className="list-disc pl-5 text-white/90 leading-relaxed space-y-2">
+                <li>Founded in Oman over 17 years ago.</li>
+                <li>Started as a focused IT services provider.</li>
+                <li>
+                  Now one of the region's most trusted technology partners.
+                </li>
+              </ul>
             </div>
 
             <div
@@ -166,11 +168,11 @@ export default function About() {
               data-aos-delay="100"
               className="backdrop-blur-md bg-white/10 border border-white/10 p-8 rounded-2xl"
             >
-              <p className="text-white/90 leading-relaxed">
-                Today, we hold Tier-1 partner status with many of the world’s
-                leading technology vendors and have delivered hundreds of
-                enterprise-grade projects across critical sectors.
-              </p>
+              <ul className="list-disc pl-5 text-white/90 leading-relaxed space-y-2">
+                <li>Tier-1 partner with leading global technology vendors.</li>
+                <li>Delivered hundreds of enterprise-grade IT projects.</li>
+                <li>Trusted across multiple critical industry sectors.</li>
+              </ul>
             </div>
 
             <div
@@ -178,10 +180,11 @@ export default function About() {
               data-aos-delay="200"
               className="backdrop-blur-md bg-white/10 border border-white/10 p-8 rounded-2xl"
             >
-              <p className="text-white/90 leading-relaxed">
-                Our expansion into the UAE with headquarters established in Abu
-                Dhabi marks a natural progression of our regional growth.
-              </p>
+              <ul className="list-disc pl-5 text-white/90 leading-relaxed space-y-2">
+                <li>Expanded operations into the UAE.</li>
+                <li>Established headquarters in Abu Dhabi.</li>
+                <li>Strengthened our regional presence and growth.</li>
+              </ul>
             </div>
 
             <div
@@ -189,10 +192,13 @@ export default function About() {
               data-aos-delay="300"
               className="backdrop-blur-md bg-white/10 border border-white/10 p-8 rounded-2xl"
             >
-              <p className="text-white/90 leading-relaxed">
-                We bring deep GCC expertise and a proven delivery track record
-                to one of the world’s most dynamic technology markets.
-              </p>
+              <ul className="list-disc pl-5 text-white/90 leading-relaxed space-y-2">
+                <li>Deep expertise across the GCC region.</li>
+                <li>Proven track record in enterprise project delivery.</li>
+                <li>
+                  Serving one of the world's fastest-growing technology markets.
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -376,47 +382,32 @@ export default function About() {
             </h2>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
-                number: 7,
+                number: 17,
+                suffix: "+",
+                label: "Years Field Experience",
+              },
+              {
+                number: 500,
+                suffix: "+",
+                label: "Projects Done Around Oman",
+              },
+              {
+                number: 60,
+                suffix: "+",
+                label: "Work Force",
+              },
+              {
+                number: 2008,
                 suffix: "",
-                label: "Offices in the Middle East",
+                label: "Year Established On",
               },
               {
-                number: 400,
+                number: 2,
                 suffix: "+",
-                label: "Experts in the Middle East",
-              },
-              {
-                number: 80,
-                suffix: "%",
-                label: "Technical background workforce",
-              },
-              {
-                number: 400,
-                suffix: "+",
-                label: "Certifications and licenses",
-              },
-              {
-                number: 220,
-                suffix: "+",
-                label: "Global locations",
-              },
-              {
-                number: 5000,
-                suffix: "+",
-                label: "Installations completed",
-              },
-              {
-                number: 11000,
-                suffix: "+",
-                label: "Colleagues worldwide",
-              },
-              {
-                number: 2000,
-                suffix: "+",
-                label: "Global certifications",
+                label: "Service Hub",
               },
             ].map((item, index) => (
               <div
@@ -425,9 +416,10 @@ export default function About() {
                 data-aos-delay={index * 50}
                 className="group relative bg-white p-8 rounded-3xl shadow-lg border border-slate-200 hover:-translate-y-2 transition-all duration-300"
               >
-                <h3 className="text-5xl font-black tracking-tight text-[#0872b9] mb-4">
+                <h3 className="text-5xl font-extralight tracking-tight text-[#0872b9] leading-none mb-4">
                   <Counter end={item.number} suffix={item.suffix} />
                 </h3>
+
                 <p className="text-slate-700 font-medium leading-relaxed">
                   {item.label}
                 </p>
