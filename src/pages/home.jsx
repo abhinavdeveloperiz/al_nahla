@@ -342,7 +342,7 @@ export default function Home() {
     <div className=" overflow-hidden">
       {/* HERO */}
       <section
-        className="relative h-[70vh] md:h-[100vh] flex items-center text-white"
+        className="relative h-[70vh] md:h-[90vh] flex items-center text-white"
         data-aos="fade-in"
         style={{
           backgroundPosition: "center",
@@ -589,28 +589,27 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#f8fafc] py-16 overflow-hidden">
+      <section className="bg-white py-16 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="mb-6 text-center text-3xl font-bold text-[#0872b9]">
             Company Partners
           </h2>
-          
-          <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+
+          <div className="overflow-hidden bg-white">
             <div className="marquee py-8">
               {[...industries, ...industries].map((item, i) => (
                 <div
                   key={`${item.name}-${i}`}
-                  className="flex h-24 min-w-[180px] items-center justify-center rounded-xl bg-slate-50 px-4 mx-3"
+                  className="flex h-24 min-w-[180px] items-center justify-center rounded-xl bg-white px-4 mx-3"
                 >
                   <img
                     src={item.img}
                     alt={item.name}
-                    className="h-full w-full object-contain"
+                    className="h-32 w-32 object-contain "
                   />
                 </div>
               ))}
             </div>
-
           </div>
         </div>
       </section>

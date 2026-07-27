@@ -16,9 +16,12 @@ export default function TechnologiesDetails() {
   const id = searchParams.get("id");
 
   const stateTechnology = location.state?.technology;
-  const isStateMatching = stateTechnology && String(stateTechnology.id) === String(id);
+  const isStateMatching =
+    stateTechnology && String(stateTechnology.id) === String(id);
 
-  const [technology, setTechnology] = useState(isStateMatching ? stateTechnology : null);
+  const [technology, setTechnology] = useState(
+    isStateMatching ? stateTechnology : null,
+  );
   const [loading, setLoading] = useState(!isStateMatching);
   const [prevId, setPrevId] = useState(id);
 
@@ -61,8 +64,13 @@ export default function TechnologiesDetails() {
   if (!technology) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-slate-50 text-[#0872b9] p-6">
-        <h2 className="text-2xl font-bold mb-4 text-slate-800">Technology Solution Not Found</h2>
-        <Link to="/technologies" className="text-[#f38020] font-semibold hover:underline">
+        <h2 className="text-2xl font-bold mb-4 text-slate-800">
+          Technology Solution Not Found
+        </h2>
+        <Link
+          to="/technologies"
+          className="text-[#f38020] font-semibold hover:underline"
+        >
           ← Back to Technologies
         </Link>
       </div>
@@ -90,7 +98,10 @@ export default function TechnologiesDetails() {
     <div className="bg-white overflow-hidden">
       {/* ================= INTRO & OVERVIEW SECTION ================= */}
       <section className="pt-32 pb-20 md:pt-40 md:pb-28 bg-gradient-to-b from-[#0872b9]/5 via-white to-white">
-        <div className="max-w-4xl mx-auto px-6 text-center flex flex-col items-center justify-center" data-aos="fade-up">
+        <div
+          className="max-w-4xl mx-auto px-6 text-center flex flex-col items-center justify-center"
+          data-aos="fade-up"
+        >
           <div className="inline-flex items-center gap-2 rounded-full bg-[#0872b9]/10 px-5 py-2 text-[#0872b9] text-sm font-bold tracking-[0.15em] mb-6">
             <ShieldCheck size={18} className="text-[#f38020]" />
             SOLUTIONS FOCUS
@@ -119,7 +130,8 @@ export default function TechnologiesDetails() {
                 Our Solutions & Features
               </h2>
               <p className="text-slate-500 mt-4 text-lg">
-                Explore the key pillars and custom functionalities we offer under this solution.
+                Explore the key pillars and custom functionalities we offer
+                under this solution.
               </p>
             </div>
 
@@ -134,7 +146,7 @@ export default function TechnologiesDetails() {
                   <div>
                     {/* Unique premium number bubble styling */}
                     <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[#0872b9] to-[#0872b9]/80 text-white flex items-center justify-center font-bold text-lg shadow-lg shadow-[#0872b9]/25 mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                      {String(index + 1).padStart(2, '0')}
+                      {String(index + 1).padStart(2, "0")}
                     </div>
 
                     <h3 className="text-2xl font-bold text-slate-850 group-hover:text-[#0872b9] transition-colors duration-300">
@@ -167,11 +179,12 @@ export default function TechnologiesDetails() {
                 Key Focus & Benefits
               </h2>
               <p className="text-slate-500 mt-4 text-lg">
-                The primary values and standards we guarantee with our solutions.
+                The primary values and standards we guarantee with our
+                solutions.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
               {displayPoints.map((item, index) => (
                 <div
                   key={index}
@@ -182,7 +195,9 @@ export default function TechnologiesDetails() {
                   <div className="w-10 h-10 rounded-xl bg-[#0872b9]/10 flex items-center justify-center shrink-0">
                     <CheckCircle size={20} className="text-[#0872b9]" />
                   </div>
-                  <p className="text-slate-800 text-base font-semibold">{item}</p>
+                  <p className="text-slate-800 text-base font-semibold">
+                    {item}
+                  </p>
                 </div>
               ))}
             </div>
@@ -209,7 +224,9 @@ export default function TechnologiesDetails() {
             className="text-3xl md:text-5xl font-black text-white leading-tight"
           >
             Secure your business
-            <span className="block text-[#f38020] mt-2">against modern cyber threats.</span>
+            <span className="block text-[#f38020] mt-2">
+              against modern cyber threats.
+            </span>
           </h2>
 
           <div data-aos="fade-up" data-aos-delay="300" className="mt-10">
@@ -226,5 +243,3 @@ export default function TechnologiesDetails() {
     </div>
   );
 }
-
-

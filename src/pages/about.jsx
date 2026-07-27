@@ -385,7 +385,7 @@ export default function About() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
-                number: 17,
+                number: 18,
                 suffix: "+",
                 label: "Years Field Experience",
               },
@@ -408,6 +408,11 @@ export default function About() {
                 number: 2,
                 suffix: "+",
                 label: "Service Hub",
+              },
+              {
+                number: 750,
+                suffix: "+",
+                label: "Happy Clients",
               },
             ].map((item, index) => (
               <div
