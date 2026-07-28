@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import AOS from "aos";
 import Logo from "../assets/logo/logonobg.png";
 import BgImage from "../assets/images/bgsec.png";
+
 import {
   getImageUrl,
   fetchBanner,
@@ -342,7 +343,7 @@ export default function Home() {
     <div className=" overflow-hidden">
       {/* HERO */}
       <section
-        className="relative h-[70vh] md:h-[90vh] flex items-center text-white"
+        className="relative min-h-[70vh] md:min-h-[90vh] flex items-center text-white overflow-hidden"
         data-aos="fade-in"
         style={{
           backgroundPosition: "center",
@@ -352,13 +353,14 @@ export default function Home() {
           backgroundAttachment: "fixed",
         }}
       >
-        <div className="absolute inset-0 bg-black/50" />
+        <div className="hero-ambient absolute inset-0" />
+        <div className="hero-overlay absolute inset-0" />
 
-        <div className="relative z-10 max-w-6xl mx-auto px-6 py-32 text-center">
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-6 py-32 flex flex-col items-start text-left">
           {/* Arabic Text */}
           <p
             data-aos="fade-up"
-            className="text-[#f38020] text-3xl md:text-4xl font-medium tracking-wide mb-3 mt-10"
+            className="text-[#f38020] text-3xl md:text-4xl font-medium tracking-wide mb-3 mt-10 text-left"
           >
             النهلة لحلول تكنولوجيا المعلومات ذ.م.م
           </p>
@@ -367,7 +369,7 @@ export default function Home() {
           <h1
             data-aos="fade-up"
             data-aos-delay="100"
-            className="text-2xl md:text-4xl font-extrabold leading-tight"
+            className="text-2xl md:text-4xl font-extrabold leading-tight text-left"
           >
             {banner ? (
               <span className="text-[#0872b9]">{banner.title}</span>
@@ -392,7 +394,7 @@ export default function Home() {
           <p
             data-aos="fade-up"
             data-aos-delay="300"
-            className=" text-blue-200 md:text-lg max-w-3xl italic mx-auto mt-6 leading-relaxed font-semibold tracking-wide"
+            className="text-blue-200 md:text-lg max-w-3xl italic mt-6 leading-relaxed font-semibold tracking-wide text-left"
             style={{ fontFamily: "'Poppins', sans-serif" }}
           >
             {banner
@@ -404,8 +406,16 @@ export default function Home() {
           <div
             data-aos="fade-up"
             data-aos-delay="400"
-            className="flex flex-wrap justify-center gap-4 mt-10"
-          ></div>
+            className="flex flex-wrap justify-start gap-4 mt-10"
+          >
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 rounded-full bg-[#f38020] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-orange-500/20 transition duration-300 hover:-translate-y-1 hover:bg-[#d96b0b]"
+            >
+              Contact Us
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -591,9 +601,14 @@ export default function Home() {
 
       <section className="bg-white py-16 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="mb-6 text-center text-3xl font-bold text-[#0872b9]">
+          <h2 className="mb-3 text-center text-3xl font-bold text-[#0872b9]">
             Company Partners
           </h2>
+          <p className="mx-auto mb-8 max-w-3xl text-center text-base leading-relaxed text-slate-600">
+            Through our strategic partnerships with leading technology providers
+            and global organizations, we bring cutting-edge, reliable, and
+            industry-leading solutions to our clients.
+          </p>
 
           <div className="overflow-hidden bg-white">
             <div className="marquee py-8">

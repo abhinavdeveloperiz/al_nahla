@@ -19,10 +19,90 @@
 }
 
 /* smooth scroll for the partners section on home  */
+@keyframes hero-overlay-shift {
+  0% {
+    opacity: 0.35;
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.82) 0%,
+      rgba(6, 26, 46, 0.6) 45%,
+      rgba(0, 0, 0, 0.28) 100%
+    );
+    transform: translateX(-2%);
+  }
+
+  50% {
+    opacity: 0.6;
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.72) 0%,
+      rgba(8, 31, 53, 0.5) 55%,
+      rgba(0, 0, 0, 0.35) 100%
+    );
+    transform: translateX(0);
+  }
+
+  100% {
+    opacity: 0.35;
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.82) 0%,
+      rgba(6, 26, 46, 0.6) 45%,
+      rgba(0, 0, 0, 0.28) 100%
+    );
+    transform: translateX(-2%);
+  }
+}
+
+@keyframes hero-ambient-float {
+  0%,
+  100% {
+    transform: scale(1) translate3d(0, 0, 0);
+    opacity: 0.55;
+  }
+
+  50% {
+    transform: scale(1.06) translate3d(2%, -1%, 0);
+    opacity: 0.8;
+  }
+}
+
+.hero-overlay {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.82) 0%,
+    rgba(6, 26, 46, 0.6) 45%,
+    rgba(0, 0, 0, 0.28) 100%
+  );
+  animation: hero-overlay-shift 8s ease-in-out infinite;
+}
+
+.hero-ambient {
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(243, 128, 32, 0.28),
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(8, 114, 185, 0.22),
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 70% 80%,
+      rgba(255, 255, 255, 0.16),
+      transparent 26%
+    );
+  filter: blur(12px);
+  animation: hero-ambient-float 10s ease-in-out infinite;
+}
+
 @keyframes marquee {
   0% {
     transform: translateX(0%);
   }
+
   100% {
     transform: translateX(-50%);
   }
