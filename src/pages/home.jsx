@@ -357,13 +357,7 @@ export default function Home() {
         <div className="hero-overlay absolute inset-0" />
 
         <div className="relative z-10 w-full max-w-6xl mx-auto px-6 py-32 flex flex-col items-start text-left">
-          {/* Arabic Text */}
-          <p
-            data-aos="fade-up"
-            className="text-[#f38020] text-3xl md:text-4xl font-medium tracking-wide mb-3 mt-10 text-left"
-          >
-            النهلة لحلول تكنولوجيا المعلومات ذ.م.م
-          </p>
+          
 
           {/* Main Heading */}
           <h1
