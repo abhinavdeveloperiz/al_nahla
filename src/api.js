@@ -14,11 +14,10 @@ export const getImageUrl = (path) => {
 export const fetchBanner = async () => {
   try {
     const res = await axios.get(`${API_BASE_URL}/api/banners/`);
-    const data = res.data;
-    return data && data.length > 0 ? data[0] : null;
+    return res.data;
   } catch (error) {
     console.error("Error fetching banner:", error);
-    return null;
+    return [];
   }
 };
 

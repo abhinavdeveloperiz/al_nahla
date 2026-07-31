@@ -28,6 +28,8 @@ import {
   TrendingUp,
   Users2,
   ArrowRight,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 
 function RotatingText() {
@@ -124,7 +126,8 @@ function Counter({ end, suffix }) {
 
 export default function Home() {
   const [activeService, setActiveService] = useState(0);
-  const [banner, setBanner] = useState(null);
+  const [banners, setBanners] = useState([]);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const STATS = [
     { value: "17+", label: "Years" },
@@ -294,7 +297,15 @@ export default function Home() {
   useEffect(() => {
     async function loadData() {
       const bannerData = await fetchBanner();
-      if (bannerData) setBanner(bannerData);
+      if (Array.isArray(bannerData) && bannerData.length > 0) {
+        setBanners(bannerData);
+      } else if (
+        bannerData &&
+        typeof bannerData === "object" &&
+        !Array.isArray(bannerData)
+      ) {
+        setBanners([bannerData]);
+      }
 
       const servicesData = await fetchServices();
       if (servicesData && servicesData.length > 0) {
@@ -339,61 +350,105 @@ export default function Home() {
     loadData();
   }, []);
 
+  const SECOND_BANNER_SLIDE = {
+    title: "Your One-Stop Technology Partner",
+    description: "Designed to keep your business ahead, not just up to date.",
+    image:
+      "https://mrwallpaper.com/images/high/information-technology-minimalist-blue-xk9z8h5bore5jky6.jpg",
+  };
+
+  const DEFAULT_FIRST_SLIDE = {
+    title: "Al Nahla Solutions L.L.C",
+    description:
+      "Delivering secure, scalable and future-ready IT infrastructure, enterprise solutions, cybersecurity and digital transformation services for modern businesses.",
+    image:
+      "https://i.pinimg.com/736x/bd/aa/07/bdaa078b959811fc5f56cd02512bb22c.jpg",
+  };
+
+  const slides = [
+    ...(banners.length > 0
+      ? banners.map((b) => ({
+          title: b.title,
+          description: b.description,
+          image: getImageUrl(b.image),
+        }))
+      : [DEFAULT_FIRST_SLIDE]),
+    SECOND_BANNER_SLIDE,
+  ];
+
+  useEffect(() => {
+    if (slides.length <= 1) return;
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 6000);
+
+    return () => clearInterval(interval);
+  }, [slides.length]);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  const renderTitle = (title) => {
+    if (!title) return null;
+    const words = title.split(" ");
+    if (words.length <= 1) return <span className="text-[#0872b9]">{title}</span>;
+    const mid = Math.ceil(words.length / 2);
+    const firstHalf = words.slice(0, mid).join(" ");
+    const secondHalf = words.slice(mid).join(" ");
+    return (
+      <>
+        <span className="text-[#0872b9]">{firstHalf}</span>{" "}
+        <span className="text-[#f38020]">{secondHalf}</span>
+      </>
+    );
+  };
+
   return (
     <div className=" overflow-hidden">
-      {/* HERO */}
-      <section
-        className="relative min-h-[70vh] md:min-h-[90vh] flex items-center text-white overflow-hidden"
-        data-aos="fade-in"
-        style={{
-          backgroundPosition: "center",
-          backgroundImage: `url("${getImageUrl(banner ? banner.image : "https://i.pinimg.com/736x/bd/aa/07/bdaa078b959811fc5f56cd02512bb22c.jpg")}")`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundAttachment: "fixed",
-        }}
-      >
-        <div className="hero-ambient absolute inset-0" />
-        <div className="hero-overlay absolute inset-0" />
+      {/* HERO CAROUSEL */}
+      <section className="relative min-h-[70vh] md:min-h-[90vh] flex items-center text-white overflow-hidden group">
+        {/* Background images with smooth fade */}
+        {slides.map((slide, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out bg-center bg-cover bg-no-repeat ${
+              index === currentSlide ? "opacity-100 z-0" : "opacity-0 -z-10"
+            }`}
+            style={{
+              backgroundImage: `url("${slide.image}")`,
+              backgroundAttachment: "fixed",
+            }}
+          />
+        ))}
+
+        <div className="hero-ambient absolute inset-0 z-[1]" />
+        <div className="hero-overlay absolute inset-0 z-[1]" />
 
         <div className="relative z-10 w-full max-w-6xl mx-auto px-6 py-32 flex flex-col items-start text-left">
-          
-
           {/* Main Heading */}
           <h1
+            key={`title-${currentSlide}`}
             data-aos="fade-up"
             data-aos-delay="100"
-            className="text-2xl md:text-4xl font-extrabold leading-tight text-left"
+            className="text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-left"
           >
-            {banner ? (
-              <span className="text-[#0872b9]">{banner.title}</span>
-            ) : (
-              <>
-                <span className="text-[#0872b9]">Al Nahla</span>{" "}
-                <span className="text-[#f38020]">Solutions L.L.C</span>
-              </>
-            )}
+            {renderTitle(slides[currentSlide]?.title)}
           </h1>
-
-          {/* Subtitle */}
-          {/* <h2
-            data-aos="fade-up"
-            data-aos-delay="200"
-            className="text-[#0872b9] text-lg md:text-2xl font-semibold tracking-[0.2em] mt-4"
-          >
-            {banner ? banner.subtitle : "Information Technology"}
-          </h2> */}
 
           {/* Description */}
           <p
+            key={`desc-${currentSlide}`}
             data-aos="fade-up"
             data-aos-delay="300"
             className="text-blue-200 md:text-lg max-w-3xl italic mt-6 leading-relaxed font-semibold tracking-wide text-left"
             style={{ fontFamily: "'Poppins', sans-serif" }}
           >
-            {banner
-              ? banner.description
-              : "Delivering secure, scalable and future-ready IT infrastructure, enterprise solutions, cybersecurity and digital transformation services for modern businesses."}
+            {slides[currentSlide]?.description}
           </p>
 
           {/* Buttons */}
@@ -410,6 +465,38 @@ export default function Home() {
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
+        </div>
+
+        {/* Carousel Navigation Arrows */}
+        <button
+          onClick={prevSlide}
+          aria-label="Previous Slide"
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/40 hover:bg-[#f38020] text-white backdrop-blur-md transition-all duration-300 opacity-0 group-hover:opacity-100 cursor-pointer shadow-lg"
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
+        <button
+          onClick={nextSlide}
+          aria-label="Next Slide"
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-3 rounded-full bg-black/40 hover:bg-[#f38020] text-white backdrop-blur-md transition-all duration-300 opacity-0 group-hover:opacity-100 cursor-pointer shadow-lg"
+        >
+          <ChevronRight className="w-6 h-6" />
+        </button>
+
+        {/* Pagination Dots */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-3">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              aria-label={`Go to slide ${index + 1}`}
+              className={`h-2.5 rounded-full transition-all duration-500 cursor-pointer ${
+                index === currentSlide
+                  ? "w-8 bg-[#f38020]"
+                  : "w-2.5 bg-white/50 hover:bg-white"
+              }`}
+            />
+          ))}
         </div>
       </section>
 
