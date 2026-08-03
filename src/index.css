@@ -18,6 +18,19 @@
   }
 }
 
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-none {
+  display: block;
+  -webkit-line-clamp: unset;
+  overflow: visible;
+}
+
 /* smooth scroll for the partners section on home  */
 @keyframes hero-overlay-shift {
   0% {
