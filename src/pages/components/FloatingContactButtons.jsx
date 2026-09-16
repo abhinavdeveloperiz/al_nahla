@@ -9,19 +9,19 @@ export default function FloatingContactButtons() {
   const actions = [
     {
       label: "Call",
-      href: "tel:+97125464650",
+      href: "tel:+971586012916",
       icon: FaPhoneAlt,
       color: "bg-[#0872b9] hover:bg-[#06629a]",
     },
     {
       label: "WhatsApp",
-      href: "https://wa.me/97125464650",
+      href: "https://wa.me/971586012916",
       icon: FaWhatsapp,
       color: "bg-green-500 hover:bg-green-600",
     },
     {
       label: "LinkedIn",
-      href: "https://www.linkedin.com/",
+      href: "https://www.linkedin.com/company/al-nahla-solutions-uae",
       icon: FaLinkedinIn,
       color: "bg-blue-700 hover:bg-blue-800",
     },
