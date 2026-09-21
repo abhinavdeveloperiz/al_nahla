@@ -19,7 +19,7 @@ export default function Footer() {
 
           <div className="flex items-center gap-3">
             <a
-              href="https://www.linkedin.com/"
+              href="https://www.linkedin.com/company/al-nahla-solutions-uae"
               target="_blank"
               rel="noopener noreferrer"
               className="w-11 h-11 rounded-full bg-white/10 hover:bg-[#f38020] transition-all duration-300 flex items-center justify-center"
@@ -98,10 +98,10 @@ export default function Footer() {
           </a>
 
           <a
-            href="tel:+97125464650"
+            href="tel:+971586012916"
             className="block mt-4 hover:text-[#f38020] transition"
           >
-            +971 02 5464650
+            +971 58 601 2916
           </a>
         </div>
       </div>

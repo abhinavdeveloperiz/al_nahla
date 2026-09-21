@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 
 export default function Contact() {
-  const contactNumber = "+97125464650";
+  const contactNumber = "+971586012916";
   const whatsappNumber = contactNumber.replace(/\D/g, "");
   const [formData, setFormData] = useState({
     name: "",
@@ -122,10 +122,10 @@ export default function Contact() {
                         Phone Number
                       </h4>
                       <a
-                        href="tel:+97125464650"
+                        href="tel:+971586012916"
                         className="text-gray-600 hover:text-[#f38020] transition text-sm md:text-base font-semibold"
                       >
-                        +971 2 546 4650
+                        +971 58 601 2916
                       </a>
                     </div>
                   </div>
@@ -289,10 +289,10 @@ export default function Contact() {
                   <div>
                     <p className="text-blue-200 text-xs">Contact Us</p>
                     <a
-                      href="tel:+97125464650"
+                      href="tel:+971586012916"
                       className="text-white font-semibold hover:text-[#f38020] transition text-sm md:text-base"
                     >
-                      +971 2 546 4650
+                      +971 58 601 2916
                     </a>
                   </div>
                 </div>
