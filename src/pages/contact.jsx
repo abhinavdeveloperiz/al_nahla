@@ -122,10 +122,10 @@ export default function Contact() {
                         Phone Number
                       </h4>
                       <a
-                        href="tel:+971586012916"
+                        href="tel:+971025464650"
                         className="text-gray-600 hover:text-[#f38020] transition text-sm md:text-base font-semibold"
                       >
-                        +971 58 601 2916
+                        +971 02 5464650
                       </a>
                     </div>
                   </div>
