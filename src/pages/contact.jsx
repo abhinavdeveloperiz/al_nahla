@@ -289,10 +289,10 @@ export default function Contact() {
                   <div>
                     <p className="text-blue-200 text-xs">Contact Us</p>
                     <a
-                      href="tel:+971586012916"
+                      href="tel:+971025464650"
                       className="text-white font-semibold hover:text-[#f38020] transition text-sm md:text-base"
                     >
-                      +971 58 601 2916
+                      +971 02 5464650
                     </a>
                   </div>
                 </div>
