@@ -112,18 +112,6 @@ export default function Footer() {
           <p className="text-blue-100">
             © 2026 Al Nahla Solutions. All Rights Reserved.
           </p>
-
-          <a
-            href="https://www.inspirezesttechnologies.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-[#f38020] transition"
-          >
-            Developed By{" "}
-            <span className="font-semibold">
-              InspireZest Technologies Pvt. Ltd.
-            </span>
-          </a>
         </div>
       </div>
     </footer>
