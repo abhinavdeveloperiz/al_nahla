@@ -1,7 +1,6 @@
 import axios from "axios";
 
-export const API_BASE_URL =
-  "https://api.inspirezesttechnologiesprojectdemo.space";
+export const API_BASE_URL = "alnahla.inspirezesttechnologies.com";
 
 export const getImageUrl = (path) => {
   if (!path) return "";
