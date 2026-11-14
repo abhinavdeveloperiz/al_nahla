@@ -1,13 +1,13 @@
-import Logo from "../../assets/logo/logo.png";
+import Logo from "../../assets/logo/logonobg.png";
 import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className="bg-blue-800 text-white pb-16 md:pb-0 mx-4 rounded-t-3xl mt-12">
+    <footer className="bg-blue-900 text-white pb-16 md:pb-0 mx-4 rounded-t-3xl mt-12">
       <div className="max-w-7xl mx-auto px-6 py-10 grid md:grid-cols-3 gap-10">
         {/* Brand */}
         <div>
-          <img src={Logo} alt="Logo" className="w-36 mb-5" />
+          <img src={Logo} alt="Logo" className="w-42 mb-5" />
 
           <p className="text-blue-100 leading-7 mb-6">
             Al Nahla Solutions is a trusted ICT partner delivering innovative
